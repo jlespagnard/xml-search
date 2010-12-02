@@ -10,6 +10,17 @@ import fr.unice.miage.xmlsearch.critere.Critere;
  * @version 1.0
  */
 public abstract class DAO {
+	/** Le contexte de l'application. */
+	protected String m_contexte;
+	
+	/**
+	 * Constructeur
+	 * 
+	 * @param p_contexte	le contexte de l'application
+	 */
+	protected DAO(String p_contexte) {
+		this.m_contexte = p_contexte;
+	}
 	/**
 	 * Effectue une recherche selon le crit&egrave;re de recherche pass&eacute;s en param&egrave;tre.
 	 * 
