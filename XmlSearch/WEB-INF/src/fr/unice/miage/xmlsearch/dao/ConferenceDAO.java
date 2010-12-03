@@ -23,65 +23,11 @@ public class ConferenceDAO extends DAO {
 	public ConferenceDAO(String p_contexte) {
 		super(p_contexte);
 	}
-
-	private String getParametres(Critere p_critere) {
-		StringBuilder params = new StringBuilder();
-		
-		List<String> criteres = p_critere.get(ConferenceCritere.TITRES);
-		boolean estPremier = true;
-		if(criteres != null && !criteres.isEmpty()) {
-			for(String critere : criteres) {
-				if(!estPremier) {
-					params.append("&");
-					estPremier = false;
-				}
-				params.append("titre=" + critere);
-			}
-		}
-		
-		criteres = p_critere.get(ConferenceCritere.LIEUX);
-		estPremier = true;
-		if(criteres != null && !criteres.isEmpty()) {
-			for(String critere : criteres) {
-				if(!estPremier) {
-					params.append("&");
-					estPremier = false;
-				}
-				params.append("lieu=" + critere);
-			}
-		}
-		
-		criteres = p_critere.get(ConferenceCritere.PAYS);
-		estPremier = true;
-		if(criteres != null && !criteres.isEmpty()) {
-			for(String critere : criteres) {
-				if(!estPremier) {
-					params.append("&");
-					estPremier = false;
-				}
-				params.append("pays=" + critere);
-			}
-		}
-		
-		criteres = p_critere.get(ConferenceCritere.ANNEES);
-		estPremier = true;
-		if(criteres != null && !criteres.isEmpty()) {
-			for(String critere : criteres) {
-				if(!estPremier) {
-					params.append("&");
-					estPremier = false;
-				}
-				params.append("annee=" + critere);
-			}
-		}
-		
-		return params.toString();
-	}
 	
 	@Override
 	public List<Object> rechercher(Critere p_critere) {
 		List<Object> conferences = null;
-		String params = this.getParametres(p_critere);
+		String params = Utils.getParams(p_critere, ConferenceCritere.TITRES, ConferenceCritere.ANNEES, ConferenceCritere.LIEUX,  ConferenceCritere.PAYS);
 		
 		String query = this.m_contexte + "rechercheConference.xqy";
 		if(!params.isEmpty()) {
