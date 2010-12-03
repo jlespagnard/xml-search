@@ -16,6 +16,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import fr.unice.miage.xmlsearch.critere.Critere;
+
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
@@ -72,5 +74,31 @@ public abstract class Utils {
 				lireXml(child, p_infos);
 			}
 		}
+	}
+	
+	/**
+	 * @param p_critere		les crit&egrave;res de recherches
+	 * @param p_nomsParams	le nom des crit&egraveres de recherche &agrave; r&eacute;cup&eacute;rer
+	 * @return	la requ&ecirc;te param&eacute;tr&eacute;e
+	 */
+	public static String getParams(Critere p_critere, String... p_nomsParams) {
+		StringBuilder params = new StringBuilder();
+		
+		List<String> valeurs;
+		for (String nomParam : p_nomsParams) {
+			valeurs = p_critere.get(nomParam);
+			
+			if(valeurs != null && !valeurs.isEmpty()) {
+				for (String valeur : valeurs) {
+					params.append("&" + nomParam + "=" + valeur);
+				}
+			}
+		}
+		
+		if(params.length() > 0) {
+			params = params.delete(0, 1);
+		}
+		
+		return params.toString();
 	}
 }
