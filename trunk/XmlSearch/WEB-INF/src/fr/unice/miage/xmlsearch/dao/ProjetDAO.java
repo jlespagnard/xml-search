@@ -7,9 +7,7 @@ import java.util.Map;
 import org.w3c.dom.Document;
 
 import fr.unice.miage.xmlsearch.critere.Critere;
-import fr.unice.miage.xmlsearch.critere.PersonneCritere;
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
-import fr.unice.miage.xmlsearch.objets.Personne;
 import fr.unice.miage.xmlsearch.objets.Projet;
 import fr.unice.miage.xmlsearch.utils.Utils;
 
@@ -43,7 +41,8 @@ public class ProjetDAO extends DAO{
 			liste = new LinkedList<Object>();
 			Projet projet;
 			for (Map<String, String> infoProjet : result) {
-				projet = new Projet(infoProjet.get("nom"), infoProjet.get("theme"), infoProjet.get("annee"), infoProjet.get("objectifs"), infoProjet.get("participants"));
+				//projet = new Projet(infoProjet.get("nom"), infoProjet.get("theme"), infoProjet.get("annee"), infoProjet.get("objectifs"), infoProjet.get("participants"));
+				projet = new Projet(infoProjet.get("nom"), infoProjet.get("theme"), infoProjet.get("annee"), infoProjet.get("objectifs"), null);
 				liste.add(projet);
 			}
 		}

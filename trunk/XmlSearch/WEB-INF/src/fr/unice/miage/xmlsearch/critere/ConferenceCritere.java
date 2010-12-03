@@ -9,10 +9,10 @@ import fr.unice.miage.xmlsearch.critere.Critere;
  * @version 1.0
  */
 public class ConferenceCritere extends Critere {
-	public static final String TITRES = "titres";
-	public static final String LIEUX = "lieux";
+	public static final String TITRE = "titre";
+	public static final String LIEU = "lieu";
 	public static final String PAYS = "pays";
-	public static final String ANNEES = "annees";
+	public static final String ANNEE = "annee";
 	
 	/** Les titres des conf&eacute;rences. */
 	private List<String> m_titres;
@@ -43,13 +43,13 @@ public class ConferenceCritere extends Critere {
 		if(p_nomCritere == null || p_nomCritere.isEmpty())
 			return null;
 		
-		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.TITRES))
+		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.TITRE))
 			return this.m_titres;
-		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.LIEUX))
+		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.LIEU))
 			return this.m_lieux;
 		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.PAYS))
 			return this.m_pays;
-		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.ANNEES))
+		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.ANNEE))
 			return this.m_annees;
 		
 		return null;
