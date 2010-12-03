@@ -27,9 +27,10 @@ public class ConferenceDAO extends DAO {
 	@Override
 	public List<Object> rechercher(Critere p_critere) {
 		List<Object> conferences = null;
-		String params = Utils.getParams(p_critere, ConferenceCritere.TITRES, ConferenceCritere.ANNEES, ConferenceCritere.LIEUX,  ConferenceCritere.PAYS);
 		
 		String query = this.m_contexte + "rechercheConference.xqy";
+		
+		String params = Utils.getParams(p_critere, ConferenceCritere.TITRE, ConferenceCritere.LIEU, ConferenceCritere.PAYS, ConferenceCritere.ANNEE);
 		if(!params.isEmpty()) {
 			query += "?" + params;
 		}
@@ -46,6 +47,7 @@ public class ConferenceDAO extends DAO {
 				conferences.add(conf);
 			}
 		}
+		
 		return conferences;
 	}
 
