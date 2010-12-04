@@ -17,9 +17,8 @@
 	 -->
 	 <!--
 	 Exemple de declaration d'un fichier d'accueil (en general la page d'accueil de l'application
-	 
+	 -->
 	 	<welcome-file-list>
-			<welcome-file>/pages/accueil.jsp</welcome-file>
+			<welcome-file>/pagesjsp/index.jsp</welcome-file>
 		</welcome-file-list> 
-	  -->
 </web-app>
