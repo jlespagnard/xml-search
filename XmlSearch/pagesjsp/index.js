@@ -1,14 +1,7 @@
 // JavaScript Document
-function onglets(obj){
-	var select = document.getElementById("select");
-	if(obj != select){
-		select.id="";
-		select.className="nonselect";
-		obj.className="";
-		obj.id="select";
-	}
+function recherche(){
+	$("#result").show();
 }
-
 
 $(document).ready(function() {
 	//When page loads...

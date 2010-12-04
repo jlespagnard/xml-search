@@ -1,1 +1,1 @@
-Thème
+Sur cette page il y aura un gros camembert avec tous les thèmes du monde. Quand on clique sur un thème, il y a la même carte du monde que dans conférence mais qu'avec ce thème là.
