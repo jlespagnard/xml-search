@@ -54,7 +54,7 @@ public class Personne {
 	 * Recup&eacuterer le nom de la personne
 	 * @return nom 
 	 */
-	public String getM_nom() {
+	public String getNom() {
 		return m_nom;
 	}
 	
@@ -62,7 +62,7 @@ public class Personne {
 	 * Modifier le nom de la personne
 	 * @param m_nom nom
 	 */
-	public void setM_nom(String m_nom) {
+	public void setNom(String m_nom) {
 		this.m_nom = m_nom;
 	}
 	
@@ -70,7 +70,7 @@ public class Personne {
 	 * Recup&eacuterer le prénom de la personne
 	 * @return prenom 
 	 */
-	public String getM_prenom() {
+	public String getPrenom() {
 		return m_prenom;
 	}
 	
@@ -78,7 +78,7 @@ public class Personne {
 	 * Modifier prenom
 	 * @param m_prenom prenom
 	 */
-	public void setM_prenom(String m_prenom) {
+	public void setPrenom(String m_prenom) {
 		this.m_prenom = m_prenom;
 	}
 	
@@ -86,7 +86,7 @@ public class Personne {
 	 * Recup&eacuterer l'id du centre affilié
 	 * @return idCentreAffilie
 	 */
-	public String getM_idCentreAffilie() {
+	public String getIdCentreAffilie() {
 		return m_idCentreAffilie;
 	}
 	
@@ -94,7 +94,7 @@ public class Personne {
 	 * Modifier idCentreAffilie
 	 * @param m_idCentreAffilie idCentreAffilie
 	 */
-	public void setM_idCentreAffilie(String m_idCentreAffilie) {
+	public void setIdCentreAffilie(String m_idCentreAffilie) {
 		this.m_idCentreAffilie = m_idCentreAffilie;
 	}
 	
@@ -102,7 +102,7 @@ public class Personne {
 	 * Recuperer id
 	 * @return id
 	 */
-	public String getM_id() {
+	public String getId() {
 		return m_id;
 	}
 
@@ -110,7 +110,7 @@ public class Personne {
 	 * Modifier id
 	 * @param m_id id
 	 */
-	public void setM_id(String m_id) {
+	public void setId(String m_id) {
 		this.m_id = m_id;
 	}
 
@@ -118,7 +118,7 @@ public class Personne {
 	 * Recuperer email
 	 * @return email
 	 */
-	public String getM_email() {
+	public String getEmail() {
 		return m_email;
 	}
 
@@ -126,7 +126,7 @@ public class Personne {
 	 * Modifier email
 	 * @param m_email
 	 */
-	public void setM_email(String m_email) {
+	public void setEmail(String m_email) {
 		this.m_email = m_email;
 	}
 	
