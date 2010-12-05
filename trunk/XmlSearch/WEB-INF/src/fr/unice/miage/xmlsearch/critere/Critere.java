@@ -1,7 +1,5 @@
 package fr.unice.miage.xmlsearch.critere;
 
-import java.util.List;
-
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
@@ -14,5 +12,5 @@ public abstract class Critere {
 	 * @param p_nomCritere	le nom du critere de recherche &agrave; retourner
 	 * @return	le crit&egrave; de recherche correspondant &agrave; <code>p_nomCritere</code>
 	 */
-	public abstract List<String> get(String p_nomCritere);
+	public abstract String[] get(String p_nomCritere);
 }

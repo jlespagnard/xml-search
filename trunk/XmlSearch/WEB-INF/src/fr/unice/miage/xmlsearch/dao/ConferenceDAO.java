@@ -4,12 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.w3c.dom.Document;
-
 import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
 import fr.unice.miage.xmlsearch.critere.Critere;
 import fr.unice.miage.xmlsearch.objets.Conference;
-import fr.unice.miage.xmlsearch.utils.Utils;
 
 /**
  * @author Julien Lespagnard
@@ -28,22 +25,17 @@ public class ConferenceDAO extends DAO {
 	public List<Object> rechercher(Critere p_critere) {
 		List<Object> conferences = null;
 		
-		String query = this.m_contexte + "rechercheConference.xqy";
+		List<Map<String, String>> results = super.getResultatsRequete("rechercheConference.xqy", p_critere, ConferenceCritere.TITRE, 
+				ConferenceCritere.LIEU, ConferenceCritere.PAYS, ConferenceCritere.ANNEE);
 		
-		String params = Utils.getParams(p_critere, ConferenceCritere.TITRE, ConferenceCritere.LIEU, ConferenceCritere.PAYS, ConferenceCritere.ANNEE);
-		if(!params.isEmpty()) {
-			query += "?" + params;
-		}
-		
-		Document docQueryResult = Utils.getResultatRequete(query);
-		if(docQueryResult != null) {
-			List<Map<String, String>> results = new LinkedList<Map<String,String>>(); 
-			Utils.lireXml(docQueryResult.getDocumentElement(), results);
-			
+		if(results != null) {
 			conferences = new LinkedList<Object>();
 			Conference conf;
 			for (Map<String, String> infosConf : results) {
-				conf = new Conference(infosConf.get("Titre"), infosConf.get("Lieu"), infosConf.get("Pays"), infosConf.get("Annee"));
+				conf = new Conference(infosConf.get(ConferenceCritere.TITRE), 
+						infosConf.get(ConferenceCritere.LIEU), infosConf.get(ConferenceCritere.PAYS), 
+						infosConf.get(ConferenceCritere.ANNEE));
+				
 				conferences.add(conf);
 			}
 		}

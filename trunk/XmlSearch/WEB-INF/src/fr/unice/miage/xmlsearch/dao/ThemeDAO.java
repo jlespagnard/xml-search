@@ -4,12 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.w3c.dom.Document;
-
 import fr.unice.miage.xmlsearch.critere.Critere;
 import fr.unice.miage.xmlsearch.critere.ThemeCritere;
 import fr.unice.miage.xmlsearch.objets.Theme;
-import fr.unice.miage.xmlsearch.utils.Utils;
 
 /**
  * @author Julien Lespagnard
@@ -29,22 +26,20 @@ public class ThemeDAO extends DAO{
 	@Override
 	public List<Object> rechercher(Critere p_critere) {
 		List<Object> liste = null;
-		String params = Utils.getParams(p_critere, ThemeCritere.ID, ThemeCritere.LIBELLE, ThemeCritere.LIEU, ThemeCritere.ANNEE);
-		String query = m_contexte+"rechercheTheme.xqy";
-		if(!params.isEmpty())
-			query += "?" + params;
-		Document doc = Utils.getResultatRequete(query);
-		if(doc != null)
+		
+		List<Map<String, String>> results = super.getResultatsRequete("rechercheTheme.xqy", 
+				p_critere, ThemeCritere.ID, ThemeCritere.LIBELLE, ThemeCritere.LIEU, ThemeCritere.ANNEE);
+
+		if(results != null)
 		{
-			List<Map<String, String>> result = new LinkedList<Map<String,String>>();
-			Utils.lireXml(doc.getDocumentElement(), result);
 			liste = new LinkedList<Object>();
 			Theme theme;
-			for (Map<String, String> infoTheme : result) {
+			for (Map<String, String> infoTheme : results) {
 				theme = new Theme(infoTheme.get("id"), infoTheme.get("libelle"), infoTheme.get("lieu"), infoTheme.get("annee"));
 				liste.add(theme);
 			}
 		}
+		
 		return liste;
 	}
 

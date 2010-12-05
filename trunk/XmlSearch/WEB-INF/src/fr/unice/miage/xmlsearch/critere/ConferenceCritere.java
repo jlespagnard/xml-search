@@ -1,8 +1,5 @@
 package fr.unice.miage.xmlsearch.critere;
 
-import java.util.List;
-import fr.unice.miage.xmlsearch.critere.Critere;
-
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
@@ -15,23 +12,24 @@ public class ConferenceCritere extends Critere {
 	public static final String ANNEE = "annee";
 	
 	/** Les titres des conf&eacute;rences. */
-	private List<String> m_titres;
+	private String[] m_titres;
 	/** Les lieux des conf&eacute;rences. */
-	private List<String> m_lieux;
+	private String[] m_lieux;
 	/** Les pays dans lesquels ont eu lieu les conf&eacute;rences. */
-	private List<String> m_pays;
+	private String[] m_pays;
 	/** Les ann&eacute;s des conf&eacute;rences. */
-	private List<String> m_annees;
+	private String[] m_annees;
 	
 	/**
+	 * Constructeur
 	 * 
 	 * @param p_titres	les titres des conf&eacute;rences
 	 * @param p_lieux	les lieux des conf&eacute;rences
 	 * @param p_pays	les pays dans lesquels ont eu lieu les conf&eacute;rences
 	 * @param p_annees	les ann&eacute;s des conf&eacute;rences
 	 */
-	public ConferenceCritere(List<String> p_titres, List<String> p_lieux, 
-			List<String> p_pays, List<String> p_annees) {
+	public ConferenceCritere(String[] p_titres, String[] p_lieux, 
+			String[] p_pays, String[] p_annees) {
 		this.m_titres = p_titres;
 		this.m_lieux = p_lieux;
 		this.m_pays = p_pays;
@@ -39,7 +37,7 @@ public class ConferenceCritere extends Critere {
 	}
 	
 	@Override
-	public List<String> get(String p_nomCritere) {
+	public String[] get(String p_nomCritere) {
 		if(p_nomCritere == null || p_nomCritere.isEmpty())
 			return null;
 		
