@@ -54,24 +54,27 @@ public abstract class Utils {
 	 */
 	public static void lireXml(Node p_node, List<Map<String, String>> p_infos) {
 		if(p_node.getNodeType() == Node.TEXT_NODE) {
-			Map<String, String> donnees;
-			if(p_infos.isEmpty()) {
-				donnees = new LinkedHashMap<String, String>();
-				p_infos.add(donnees);
+			if(p_node.getTextContent() != null && !p_node.getTextContent().trim().isEmpty()) {
+				Map<String, String> donnees;
+				if(p_infos.isEmpty()) {
+					donnees = new LinkedHashMap<String, String>();
+					p_infos.add(donnees);
+				}
+				else {
+					donnees = p_infos.get(p_infos.size()-1);
+				}
+				String nomParentNode = p_node.getParentNode().getNodeName();
+				if(donnees.containsKey(nomParentNode)) {
+					donnees = new LinkedHashMap<String, String>();
+					p_infos.add(donnees);
+				}
+				donnees.put(nomParentNode, p_node.getTextContent());
 			}
-			else {
-				donnees = p_infos.get(p_infos.size()-1);
-			}
-			String nomParentNode = p_node.getParentNode().getNodeName();
-			if(donnees.containsKey(nomParentNode)) {
-				donnees = new LinkedHashMap<String, String>();
-				p_infos.add(donnees);
-			}
-			donnees.put(nomParentNode, p_node.getTextContent());
+			
 		}
 		if(p_node.hasChildNodes()) {
-			for(Node child = p_node.getFirstChild() ; child != null ; child = p_node.getNextSibling()) {
-				lireXml(child, p_infos);
+			for(Node child = p_node.getFirstChild() ; child != null ; child = child.getNextSibling()) {
+				Utils.lireXml(child, p_infos);
 			}
 		}
 	}
@@ -84,19 +87,21 @@ public abstract class Utils {
 	public static String getParams(Critere p_critere, String... p_nomsParams) {
 		StringBuilder params = new StringBuilder();
 		
-		List<String> valeurs;
-		for (String nomParam : p_nomsParams) {
-			valeurs = p_critere.get(nomParam);
-			
-			if(valeurs != null && !valeurs.isEmpty()) {
-				for (String valeur : valeurs) {
-					params.append("&" + nomParam + "=" + valeur);
+		if(p_critere != null) {
+			String[] valeurs;
+			for (String nomParam : p_nomsParams) {
+				valeurs = p_critere.get(nomParam);
+				
+				if(valeurs != null && valeurs.length > 0) {
+					for (String valeur : valeurs) {
+						params.append("&" + nomParam + "=" + valeur);
+					}
 				}
 			}
-		}
-		
-		if(params.length() > 0) {
-			params = params.delete(0, 1);
+			
+			if(params.length() > 0) {
+				params = params.delete(0, 1);
+			}
 		}
 		
 		return params.toString();

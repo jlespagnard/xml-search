@@ -1,7 +1,5 @@
 package fr.unice.miage.xmlsearch.critere;
 
-import java.util.List;
-
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
@@ -17,22 +15,22 @@ public class ThemeCritere extends Critere{
 	/**
 	 * id
 	 */
-	private List<String> m_id;
+	private String[] m_id;
 	
 	/**
 	 * libelle
 	 */
-	private List<String> m_libelle;
+	private String[] m_libelle;
 	
 	/**
 	 * lieu
 	 */
-	private List<String> m_lieu;
+	private String[] m_lieu;
 	
 	/**
 	 * année
 	 */
-	private List<String> m_annee;
+	private String[] m_annee;
 	
 	/**
 	 * Constructeur
@@ -41,8 +39,8 @@ public class ThemeCritere extends Critere{
 	 * @param m_lieu lieu
 	 * @param m_annee annee
 	 */
-	public ThemeCritere(List<String> m_id, List<String> m_libelle,
-			List<String> m_lieu, List<String> m_annee) {
+	public ThemeCritere(String[] m_id, String[] m_libelle,
+			String[] m_lieu, String[] m_annee) {
 		super();
 		this.m_id = m_id;
 		this.m_libelle = m_libelle;
@@ -51,7 +49,7 @@ public class ThemeCritere extends Critere{
 	}
 
 	@Override
-	public List<String> get(String p_nomCritere) {
+	public String[] get(String p_nomCritere) {
 		if(p_nomCritere == null || p_nomCritere.isEmpty())
 			return null;
 		else

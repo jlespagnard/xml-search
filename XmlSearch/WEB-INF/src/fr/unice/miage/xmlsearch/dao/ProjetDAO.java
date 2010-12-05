@@ -4,12 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.w3c.dom.Document;
-
 import fr.unice.miage.xmlsearch.critere.Critere;
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.objets.Projet;
-import fr.unice.miage.xmlsearch.utils.Utils;
 
 /**
  * @author Julien Lespagnard
@@ -29,23 +26,22 @@ public class ProjetDAO extends DAO{
 	@Override
 	public List<Object> rechercher(Critere p_critere) {
 		List<Object> liste = null;
-		String params = Utils.getParams(p_critere, ProjetCritere.NOM, ProjetCritere.THEME, ProjetCritere.ANNEE, ProjetCritere.OBJECTIFS, ProjetCritere.PARTICIPANTS);
-		String query = m_contexte+"rechercheProjet.xqy";
-		if(!params.isEmpty())
-			query += "?" + params;
-		Document doc = Utils.getResultatRequete(query);
-		if(doc != null)
+		
+		List<Map<String, String>> results = super.getResultatsRequete("rechercheProjet.xqy", 
+				p_critere, ProjetCritere.NOM, ProjetCritere.THEME, ProjetCritere.ANNEE, 
+				ProjetCritere.OBJECTIFS, ProjetCritere.PARTICIPANTS);
+
+		if(results != null)
 		{
-			List<Map<String, String>> result = new LinkedList<Map<String,String>>();
-			Utils.lireXml(doc.getDocumentElement(), result);
 			liste = new LinkedList<Object>();
 			Projet projet;
-			for (Map<String, String> infoProjet : result) {
+			for (Map<String, String> infoProjet : results) {
 				//projet = new Projet(infoProjet.get("nom"), infoProjet.get("theme"), infoProjet.get("annee"), infoProjet.get("objectifs"), infoProjet.get("participants"));
 				projet = new Projet(infoProjet.get("nom"), infoProjet.get("theme"), infoProjet.get("annee"), infoProjet.get("objectifs"), null);
 				liste.add(projet);
 			}
 		}
+		
 		return liste;
 	}
 

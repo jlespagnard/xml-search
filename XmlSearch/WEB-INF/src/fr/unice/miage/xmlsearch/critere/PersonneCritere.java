@@ -1,7 +1,5 @@
 package fr.unice.miage.xmlsearch.critere;
 
-import java.util.List;
-
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
@@ -19,27 +17,27 @@ public class PersonneCritere extends Critere{
 	/**
 	 * l'id de la personne
 	 */
-	private List<String> m_id;
+	private String[] m_id;
 
 	/**
 	 * Le nom de la personne
 	 */
-	private List<String> m_nom;
+	private String[] m_nom;
 	
 	/**
 	 * Le pr&eacute;nom de la personne
 	 */
-	private List<String> m_prenom;
+	private String[] m_prenom;
 	
 	/**
 	 * L'email de la personne
 	 */
-	private List<String> m_email;
+	private String[] m_email;
 	
 	/**
 	 * L'id du centre o&ugrave; est affili&eacute la personne
 	 */
-	private List<String> m_idCentreAffilie;		
+	private String[] m_idCentreAffilie;		
 	
 	/**
 	 * Constructeur
@@ -49,9 +47,9 @@ public class PersonneCritere extends Critere{
 	 * @param m_email email
 	 * @param m_idCentreAffilie idCentreAffilie
 	 */
-	public PersonneCritere(List<String> m_id, List<String> m_nom,
-			List<String> m_prenom, List<String> m_email,
-			List<String> m_idCentreAffilie) {
+	public PersonneCritere(String[] m_id, String[] m_nom,
+			String[] m_prenom, String[] m_email,
+			String[] m_idCentreAffilie) {
 		super();
 		this.m_id = m_id;
 		this.m_nom = m_nom;
@@ -62,7 +60,7 @@ public class PersonneCritere extends Critere{
 
 	
 	@Override
-	public List<String> get(String p_nomCritere) {
+	public String[] get(String p_nomCritere) {
 		
 		if(p_nomCritere == null || p_nomCritere.isEmpty())
 			return null;

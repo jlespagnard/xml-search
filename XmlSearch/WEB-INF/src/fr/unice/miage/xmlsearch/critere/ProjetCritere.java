@@ -1,7 +1,5 @@
 package fr.unice.miage.xmlsearch.critere;
 
-import java.util.List;
-
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
@@ -18,27 +16,27 @@ public class ProjetCritere extends Critere{
 	/**
 	 * nom
 	 */
-	private List<String> m_nom;
+	private String[] m_nom;
 	
 	/**
 	 * theme
 	 */
-	private List<String> m_theme;
+	private String[] m_theme;
 	
 	/**
 	 * année
 	 */
-	private List<String> m_annee;
+	private String[] m_annee;
 	
 	/**
 	 * objectifs
 	 */
-	private List<String> m_objectifs;
+	private String[] m_objectifs;
 	
 	/**
 	 * id des participants
 	 */
-	private List<String> m_participants;
+	private String[] m_participants;
 	
 	/**
 	 * Constructeur
@@ -48,9 +46,9 @@ public class ProjetCritere extends Critere{
 	 * @param m_objectifs objectifs
 	 * @param m_participants participants
 	 */
-	public ProjetCritere(List<String> m_nom, List<String> m_theme,
-			List<String> m_annee, List<String> m_objectifs,
-			List<String> m_participants) {
+	public ProjetCritere(String[] m_nom, String[] m_theme,
+			String[] m_annee, String[] m_objectifs,
+			String[] m_participants) {
 		super();
 		this.m_nom = m_nom;
 		this.m_theme = m_theme;
@@ -62,7 +60,7 @@ public class ProjetCritere extends Critere{
 
 
 	@Override
-	public List<String> get(String p_nomCritere) {
+	public String[] get(String p_nomCritere) {
 		if(p_nomCritere == null || p_nomCritere.isEmpty())
 			return null;
 		else
