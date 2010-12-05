@@ -45,56 +45,56 @@ public class Theme {
 	/**
 	 * @return id
 	 */
-	public String getM_id() {
+	public String getId() {
 		return m_id;
 	}
 
 	/**
 	 * @param m_id id
 	 */
-	public void setM_id(String m_id) {
+	public void setId(String m_id) {
 		this.m_id = m_id;
 	}
 
 	/**
 	 * @return libelle
 	 */
-	public String getM_libelle() {
+	public String getLibelle() {
 		return m_libelle;
 	}
 
 	/**
 	 * @param m_libelle libelle
 	 */
-	public void setM_libelle(String m_libelle) {
+	public void setLibelle(String m_libelle) {
 		this.m_libelle = m_libelle;
 	}
 
 	/**
 	 * @return lieu
 	 */
-	public String getM_lieu() {
+	public String getLieu() {
 		return m_lieu;
 	}
 
 	/**
 	 * @param m_lieu lieu
 	 */
-	public void setM_lieu(String m_lieu) {
+	public void setLieu(String m_lieu) {
 		this.m_lieu = m_lieu;
 	}
 
 	/**
 	 * @return année
 	 */
-	public String getM_annee() {
+	public String getAnnee() {
 		return m_annee;
 	}
 
 	/**
 	 * @param m_annee année
 	 */
-	public void setM_annee(String m_annee) {
+	public void setAnnee(String m_annee) {
 		this.m_annee = m_annee;
 	}	
 	

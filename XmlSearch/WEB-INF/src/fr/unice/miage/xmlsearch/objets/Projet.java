@@ -52,85 +52,72 @@ public class Projet {
 	}
 
 	/**
-	 * Constructeur (info non détaillée)	
-	 * @param m_nom nom
-	 * @param m_theme theme
-	 * @param m_annee année
-	 */
-	public Projet(String m_nom, String m_theme, String m_annee) {
-		super();
-		this.m_nom = m_nom;
-		this.m_theme = m_theme;
-		this.m_annee = m_annee;
-	}
-
-	/**
 	 * @return nom
 	 */
-	public String getM_nom() {
+	public String getNom() {
 		return m_nom;
 	}
 
 	/**
 	 * @param m_nom nom
 	 */
-	public void setM_nom(String m_nom) {
+	public void setNom(String m_nom) {
 		this.m_nom = m_nom;
 	}
 
 	/**
 	 * @return theme
 	 */
-	public String getM_theme() {
+	public String getTheme() {
 		return m_theme;
 	}
 
 	/**
 	 * @param m_theme theme
 	 */
-	public void setM_theme(String m_theme) {
+	public void setTheme(String m_theme) {
 		this.m_theme = m_theme;
 	}
 
 	/**
 	 * @return année
 	 */ 
-	public String getM_annee() {
+	public String getAnnee() {
 		return m_annee;
 	}
 
 	/**
 	 * @param m_annee année
 	 */
-	public void setM_annee(String m_annee) {
+	public void setAnnee(String m_annee) {
 		this.m_annee = m_annee;
 	}
 
 	/**
 	 * @return objectifs
 	 */
-	public String getM_objetifs() {
+	public String getObjetifs() {
 		return m_objetifs;
 	}
 
 	/**
 	 * @param m_objetifs objectifs
 	 */
-	public void setM_objetifs(String m_objetifs) {
+	public void setObjetifs(String m_objetifs) {
 		this.m_objetifs = m_objetifs;
 	}
 
 	/**
 	 * @return participants
 	 */
-	public String[] getM_participants() {
+	public String[] getParticipants() {
 		return m_participants;
 	}
 
 	/**
 	 * @param m_participants participants
 	 */
-	public void setM_participants(String[] m_participants) {
+	public void setParticipants(String[] m_participants) {
 		this.m_participants = m_participants;
 	}	
 }
