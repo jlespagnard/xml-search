@@ -6,7 +6,7 @@ L'INRIA publie chaque année le rapport d'activité (RA-web) de ses équipes de rec
     <li> Installation d'un serveur de données (BD native XML "eXist") qui hébergera les données et les requetes XQuery requises</li>
     <li> Installation d'un serveur Web "Tomcat" qui analysera les requetes client, et les propagera au serveur de données, qui à son tour les propagera en XML au client Web</li>
     <li> Développement d'un client Web pour l'affichage des données reçus dans une carte ou dans un graphique</li>
-</ul
+</ul>
 </p>
 
 <img src="pagesjsp/img/logo_INRIA.jpg" alt="Logo Inria" class="logo"/>
