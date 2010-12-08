@@ -77,19 +77,21 @@
 			data = initData();
 			var geomap = new google.visualization.GeoMap(document.getElementById('geo_div'));
 			geomap.draw(data, null);
-			message='';
-			for(i=0;i<data.getNumberOfRows();i++)
-			{
-				message+='<b style="text-decoration:none" onclick="geoZoom(&quot;'+data.getValue(i,0)+'&quot;);pieChart()">'+data.getValue(i,0)+'</b><br>';
-			}	
-			message+='<b style="text-decoration:none" onclick="geoMap();cleanDiv(&quot;pie_div&quot;)">Retour carte</b> ';
-			document.getElementById('geozoom_div').innerHTML=
+//			message='';
+//			for(i=0;i<data.getNumberOfRows();i++)
+//			{
+//				message+='<b style="text-decoration:none" onclick="geoZoom(&quot;'+data.getValue(i,0)+'&quot;);pieChart()">'+data.getValue(i,0)+'</b><br>';
+//			}	
+//			message+='<b style="text-decoration:none" onclick="geoMap();cleanDiv(&quot;pie_div&quot;)">Retour carte</b> ';
+			//document.getElementById('geozoom_div').innerHTML=
 			//'<b style="text-decoration:none" onclick="geoZoom(&quot;'+argZoom+'&quot;);pieChart()">'+data.getValue(1,0)+'</b><br><b style="text-decoration:none" onclick="geoMap();cleanDiv(&quot;pie_div&quot;)">Retour carte</b> ';
-			message;
+			//message;
 			google.visualization.events.addListener(geomap, 'select', selectHandler); 
 			function selectHandler(e) 
 			{
-				alert('tg');
+				var selection = geomap.getSelection();
+				geoZoom(data.getValue(selection[0].row,0));
+				pieChart();
 			}
 		}
 		

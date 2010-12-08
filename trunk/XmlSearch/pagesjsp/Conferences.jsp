@@ -3,4 +3,4 @@ L'échelle de couleur de la carte sera le nombre de conférences dans le pays.
 
 <div id="geo_div">
  
-</div><div id="geozoom_div"></div>
+</div><div id="geozoom_div"></div><div id="pie_div"></div>
