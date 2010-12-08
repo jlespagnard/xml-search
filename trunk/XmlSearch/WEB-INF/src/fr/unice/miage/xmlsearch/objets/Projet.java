@@ -6,6 +6,11 @@ package fr.unice.miage.xmlsearch.objets;
  * @version 1.0
  */
 public class Projet {
+	
+	/**
+	 * L'identifiant du projet.
+	 */
+	private String m_shortName;
 
 	/**
 	 * nom du projet
@@ -41,9 +46,9 @@ public class Projet {
 	 * @param m_objetifs objectifs
 	 * @param m_participants participants
 	 */
-	public Projet(String m_nom, String m_theme, String m_annee,
+	public Projet(String p_shortName, String m_nom, String m_theme, String m_annee,
 			String m_objetifs, String[] m_participants) {
-		super();
+		this.m_shortName = p_shortName;
 		this.m_nom = m_nom;
 		this.m_theme = m_theme;
 		this.m_annee = m_annee;
@@ -51,6 +56,20 @@ public class Projet {
 		this.m_participants = m_participants;
 	}
 
+	/**
+	 * @return	l'identifiant du projet
+	 */
+	public String getShortName() {
+		return this.m_shortName;
+	}
+	
+	/**
+	 * @param p_shortName	le nouvel identifiant du projet
+	 */
+	public void setShortName(String p_shortName) {
+		this.m_shortName = p_shortName;
+	}
+	
 	/**
 	 * @return nom
 	 */

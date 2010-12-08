@@ -68,7 +68,7 @@ public abstract class Utils {
 					donnees = new LinkedHashMap<String, String>();
 					p_infos.add(donnees);
 				}
-				donnees.put(nomParentNode, p_node.getTextContent());
+				donnees.put(nomParentNode.toLowerCase(), p_node.getTextContent());
 			}
 			
 		}

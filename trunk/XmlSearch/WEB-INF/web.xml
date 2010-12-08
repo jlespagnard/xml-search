@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd"> 
-<web-app> 
+<web-app>
 	<display-name>Xml Search</display-name>
-	<!--
-	Exemple de declaration de servlet
 	
-		<servlet> 
-			<servlet-name>WebAppServer</servlet-name> 
-			<servlet-class>fr.unice.webapp.server.Server</servlet-class>
-			<load-on-startup>1</load-on-startup>
-		</servlet> 
-		<servlet-mapping> 
-			<servlet-name>WebAppServer</servlet-name> 
-			<url-pattern>/WebAppServer</url-pattern> 
-		</servlet-mapping> 
-	 -->
+	<context-param>
+		<param-name>uriDbQuery</param-name>
+		<param-value>http://localhost:8086/exist/rest/db/Raweb/query/</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>GetProjet</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetProjet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetParticipantsProjet</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetParticipantsProjet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetProjet</servlet-name>
+		<url-pattern>/getProjet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetParticipantsProjet</servlet-name>
+		<url-pattern>/getParticipantsProjet</url-pattern>
+	</servlet-mapping>
 	 <!--
 	 Exemple de declaration d'un fichier d'accueil (en general la page d'accueil de l'application
-	 -->
-	 	<welcome-file-list>
-			<welcome-file>/pagesjsp/index.jsp</welcome-file>
-		</welcome-file-list> 
+	-->	 
+	<welcome-file-list>
+		<welcome-file>/pagesjsp/index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

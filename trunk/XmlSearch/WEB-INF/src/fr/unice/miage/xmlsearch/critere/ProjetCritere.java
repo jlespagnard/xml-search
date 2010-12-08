@@ -6,12 +6,17 @@ package fr.unice.miage.xmlsearch.critere;
  * @version 1.0
  */
 public class ProjetCritere extends Critere{
-
-	public static final String NOM = "nom"; 
-	public static final String THEME = "theme"; 
+	public static final String SHORT_NAME = "shortname";
+	public static final String NOM = "projectName"; 
+	public static final String THEME = "theme-de-recherche"; 
 	public static final String ANNEE = "annee"; 
 	public static final String OBJECTIFS = "objectifs"; 
 	public static final String PARTICIPANTS = "participants";
+	
+	/**
+	 * Identifiants du projets
+	 */
+	private String[] m_shortName;
 	
 	/**
 	 * nom
@@ -40,16 +45,17 @@ public class ProjetCritere extends Critere{
 	
 	/**
 	 * Constructeur
+	 * @param p_shortName	les identifiants des projets
 	 * @param m_nom nom
 	 * @param m_theme theme
 	 * @param m_annee annee
 	 * @param m_objectifs objectifs
 	 * @param m_participants participants
 	 */
-	public ProjetCritere(String[] m_nom, String[] m_theme,
+	public ProjetCritere(String[] p_shortName, String[] m_nom, String[] m_theme,
 			String[] m_annee, String[] m_objectifs,
 			String[] m_participants) {
-		super();
+		this.m_shortName = p_shortName;
 		this.m_nom = m_nom;
 		this.m_theme = m_theme;
 		this.m_annee = m_annee;
@@ -65,6 +71,8 @@ public class ProjetCritere extends Critere{
 			return null;
 		else
 		{
+			if(p_nomCritere.equals(ProjetCritere.SHORT_NAME))
+				return this.m_shortName;
 			if(p_nomCritere.equals(ProjetCritere.NOM))
 				return m_nom;
 			if(p_nomCritere.equals(ProjetCritere.THEME))
