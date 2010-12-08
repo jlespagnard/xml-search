@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  #map_canvas { height: 40%;
+				width: 100%;
+			}
+			
+  #pano		{ 	height: 40%;
+				width: 100%;
+			}
+			
+  #pie_div {  margin-top:30px; }
+  #geo_div	{  margin-top:30px; }
+  #geozoom_div
+  #bar_div {  margin-top:30px; }
+  #table_div {  margin-top:30px; }
+  #details_div
+</style>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="scriptMap.js"></script>
+<script type="text/javascript" src="scriptGraph.js"></script>
+<script type="text/javascript">
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.load("visualization", "1", {packages:["geomap"]});
+	google.load("visualization", "1", {packages:["table"]});
+	google.setOnLoadCallback(geoMap);
+</script>
+</head>
+<body onload='initMap();tableChart()'>
+  <div id="map_canvas"></div>
+  <div id="pano"></div>
+  <div id="table_div"></div>
+  <div id="details_div"></div>
+  <div id="pie_div"></div>
+  <div id="geo_div"></div>
+  <div id="geozoom_div"></div>
+  <div id="bar_div"></div>
+  
+  </br></br>
+  <form name="frm">
+  <input type="text" name="txt_zone">
+  <input type="button" value="AddPin" onclick="addPin()"/>
+  </form>
+</body>
+</html>
