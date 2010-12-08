@@ -86,6 +86,7 @@
 			document.getElementById('geozoom_div').innerHTML=
 			//'<b style="text-decoration:none" onclick="geoZoom(&quot;'+argZoom+'&quot;);pieChart()">'+data.getValue(1,0)+'</b><br><b style="text-decoration:none" onclick="geoMap();cleanDiv(&quot;pie_div&quot;)">Retour carte</b> ';
 			message;
+			google.visualization.events.addListener(geomap, 'select', selectHandler); 
 			function selectHandler(e) 
 			{
 				alert('tg');
