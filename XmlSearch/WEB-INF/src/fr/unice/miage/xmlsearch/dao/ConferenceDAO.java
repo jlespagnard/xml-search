@@ -26,14 +26,14 @@ public class ConferenceDAO extends DAO {
 		List<Object> conferences = null;
 		
 		List<Map<String, String>> results = super.getResultatsRequete("rechercheConference.xqy", p_critere, ConferenceCritere.TITRE, 
-				ConferenceCritere.LIEU, ConferenceCritere.PAYS, ConferenceCritere.ANNEE);
+				ConferenceCritere.LIEU, ConferenceCritere.CODE_PAYS, ConferenceCritere.ANNEE);
 		
 		if(results != null) {
 			conferences = new LinkedList<Object>();
 			Conference conf;
 			for (Map<String, String> infosConf : results) {
 				conf = new Conference(infosConf.get(ConferenceCritere.TITRE), 
-						infosConf.get(ConferenceCritere.LIEU), infosConf.get(ConferenceCritere.PAYS), 
+						infosConf.get(ConferenceCritere.LIEU), infosConf.get(ConferenceCritere.CODE_PAYS), 
 						infosConf.get(ConferenceCritere.ANNEE));
 				
 				conferences.add(conf);
