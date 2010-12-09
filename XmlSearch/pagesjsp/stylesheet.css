@@ -3,6 +3,12 @@ body{
 	background-color: #8CB2FF;
 }
 
+#formrech{
+	margin-top: 10px;
+	margin-left: 20px;
+	height: 150px;
+}
+
 .logo{
 	margin: 20px 40%;
 }

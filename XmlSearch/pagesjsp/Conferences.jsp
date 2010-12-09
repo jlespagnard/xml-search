@@ -1,6 +1,13 @@
-Quand on arrive sur cette page il y a une carte du monde de ce style là : <a href="//code.google.com/apis/ajax/playground/?type=visualization#geo_map">carte</a> et quand on clique sur un pays, il y a un camembert des thèmes abordés dans ce pays qui s'affiche et la carte sera "zommée" sur ce pays avec les répartitions des conférences dans le pays.
-L'échelle de couleur de la carte sera le nombre de conférences dans le pays.
+Quand on arrive sur cette page il y a une carte du monde de ce style l&agrave; : 
+<a href="//code.google.com/apis/ajax/playground/?type=visualization#geo_map">carte</a> et quand on clique sur un pays, il y a un camembert 
+des th&egrave; mes abord&eacute;s dans ce pays qui s'affiche et la carte sera "zomm&eacute;e" sur ce pays avec les r&eacute;partitions des
+ conf&eacute;rences dans le pays.
+L'&eacute;chelle de couleur de la carte sera le nombre de conf&eacute;rences dans le pays.
 
-<div id="geo_div">
- 
-</div><div id="geozoom_div"></div><div id="pie_div"></div>
+<div class="geo_div"></div><div class="geozoom_div"></div>
+
+<div id="resultconf" style="display: none">
+	<br/><br/>
+	Voici le pourcentage de chaque thème de conférence dans ce pays :
+	<div class="piegeo_div"></div>
+</div>

@@ -34,17 +34,18 @@
 		google.load("visualization", "1", {packages:["geomap"]});
 		google.load("visualization", "1", {packages:["table"]});
 		google.setOnLoadCallback(geoMap);
+		google.setOnLoadCallback(pieChart);
 	</script>
 	<script type="text/javascript" src="pagesjsp/index.js"></script>
 </head>
-<body onload='initMap();'>
+<body>
 	<div> 
 		<p class="titreprincipal">XML Search</p>  
 		<br/><br/>
 		<ul class="tabs">
 			<li><a href="#tab1">Accueil</a></li>
-			<li><a href="#tab2">Conférences</a></li>
-			<li><a href="#tab3">Thèmes</a></li>
+			<li><a href="#tab2">Conf&eacute;rences</a></li>
+			<li><a href="#tab3">Th&egrave;mes</a></li>
 			<li><a href="#tab4">Centres de recherche</a></li>
 			<li><a href="#tab5">Projets</a></li>
 		</ul>
