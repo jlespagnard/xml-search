@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import fr.unice.miage.xmlsearch.critere.CentreRechercheCritere;
-import fr.unice.miage.xmlsearch.critere.Critere;
 import fr.unice.miage.xmlsearch.objets.CentreRecherche;
 
 /**
@@ -22,33 +21,26 @@ public class CentreRechercheDAO extends DAO {
 	public CentreRechercheDAO(String p_contexte) {
 		super(p_contexte);
 	}
-
-	@Override
-	public List<Object> rechercher(Critere p_critere) {
-		List<Object> centresRecherche = null;
+	
+	/**
+	 * @return	la liste des centres de recherche existants
+	 */
+	public List<CentreRecherche> getCentresRecherche() {
+		List<CentreRecherche> centres = null;
 		
-		List<Map<String, String>> results = super.getResultatsRequete("rechercheCentreRechercher.xqy", 
-				p_critere, CentreRechercheCritere.ID, CentreRechercheCritere.LIBELLE, 
-				CentreRechercheCritere.LATITUDE, CentreRechercheCritere.LONGITUDE);
+		List<Map<String, String>> resultats = super.getResultatsRequete("getCentresRecherche.xqy", null);
 		
-		if(results != null) {
-			centresRecherche = new LinkedList<Object>();
+		if(resultats != null && resultats.isEmpty()) {
+			centres = new LinkedList<CentreRecherche>();
 			CentreRecherche centre;
-			for(Map<String, String> infosCentre : results) {
-				centre = new CentreRecherche(infosCentre.get(CentreRechercheCritere.ID), 
-						infosCentre.get(CentreRechercheCritere.LIBELLE), infosCentre.get(CentreRechercheCritere.LATITUDE), 
-						infosCentre.get(CentreRechercheCritere.LONGITUDE));
+			for (Map<String, String> infosCentre : resultats) {
+				centre = new CentreRecherche(infosCentre.get(CentreRechercheCritere.ID), infosCentre.get(CentreRechercheCritere.LIBELLE), 
+						infosCentre.get(CentreRechercheCritere.LATITUDE), infosCentre.get(CentreRechercheCritere.LONGITUDE));
 				
-				centresRecherche.add(centre);
+				centres.add(centre);
 			}
 		}
 		
-		return centresRecherche;
-	}
-
-	@Override
-	public int count(Critere p_critere) {
-		// TODO Auto-generated method stub
-		return 0;
+		return centres;
 	}
 }

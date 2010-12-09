@@ -16,6 +16,10 @@
 		<servlet-name>GetParticipantsProjet</servlet-name>
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetParticipantsProjet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GetCentresRecherche</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetCentresRecherche</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>GetProjet</servlet-name>
@@ -24,6 +28,10 @@
 	<servlet-mapping>
 		<servlet-name>GetParticipantsProjet</servlet-name>
 		<url-pattern>/getParticipantsProjet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetCentresRecherche</servlet-name>
+		<url-pattern>/getCentresRecherche</url-pattern>
 	</servlet-mapping>
 	 <!--
 	 Exemple de declaration d'un fichier d'accueil (en general la page d'accueil de l'application
