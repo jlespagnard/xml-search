@@ -1,6 +1,16 @@
 // JavaScript Document
 function recherche(){
 	$("#result").show();
+	var shortname = $("#shortname").val();
+	var annee = $("#annee option:selected").val();
+	var theme = $("#theme").val();
+	$.getJSON("/getProjet", { annee: annee, shortname: shortname, theme: theme, fullinfos: "no" }, function(Projets){
+		var liste = "";
+	    for(var i=0; i<Projets.length; i++){
+	    	liste = liste + " <br/> " + Projets[i];
+	    }
+	    document.getElementbyID("#afficheprojets").innerHTML = liste;
+	});
 }
 
 $(document).ready(function() {

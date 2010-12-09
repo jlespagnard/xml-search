@@ -12,40 +12,68 @@
 		
 		}
 		
-		function pieChart()
+		function pieChartgeo()
 		{
+			$("#resultconf").show();
 			data = initData();
-			var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
-			chart.draw(data,{width: 450, height: 300,title: 'Le suicide, des sensations pures'});	
-			google.visualization.events.addListener(chart, 'select', selectHandler);
+			$(".piegeo_div").each(function(){
+				var chart = new google.visualization.PieChart(this);
+				chart.draw(data,{width: 450, height: 300,title: 'Le suicide, des sensations pures'});	
+				google.visualization.events.addListener(chart, 'select', selectHandler);
+			});
 		
 			function selectHandler(e) 
 			{
 				geoMap();
 			}
 		}
+		
+		function pieChart()
+		{
+			data = initData();
+			$(".pie_div").each(function(){
+				var chart = new google.visualization.PieChart(this);
+				chart.draw(data,{width: 450, height: 300,title: 'Le suicide, des sensations pures'});	
+				google.visualization.events.addListener(chart, 'select', selectHandler);
+			});
+			
+			function selectHandler(e) 
+			{
+				geoMappie();
+			}
+		}
+		
 		function barChart()
 		{
 			data = initData();
-			 var bar = new google.visualization.BarChart(document.getElementById('bar_div')).draw(data,
-            {title:"Yearly Coffee Consumption by Country",
-            width:600, height:400,
-            vAxis: {title: "Year"},
-            hAxis: {title: "Cups"}}
-			);
-			google.visualization.events.addListener(bar, 'select', selectHandler);
+			$(".bar_div").each(function(){
+				var bar = new google.visualization.BarChart(this).draw(data,
+	            {title:"Yearly Coffee Consumption by Country",
+	            width:600, height:400,
+	            vAxis: {title: "Year"},
+	            hAxis: {title: "Cups"}}
+				);
+				google.visualization.events.addListener(bar, 'select', selectHandler);
+			});
 		
 			function selectHandler(e) 
 			{
-				alert('tg');
+				function selectHandler(e) 
+				{
+					var selection = geomap.getSelection();
+					geoZoom(data.getValue(selection[0].row,0));
+					geoMap;
+				}
 			}
 		}
 		function tableChart()
 		{
 			data = initData();
-			visualization = new google.visualization.Table(document.getElementById('table_div'));
-			visualization.draw(data, null);
-			google.visualization.events.addListener(visualization, 'select', selectHandler); 
+			$(".table_div").each(function(){
+				visualization = new google.visualization.Table(this);
+				visualization.draw(data, null);
+				google.visualization.events.addListener(visualization, 'select', selectHandler); 
+			});
 
 			function selectHandler()
 			  {
@@ -75,8 +103,11 @@
 		function geoMap()
 		{
 			data = initData();
-			var geomap = new google.visualization.GeoMap(document.getElementById('geo_div'));
-			geomap.draw(data, null);
+			$(".geo_div").each(function(){
+				var geomap = new google.visualization.GeoMap(this);
+				geomap.draw(data, null);
+				google.visualization.events.addListener(geomap, 'select', selectHandler);
+			
 //			message='';
 //			for(i=0;i<data.getNumberOfRows();i++)
 //			{
@@ -86,13 +117,29 @@
 			//document.getElementById('geozoom_div').innerHTML=
 			//'<b style="text-decoration:none" onclick="geoZoom(&quot;'+argZoom+'&quot;);pieChart()">'+data.getValue(1,0)+'</b><br><b style="text-decoration:none" onclick="geoMap();cleanDiv(&quot;pie_div&quot;)">Retour carte</b> ';
 			//message;
-			google.visualization.events.addListener(geomap, 'select', selectHandler); 
-			function selectHandler(e) 
-			{
-				var selection = geomap.getSelection();
-				geoZoom(data.getValue(selection[0].row,0));
-				pieChart();
-			}
+			
+				function selectHandler(e) 
+				{
+					var selection = geomap.getSelection();
+					geoZoom(data.getValue(selection[0].row,0));
+					pieChartgeo();
+				}
+			});
+		}
+		
+		function geoMappie()
+		{
+			$("#resulttheme").show();
+			data = initData();
+			$(".geopie_div").each(function(){
+				var geomap = new google.visualization.GeoMap(this);
+				geomap.draw(data, null);
+				google.visualization.events.addListener(geomap, 'select', selectHandler);
+				function selectHandler(e) 
+				{
+					alert("test");
+				}
+			});
 		}
 		
 		function geoZoom(country)
@@ -111,9 +158,11 @@
 			options['region'] = country;
 			options['colors'] = [0xFF8747, 0xFFB581, 0xc06000]; //orange colors
 			options['dataMode'] = 'markers';
-				
-			var geozoom = new google.visualization.GeoMap(document.getElementById('geo_div'));
-			geozoom.draw(data, options);
+			
+			$(".geo_div").each(function(){
+				var geozoom = new google.visualization.GeoMap(this);
+				geozoom.draw(data, options);
+			});
 		}
 		
 		function cleanDiv(name)
