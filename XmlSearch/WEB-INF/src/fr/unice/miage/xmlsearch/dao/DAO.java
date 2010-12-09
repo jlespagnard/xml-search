@@ -26,20 +26,6 @@ public abstract class DAO {
 	protected DAO(String p_contexte) {
 		this.m_contexte = p_contexte;
 	}
-	/**
-	 * Effectue une recherche selon le crit&egrave;re de recherche pass&eacute;s en param&egrave;tre.
-	 * 
-	 * @param p_critere	contient les crit&egrave;res de recherche
-	 * @return	le resultat de la recherche
-	 */
-	public abstract List<Object> rechercher(Critere p_critere);
-	/**
-	 * Compte le nombre de resultats obtenus selon le crit&egrave;re de recherche pass&eacute;s en param&egrave;tre.
-	 * 
-	 * @param p_critere	contient les crit&egrave;res de recherche
-	 * @return	le nombre de resultats obtenus
-	 */
-	public abstract int count(Critere p_critere);
 	
 	/**
 	 * 

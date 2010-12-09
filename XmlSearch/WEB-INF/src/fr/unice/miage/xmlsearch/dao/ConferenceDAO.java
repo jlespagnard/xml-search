@@ -1,12 +1,10 @@
 package fr.unice.miage.xmlsearch.dao;
 
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
-import fr.unice.miage.xmlsearch.critere.Critere;
-import fr.unice.miage.xmlsearch.objets.Conference;
 
 /**
  * @author Julien Lespagnard
@@ -21,31 +19,25 @@ public class ConferenceDAO extends DAO {
 		super(p_contexte);
 	}
 	
-	@Override
-	public List<Object> rechercher(Critere p_critere) {
-		List<Object> conferences = null;
+	/**
+	 * Structure de la liste de retour : pays -> nombre de conf&eacute;rences
+	 * 
+	 * @param p_annee	l'ann&eacute;e des conf&eacute;rences
+	 * @return	la liste du nombre de conf&eacute;rences par pays pour l'ann&eacute;e <code>p_annee</code>
+	 */
+	public Map<String, String> getNbConferencesParPays(String p_annee) {
+		Map<String, String> retour = null;
 		
-		List<Map<String, String>> results = super.getResultatsRequete("rechercheConference.xqy", p_critere, ConferenceCritere.TITRE, 
-				ConferenceCritere.LIEU, ConferenceCritere.CODE_PAYS, ConferenceCritere.ANNEE);
+		ConferenceCritere critere = new ConferenceCritere(null, null, null, new String[]{p_annee});
+		List<Map<String, String>> results = super.getResultatsRequete("getNbConferencesParPays.xqy", critere, ConferenceCritere.ANNEE);
 		
 		if(results != null) {
-			conferences = new LinkedList<Object>();
-			Conference conf;
-			for (Map<String, String> infosConf : results) {
-				conf = new Conference(infosConf.get(ConferenceCritere.TITRE), 
-						infosConf.get(ConferenceCritere.LIEU), infosConf.get(ConferenceCritere.CODE_PAYS), 
-						infosConf.get(ConferenceCritere.ANNEE));
-				
-				conferences.add(conf);
+			retour = new LinkedHashMap<String, String>();
+			for (Map<String, String> result : results) {
+				retour.putAll(result);
 			}
 		}
 		
-		return conferences;
-	}
-
-	@Override
-	public int count(Critere p_critere) {
-		// TODO Auto-generated method stub
-		return 0;
+		return retour;
 	}
 }
