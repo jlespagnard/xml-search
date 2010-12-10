@@ -3,39 +3,56 @@
 <web-app>
 	<display-name>Xml Search</display-name>
 	
+	<!-- Declaration des parametres utils dans le contexte -->
 	<context-param>
 		<param-name>uriDbQuery</param-name>
 		<param-value>http://localhost:8086/exist/rest/db/Raweb/query/</param-value>
 	</context-param>
 	
+	<!-- Declaration des servlets -->
 	<servlet>
-		<servlet-name>GetProjet</servlet-name>
-		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetProjet</servlet-class>
+		<servlet-name>GetCentresRecherche</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetCentresRecherche</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetNbConferencesParPays</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetNbConferencesParPays</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>GetParticipantsProjet</servlet-name>
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetParticipantsProjet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>GetCentresRecherche</servlet-name>
-		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetCentresRecherche</servlet-class>
+		<servlet-name>GetProjet</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetProjet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RechercherProjet</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.RechercherProjet</servlet-class>
 	</servlet>
 	
+	<!-- Mapping des servlets pour le client -->
 	<servlet-mapping>
-		<servlet-name>GetProjet</servlet-name>
-		<url-pattern>/getProjet</url-pattern>
+		<servlet-name>GetCentresRecherche</servlet-name>
+		<url-pattern>/getCentresRecherche</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetNbConferencesParPays</servlet-name>
+		<url-pattern>/getNbConferencesParPays</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetParticipantsProjet</servlet-name>
 		<url-pattern>/getParticipantsProjet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>GetCentresRecherche</servlet-name>
-		<url-pattern>/getCentresRecherche</url-pattern>
+		<servlet-name>GetProjet</servlet-name>
+		<url-pattern>/getProjet</url-pattern>
 	</servlet-mapping>
-	 <!--
-	 Exemple de declaration d'un fichier d'accueil (en general la page d'accueil de l'application
-	-->	 
+	<servlet-mapping>
+		<servlet-name>RechercherProjet</servlet-name>
+		<url-pattern>/rechercherProjet</url-pattern>
+	</servlet-mapping>
+		 
 	<welcome-file-list>
 		<welcome-file>/pagesjsp/index.jsp</welcome-file>
 	</welcome-file-list>

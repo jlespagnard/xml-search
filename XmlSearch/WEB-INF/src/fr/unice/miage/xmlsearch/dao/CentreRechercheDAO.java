@@ -30,7 +30,7 @@ public class CentreRechercheDAO extends DAO {
 		
 		List<Map<String, String>> resultats = super.getResultatsRequete("getCentresRecherche.xqy", null);
 		
-		if(resultats != null && resultats.isEmpty()) {
+		if(resultats != null && !resultats.isEmpty()) {
 			centres = new LinkedList<CentreRecherche>();
 			CentreRecherche centre;
 			for (Map<String, String> infosCentre : resultats) {

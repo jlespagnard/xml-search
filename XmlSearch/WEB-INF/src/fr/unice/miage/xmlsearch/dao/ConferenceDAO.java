@@ -31,7 +31,7 @@ public class ConferenceDAO extends DAO {
 		ConferenceCritere critere = new ConferenceCritere(null, null, null, new String[]{p_annee});
 		List<Map<String, String>> results = super.getResultatsRequete("getNbConferencesParPays.xqy", critere, ConferenceCritere.ANNEE);
 		
-		if(results != null) {
+		if(results != null && !results.isEmpty()) {
 			retour = new LinkedHashMap<String, String>();
 			for (Map<String, String> result : results) {
 				retour.putAll(result);

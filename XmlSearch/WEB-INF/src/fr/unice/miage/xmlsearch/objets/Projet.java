@@ -33,12 +33,6 @@ public class Projet {
 	private String m_objetifs;
 	
 	/**
-	 * liste de l'id des participants (necessaire que si on demande une info detaillée)
-	 */
-	private String[] m_participants;
-
-	
-	/**
 	 * Construction (info détaillée)
 	 * @param m_nom nom 
 	 * @param m_theme theme
@@ -47,13 +41,12 @@ public class Projet {
 	 * @param m_participants participants
 	 */
 	public Projet(String p_shortName, String m_nom, String m_theme, String m_annee,
-			String m_objetifs, String[] m_participants) {
+			String m_objetifs) {
 		this.m_shortName = p_shortName;
 		this.m_nom = m_nom;
 		this.m_theme = m_theme;
 		this.m_annee = m_annee;
 		this.m_objetifs = m_objetifs;
-		this.m_participants = m_participants;
 	}
 
 	/**
@@ -125,18 +118,4 @@ public class Projet {
 	public void setObjetifs(String m_objetifs) {
 		this.m_objetifs = m_objetifs;
 	}
-
-	/**
-	 * @return participants
-	 */
-	public String[] getParticipants() {
-		return m_participants;
-	}
-
-	/**
-	 * @param m_participants participants
-	 */
-	public void setParticipants(String[] m_participants) {
-		this.m_participants = m_participants;
-	}	
 }

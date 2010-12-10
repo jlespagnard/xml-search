@@ -17,15 +17,19 @@ public class GetParticipantsProjet extends Servlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String annee = req.getParameter("annee");
+		if(annee == null || annee.isEmpty() ) {
+			return;
+		}
 		String shortName = req.getParameter("shortname");
-		if(shortName == null || shortName.isEmpty()) {
+		if(shortName == null || shortName.isEmpty() ) {
 			return;
 		}
 		
 		String contexte = this.getInitParameter(NOM_PARAMETRE_CONTEXTE);
 		ProjetDAO dao = new ProjetDAO(contexte);
 		
-		List<Participant> participants = dao.getParticipantsProjet(shortName);
+		List<Participant> participants = dao.getParticipantsProjet(shortName, annee);
 		if(participants == null || participants.isEmpty()) {
 			return;
 		}
