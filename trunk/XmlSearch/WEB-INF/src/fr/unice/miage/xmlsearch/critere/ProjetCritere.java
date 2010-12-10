@@ -9,9 +9,9 @@ public class ProjetCritere extends Critere{
 	public static final String SHORT_NAME = "shortname";
 	public static final String NOM = "projectName"; 
 	public static final String THEME = "theme-de-recherche"; 
-	public static final String ANNEE = "annee"; 
-	public static final String OBJECTIFS = "objectifs"; 
-	public static final String PARTICIPANTS = "participants";
+	public static final String ANNEE = "annee";
+	public static final String OBJECTIF = "objectif";
+	public static final String FULL_INFOS = "fullinfos";
 	
 	/**
 	 * Identifiants du projets
@@ -33,15 +33,7 @@ public class ProjetCritere extends Critere{
 	 */
 	private String[] m_annee;
 	
-	/**
-	 * objectifs
-	 */
-	private String[] m_objectifs;
-	
-	/**
-	 * id des participants
-	 */
-	private String[] m_participants;
+	private boolean m_fullInfos = false;
 	
 	/**
 	 * Constructeur
@@ -53,17 +45,13 @@ public class ProjetCritere extends Critere{
 	 * @param m_participants participants
 	 */
 	public ProjetCritere(String[] p_shortName, String[] m_nom, String[] m_theme,
-			String[] m_annee, String[] m_objectifs,
-			String[] m_participants) {
+			String[] m_annee, boolean p_fullInfos) {
 		this.m_shortName = p_shortName;
 		this.m_nom = m_nom;
 		this.m_theme = m_theme;
 		this.m_annee = m_annee;
-		this.m_objectifs = m_objectifs;
-		this.m_participants = m_participants;
+		this.m_fullInfos = p_fullInfos;
 	}
-
-
 
 	@Override
 	public String[] get(String p_nomCritere) {
@@ -79,13 +67,12 @@ public class ProjetCritere extends Critere{
 				return m_theme;
 			if(p_nomCritere.equals(ProjetCritere.ANNEE))
 				return m_annee;
-			if(p_nomCritere.equals(ProjetCritere.OBJECTIFS))
-				return m_objectifs;
-			if(p_nomCritere.equals(ProjetCritere.PARTICIPANTS))
-				return m_participants;
-			else
-				return null;
+			if(p_nomCritere.equals(ProjetCritere.FULL_INFOS)) {
+				if(this.m_fullInfos)
+					return new String[]{"yes"};
+			}
+			
+			return null;
 		}
 	}
-
 }

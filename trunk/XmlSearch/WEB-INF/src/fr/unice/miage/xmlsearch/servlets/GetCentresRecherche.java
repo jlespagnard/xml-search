@@ -17,7 +17,7 @@ public class GetCentresRecherche extends Servlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		CentreRechercheDAO daoCentre = new CentreRechercheDAO(NOM_PARAMETRE_CONTEXTE);
+		CentreRechercheDAO daoCentre = new CentreRechercheDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<CentreRecherche> centres = daoCentre.getCentresRecherche();
 		
 		resp.getWriter().print(new JSONObject(centres));
