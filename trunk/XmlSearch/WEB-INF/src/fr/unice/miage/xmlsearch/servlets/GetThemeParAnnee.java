@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import fr.unice.miage.xmlsearch.dao.ThemeDAO;
 import fr.unice.miage.xmlsearch.objets.Theme;
@@ -29,7 +29,7 @@ public class GetThemeParAnnee extends Servlet{
 		ThemeDAO daoTheme = new ThemeDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<Theme> themes = daoTheme.getThemeParAnnee(annee);
 		
-		resp.getWriter().print(new JSONObject(themes));
+		resp.getWriter().print(new JSONArray(themes));
 		
 	}
 

@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import fr.unice.miage.xmlsearch.dao.ProjetDAO;
 import fr.unice.miage.xmlsearch.objets.Participant;
@@ -34,6 +34,6 @@ public class GetParticipantsProjet extends Servlet {
 			return;
 		}
 		
-		resp.getWriter().print(new JSONObject(participants));
+		resp.getWriter().print(new JSONArray(participants));
 	}
 }
