@@ -24,8 +24,10 @@ public class GetConference extends Servlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
+		String pays = req.getParameter("pays");
+		
 		ConferenceDAO daoConference = new ConferenceDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
-		List<Conference> conferences = daoConference.getConferences();
+		List<Conference> conferences = daoConference.getConferences(pays);
 		
 		resp.getWriter().print(new JSONObject(conferences));
 		

@@ -25,9 +25,6 @@ public class GetThemeParAnnee extends Servlet{
 			throws ServletException, IOException {
 		
 		String annee = req.getParameter("annee");
-		if(annee == null || annee.isEmpty()) {
-			return;
-		}
 		
 		ThemeDAO daoTheme = new ThemeDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<Theme> themes = daoTheme.getThemeParAnnee(annee);
