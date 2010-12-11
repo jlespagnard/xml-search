@@ -1,0 +1,95 @@
+getThemesParAnnee
+	parametres
+		annee (entre 2006 et 2009)
+	return
+		<themesparannee>
+			<theme></theme> 
+			<nbprojets></nbprojets>
+		</themesparannee>
+
+getProjet
+	parametres
+		annee (entre 2006 et 2009)
+		shortname (recherche dans shortname = acronyme du projet)
+		titre
+		theme
+		fullinfo
+	
+	return	
+		SI fullinfo = yes
+		<informations>
+			<shortname></shortname>
+			<projectName></projectName>
+			<theme></theme>
+			OU <theme-de-recherche></theme-de-recherche>
+			<presentation></presentation>
+			<logiciels></logiciels>
+			<resultats></resultats>
+			<contrats></contrats>
+		</informations>
+		
+		SINON
+		<informations>
+			<shortname></shortname>
+			<projectName></projectName>
+			<theme></theme>
+			OU <theme-de-recherche></theme-de-recherche>
+			<presentation>
+		</informations>
+		
+getNbConferencesParPays
+	parametres
+		annnee (défaut 2009)
+	return
+		<conferencesparpays_root>
+			<conferencesparpays>
+				<pays></pays>
+				<nbConferences></nbConferences>
+			</conferencesparpays>
+		</conferencesparpays_root>
+				
+getCentresRecherche
+	parametres
+		/
+	return
+		<centres>
+			<centre>
+				<idCR></idCR>
+				<libelle></libelle>
+				<latitude></latitude>
+				<longitude></longitude>
+			</centre>
+		</centres>
+
+getConference		
+	parametres
+		annee
+		pays
+		titre
+	return
+		<conferences>
+			<conference>
+				<TitreConference></TitreConference>
+				<Lieu></Lieu>
+				<Annee></Annee>
+			</conference>
+		</conferences>
+
+getParticipantProjet /!\ PLUSIEURS <person> PAR TEAM
+	parametres
+		shortname
+		annee
+	return
+		<participants>
+			<team>
+				<person>
+					<firstname>
+					<lastname>
+					<affiliation>
+					<categoryPro>
+					<research-centre>
+					<moreinfo>
+					<hdr>
+				</person>
+			</team>
+		</participants>
