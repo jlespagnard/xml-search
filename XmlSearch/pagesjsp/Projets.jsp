@@ -1,9 +1,14 @@
+<%@ page import="fr.unice.miage.xmlsearch.utils.Constantes" %>
 <br/>
 <fieldset>
 <legend>Formulaire de recherche</legend>
 <table id="formrech">
 	<tr>
-		<td width="200px"><label for="shortname">Titre ou acronyme</label> : </td>
+		<td width="200px"><label for="titre">Titre</label> : </td>
+		<td width="200px"><input type="text" name="titre" id="titre" /></td>
+	</tr>
+	<tr>
+		<td width="200px"><label for="shortname">Acronyme</label> : </td>
 		<td width="200px"><input type="text" name="shortname" id="shortname" /></td>
 	</tr>
 	<tr>
@@ -17,14 +22,13 @@
 			    <option value="2007">2007</option>
 			    <option value="2008">2008</option>
 			    <option value="2009" selected="selected">2009</option>
-			    <option value="2010">2010</option>
 			</select>
 		</td>
 	</tr>
 	<tr>
 		<td width="200px"></td>
 		<td width="200px"></td>
-		<td width="200px"><input type="submit" value="Rechercher" onclick="recherche()"></td>
+		<td width="200px"><input type="submit" value="Rechercher" onclick="recherche( '<%= Constantes.Projet.THEME.getLabel() %>', '<%= Constantes.Projet.FULL_INFOS.getLabel() %>')"></td>
 	</tr>
 </table>
 </fieldset>
