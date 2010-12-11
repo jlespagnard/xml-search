@@ -43,13 +43,11 @@ public abstract class DAO {
 		if(!params.isEmpty()) {
 			query += "?" + params;
 		}
-		
 		Document docQueryResult = Utils.getResultatRequete(query);
 		if(docQueryResult != null) {
 			results = new LinkedList<Map<String,String>>(); 
 			Utils.lireXml(docQueryResult.getDocumentElement(), results);
 		}
-		
 		return results;
 	}
 }

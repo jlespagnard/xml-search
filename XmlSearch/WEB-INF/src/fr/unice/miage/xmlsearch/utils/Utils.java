@@ -64,7 +64,7 @@ public abstract class Utils {
 					donnees = p_infos.get(p_infos.size()-1);
 				}
 				String nomParentNode = p_node.getParentNode().getNodeName();
-				if(donnees.containsKey(nomParentNode)) {
+				if(donnees.containsKey(nomParentNode.toLowerCase())) {
 					donnees = new LinkedHashMap<String, String>();
 					p_infos.add(donnees);
 				}

@@ -25,9 +25,9 @@ public abstract class Constantes {
 	}
 	
 	public static enum Conference {
-		TITRE("titre"),
+		TITRE("TitreConference"),
 		LIEU("lieu"),
-		CODE_PAYS("codePays"),
+		CODE_PAYS("pays"),
 		ANNEE("annee");
 		
 		private String m_label;
