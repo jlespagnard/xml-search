@@ -64,12 +64,11 @@ public class ConferenceDAO extends DAO {
 		List<Conference> conferences = null;
 		
 		List<Map<String, String>> resultats = super.getResultatsRequete("getConference.xqy", critere, Constantes.Conference.CODE_PAYS.getLabel());
-		
 		if(resultats != null && !resultats.isEmpty()) {
 			conferences = new LinkedList<Conference>();
 			Conference conference;
 			for (Map<String, String> infosConference : resultats) {
-				conference = new Conference(infosConference.get(Constantes.Conference.TITRE.getLabel()), infosConference.get(Constantes.Conference.LIEU.getLabel()), 
+				conference = new Conference(infosConference.get(Constantes.Conference.TITRE.getLabel().toLowerCase()), infosConference.get(Constantes.Conference.LIEU.getLabel()), 
 						infosConference.get(Constantes.Conference.CODE_PAYS.getLabel()), infosConference.get(Constantes.Conference.ANNEE.getLabel()));
 				
 				conferences.add(conference);

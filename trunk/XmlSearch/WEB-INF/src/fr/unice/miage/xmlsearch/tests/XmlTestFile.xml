@@ -7,17 +7,9 @@
 	<test>
 		<nom>Test 2</nom>
 		<valeur>2</valeur>
-		<versions>
-			<numero>2.0</numero>
-		</versions>
 	</test>
 	<test>
 		<nom>Test 3</nom>
 		<valeur>3</valeur>
-		<versions>
-			<numero>3.0</numero>
-			<numero>3.1</numero>
-			<numero>3.2</numero>
-		</versions>
 	</test>
 </tests>
