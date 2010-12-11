@@ -48,9 +48,13 @@ public class ProjetDAO extends DAO {
 				if(annee == null) {
 					annee = p_critere.get(Constantes.Projet.ANNEE.getLabel())[0];
 				}
+				String theme = infosProjet.get(Constantes.Projet.THEME.getLabel());
+				if(theme == null) {
+					theme = infosProjet.get(Constantes.Projet.THEME_2009.getLabel());
+				}
 				projet = new Projet(infosProjet.get(Constantes.Projet.SHORT_NAME.getLabel()), 
-						infosProjet.get(Constantes.Projet.PROJECT_NAME.getLabel()), infosProjet.get(Constantes.Projet.THEME.getLabel()), 
-						annee, infosProjet.get(Constantes.Projet.PRESENTATION.getLabel()), infosProjet.get(Constantes.Projet.LOGICIELS.getLabel()), 
+						infosProjet.get(Constantes.Projet.PROJECT_NAME.getLabel()), theme, annee, 
+						infosProjet.get(Constantes.Projet.PRESENTATION.getLabel()), infosProjet.get(Constantes.Projet.LOGICIELS.getLabel()), 
 						infosProjet.get(Constantes.Projet.RESULTATS.getLabel()), infosProjet.get(Constantes.Projet.CONTRATS.getLabel()));
 				
 				projets.add(projet);
