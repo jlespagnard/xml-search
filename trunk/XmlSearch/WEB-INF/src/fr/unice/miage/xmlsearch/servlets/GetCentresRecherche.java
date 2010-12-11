@@ -22,4 +22,11 @@ public class GetCentresRecherche extends Servlet {
 		
 		resp.getWriter().print(new JSONObject(centres));
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(req, resp);
+	}
 }
