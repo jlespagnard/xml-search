@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
+import fr.unice.miage.xmlsearch.critere.ThemeCritere;
+import fr.unice.miage.xmlsearch.objets.CentreRecherche;
 import fr.unice.miage.xmlsearch.utils.Constantes;
 import fr.unice.miage.xmlsearch.objets.Conference;
 
@@ -45,11 +47,12 @@ public class ConferenceDAO extends DAO {
 		return retour;
 	}
 
-	public List<Conference> getConferences() {
+	public List<Conference> getConferences(String pays) {
 		
+		ConferenceCritere critere = new ConferenceCritere(null, null,new String[]{pays}, null);
 		List<Conference> conferences = null;
 		
-		List<Map<String, String>> resultats = super.getResultatsRequete("getConference.xqy", null);
+		List<Map<String, String>> resultats = super.getResultatsRequete("getConference.xqy", critere, Constantes.Conference.CODE_PAYS.getLabel());
 		
 		if(resultats != null && !resultats.isEmpty()) {
 			conferences = new LinkedList<Conference>();
