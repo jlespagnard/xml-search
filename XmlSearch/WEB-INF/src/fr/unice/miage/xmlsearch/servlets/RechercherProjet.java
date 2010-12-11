@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.dao.ProjetDAO;
@@ -27,6 +27,6 @@ public class RechercherProjet extends Servlet {
 		ProjetDAO daoProjet = new ProjetDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<Projet> projets = daoProjet.rechercherProjet(critere);
 		
-		resp.getWriter().print(new JSONObject(projets));
+		resp.getWriter().print(new JSONArray(projets));
 	}
 }

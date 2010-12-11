@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import fr.unice.miage.xmlsearch.dao.CentreRechercheDAO;
 import fr.unice.miage.xmlsearch.objets.CentreRecherche;
@@ -20,6 +20,6 @@ public class GetCentresRecherche extends Servlet {
 		CentreRechercheDAO daoCentre = new CentreRechercheDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<CentreRecherche> centres = daoCentre.getCentresRecherche();
 		
-		resp.getWriter().print(new JSONObject(centres));
+		resp.getWriter().print(new JSONArray(centres));
 	}
 }

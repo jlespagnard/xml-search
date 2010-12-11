@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 import fr.unice.miage.xmlsearch.objets.Conference;
@@ -29,7 +29,7 @@ public class GetConference extends Servlet{
 		ConferenceDAO daoConference = new ConferenceDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<Conference> conferences = daoConference.getConferences(pays);
 		
-		resp.getWriter().print(new JSONObject(conferences));
+		resp.getWriter().print(new JSONArray(conferences));
 		
 	}
 

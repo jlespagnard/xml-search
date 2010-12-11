@@ -7,7 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 
@@ -27,6 +28,9 @@ public class GetNbConferencesParPays extends Servlet {
 			return;
 		}
 		
-		resp.getWriter().print(new JSONObject(listes));
+		try {
+			resp.getWriter().print(new JSONArray(listes));
+		} catch (JSONException e) {
+		}
 	}
 }
