@@ -31,6 +31,7 @@ public class GetNbConferencesParPays extends Servlet {
 		try {
 			resp.getWriter().print(new JSONArray(listes));
 		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 	}
 }

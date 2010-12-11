@@ -12,18 +12,24 @@ import org.json.JSONArray;
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.dao.ProjetDAO;
 import fr.unice.miage.xmlsearch.objets.Projet;
+import fr.unice.miage.xmlsearch.utils.Constantes;
 
 @SuppressWarnings("serial")
 public class RechercherProjet extends Servlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String[] annees = (req.getParameter("annee") == null) ? null : new String[]{req.getParameter("annee")};
-		String[] shortNames = (req.getParameter("shortName") == null) ? null : new String[]{req.getParameter("shortName")};
-		String[] titres = (req.getParameter("titre") == null) ? null : new String[]{req.getParameter("titre")};
-		String[] themes = (req.getParameter("theme") == null) ? null : new String[]{req.getParameter("theme")};
+		String annee = req.getParameter(Constantes.Projet.ANNEE.getLabel());
+		String shortName = req.getParameter(Constantes.Projet.SHORT_NAME.getLabel());
+		String titre = req.getParameter(Constantes.Projet.NOM.getLabel());
+		String theme = req.getParameter(Constantes.Projet.THEME.getLabel());
 		
+		String[] annees = (annee == null) ? null : new String[]{annee};
+		String[] shortNames = (shortName == null) ? null : new String[]{shortName};
+		String[] titres = (titre == null) ? null : new String[]{titre};
+		String[] themes = (theme == null) ? null : new String[]{theme};
 		ProjetCritere critere = new ProjetCritere(shortNames, titres, themes, annees, true);
+
 		ProjetDAO daoProjet = new ProjetDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<Projet> projets = daoProjet.rechercherProjet(critere);
 		
