@@ -105,3 +105,16 @@ getMembresCR
 				<dateNaissance>
 			</personne>
 		</membres>
+		
+getNbParticipantsParProjet
+	parametres
+		anneeDebut (défaut 2006)
+		anneeFin (défaut 2009)
+		shortname
+	return
+		<participants_root>
+			<participants>
+				<annee></annee> 
+				<nbparticipants> </nbparticipants>
+			</participants>
+		</participants_root>
