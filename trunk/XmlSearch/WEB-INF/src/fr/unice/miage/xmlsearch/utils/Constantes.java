@@ -28,9 +28,7 @@ public abstract class Constantes {
 		TITRE("titre"),
 		LIEU("lieu"),
 		CODE_PAYS("codePays"),
-		ANNEE("annee"),
-		THEME("theme"),
-		THEME_2009("theme-de-recherche");
+		ANNEE("annee");
 		
 		private String m_label;
 		
@@ -65,10 +63,14 @@ public abstract class Constantes {
 	
 	public static enum Projet {
 		SHORT_NAME("shortname"),
-		NOM("projectName"),
-		THEME("theme-de-recherche"),
+		PROJECT_NAME("projectname"),
+		THEME("theme"),
+		THEME_2009("theme-de-recherche"),
+		PRESENTATION("presentation"),
+		LOGICIELS("logiciels"),
+		RESULTATS("resultats"),
+		CONTRATS("contrats"),
 		ANNEE("annee"),
-		OBJECTIF("objectif"),
 		FULL_INFOS("fullinfos");
 		
 		private String m_label;

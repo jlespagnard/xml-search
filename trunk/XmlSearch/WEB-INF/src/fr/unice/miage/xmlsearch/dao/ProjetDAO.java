@@ -35,7 +35,7 @@ public class ProjetDAO extends DAO {
 		List<Projet> projets = null;
 		
 		List<Map<String, String>> results = super.getResultatsRequete("getProjet.xqy", p_critere, 
-				Constantes.Projet.SHORT_NAME.getLabel(), Constantes.Projet.NOM.getLabel(), 
+				Constantes.Projet.SHORT_NAME.getLabel(), Constantes.Projet.PROJECT_NAME.getLabel(), 
 				Constantes.Projet.ANNEE.getLabel(), Constantes.Projet.THEME.getLabel(), 
 				Constantes.Projet.FULL_INFOS.getLabel());
 		
@@ -49,8 +49,9 @@ public class ProjetDAO extends DAO {
 					annee = p_critere.get(Constantes.Projet.ANNEE.getLabel())[0];
 				}
 				projet = new Projet(infosProjet.get(Constantes.Projet.SHORT_NAME.getLabel()), 
-						infosProjet.get(Constantes.Projet.NOM.getLabel()), infosProjet.get(Constantes.Projet.THEME.getLabel()), 
-						annee, infosProjet.get(Constantes.Projet.OBJECTIF.getLabel()));
+						infosProjet.get(Constantes.Projet.PROJECT_NAME.getLabel()), infosProjet.get(Constantes.Projet.THEME.getLabel()), 
+						annee, infosProjet.get(Constantes.Projet.PRESENTATION.getLabel()), infosProjet.get(Constantes.Projet.LOGICIELS.getLabel()), 
+						infosProjet.get(Constantes.Projet.RESULTATS.getLabel()), infosProjet.get(Constantes.Projet.CONTRATS.getLabel()));
 				
 				projets.add(projet);
 			}

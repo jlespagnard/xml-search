@@ -21,7 +21,7 @@ public class RechercherProjet extends Servlet {
 			throws ServletException, IOException {
 		String annee = req.getParameter(Constantes.Projet.ANNEE.getLabel());
 		String shortName = req.getParameter(Constantes.Projet.SHORT_NAME.getLabel());
-		String titre = req.getParameter(Constantes.Projet.NOM.getLabel());
+		String titre = req.getParameter(Constantes.Projet.PROJECT_NAME.getLabel());
 		String theme = req.getParameter(Constantes.Projet.THEME.getLabel());
 		
 		String[] annees = (annee == null) ? null : new String[]{annee};
