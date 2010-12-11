@@ -15,18 +15,11 @@ import fr.unice.miage.xmlsearch.objets.CentreRecherche;
 @SuppressWarnings("serial")
 public class GetCentresRecherche extends Servlet {
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		CentreRechercheDAO daoCentre = new CentreRechercheDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		List<CentreRecherche> centres = daoCentre.getCentresRecherche();
 		
 		resp.getWriter().print(new JSONObject(centres));
-	}
-	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(req, resp);
 	}
 }

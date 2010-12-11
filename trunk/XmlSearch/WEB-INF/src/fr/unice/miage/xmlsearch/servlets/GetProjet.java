@@ -14,7 +14,7 @@ import fr.unice.miage.xmlsearch.objets.Projet;
 @SuppressWarnings("serial")
 public class GetProjet extends Servlet {
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String annee = req.getParameter("annee");
 		String shortName = req.getParameter("shortName");

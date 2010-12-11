@@ -14,7 +14,7 @@ import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 @SuppressWarnings("serial")
 public class GetNbConferencesParPays extends Servlet {
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String annee = req.getParameter("annee");
 		if(annee == null || annee.isEmpty()) {
