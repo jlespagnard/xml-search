@@ -30,6 +30,14 @@
 		<servlet-name>RechercherProjet</servlet-name>
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.RechercherProjet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GetConference</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetConference</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetThemeParAnnee</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetThemeParAnnee</servlet-class>
+	</servlet>
 	
 	<!-- Mapping des servlets pour le client -->
 	<servlet-mapping>
@@ -51,6 +59,14 @@
 	<servlet-mapping>
 		<servlet-name>RechercherProjet</servlet-name>
 		<url-pattern>/rechercherProjet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetConference</servlet-name>
+		<url-pattern>/GetConference</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetThemeParAnnee</servlet-name>
+		<url-pattern>/GetThemeParAnnee</url-pattern>
 	</servlet-mapping>
 		 
 	<welcome-file-list>

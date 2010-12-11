@@ -1,10 +1,14 @@
 package fr.unice.miage.xmlsearch.dao;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import fr.unice.miage.xmlsearch.critere.CentreRechercheCritere;
 import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
+import fr.unice.miage.xmlsearch.objets.CentreRecherche;
+import fr.unice.miage.xmlsearch.objets.Conference;
 
 /**
  * @author Julien Lespagnard
@@ -39,5 +43,25 @@ public class ConferenceDAO extends DAO {
 		}
 		
 		return retour;
+	}
+
+	public List<Conference> getConferences() {
+		
+		List<Conference> conferences = null;
+		
+		List<Map<String, String>> resultats = super.getResultatsRequete("getConference.xqy", null);
+		
+		if(resultats != null && !resultats.isEmpty()) {
+			conferences = new LinkedList<Conference>();
+			Conference conference;
+			for (Map<String, String> infosConference : resultats) {
+				conference = new Conference(infosConference.get(ConferenceCritere.TITRE), infosConference.get(ConferenceCritere.LIEU), 
+						infosConference.get(ConferenceCritere.CODE_PAYS), infosConference.get(ConferenceCritere.ANNEE));
+				
+				conferences.add(conference);
+			}
+		}
+		
+		return conferences;
 	}
 }
