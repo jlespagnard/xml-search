@@ -12,12 +12,6 @@ public abstract class Servlet extends HttpServlet {
 	protected static final String NOM_PARAMETRE_CONTEXTE = "uriDbQuery";
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		doPost(req, resp);
-	}
-	
-	@Override
-	public abstract void doPost(HttpServletRequest req, HttpServletResponse resp)
+	public abstract void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException;
 }
