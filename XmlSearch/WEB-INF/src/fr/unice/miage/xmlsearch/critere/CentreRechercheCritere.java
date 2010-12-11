@@ -1,11 +1,8 @@
 package fr.unice.miage.xmlsearch.critere;
 
+import fr.unice.miage.xmlsearch.utils.Constantes;
+
 public class CentreRechercheCritere extends Critere {
-	public static final String ID = "idcr";
-	public static final String LIBELLE = "libelle";
-	public static final String LATITUDE = "latitude";
-	public static final String LONGITUDE = "longitude";
-	
 	/** Les IDs des centres de recherche */
 	private String[] m_ids;
 	/** Les noms des centres de recherche */
@@ -28,13 +25,13 @@ public class CentreRechercheCritere extends Critere {
 		if(p_nomCritere == null || p_nomCritere.isEmpty())
 			return null;
 		
-		if(p_nomCritere.equalsIgnoreCase(CentreRechercheCritere.ID))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.CentreRecherche.ID.getLabel()))
 			return this.m_ids;
-		if(p_nomCritere.equalsIgnoreCase(CentreRechercheCritere.LIBELLE))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.CentreRecherche.LIBELLE.getLabel()))
 			return this.m_libelles;
-		if(p_nomCritere.equalsIgnoreCase(CentreRechercheCritere.LATITUDE))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.CentreRecherche.LATITUDE.getLabel()))
 			return this.m_latitudes;
-		if(p_nomCritere.equalsIgnoreCase(CentreRechercheCritere.LONGITUDE))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.CentreRecherche.LONGITUDE.getLabel()))
 			return this.m_longitudes;
 		
 		return null;

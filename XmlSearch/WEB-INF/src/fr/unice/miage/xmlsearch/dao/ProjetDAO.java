@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 import fr.unice.miage.xmlsearch.critere.Critere;
-import fr.unice.miage.xmlsearch.critere.ParticipantCritere;
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.objets.Participant;
 import fr.unice.miage.xmlsearch.objets.Projet;
+import fr.unice.miage.xmlsearch.utils.Constantes;
 
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
  * @version 1.0
  */
-public class ProjetDAO extends DAO{
+public class ProjetDAO extends DAO {
 	
 	/**
 	 * Constructeur
@@ -35,16 +35,22 @@ public class ProjetDAO extends DAO{
 		List<Projet> projets = null;
 		
 		List<Map<String, String>> results = super.getResultatsRequete("getProjet.xqy", p_critere, 
-				ProjetCritere.SHORT_NAME, ProjetCritere.NOM, ProjetCritere.ANNEE, ProjetCritere.THEME, 
-				ProjetCritere.FULL_INFOS);
+				Constantes.Projet.SHORT_NAME.getLabel(), Constantes.Projet.NOM.getLabel(), 
+				Constantes.Projet.ANNEE.getLabel(), Constantes.Projet.THEME.getLabel(), 
+				Constantes.Projet.FULL_INFOS.getLabel());
 		
 		if(results != null) {
 			projets = new LinkedList<Projet>();
 			Projet projet;
+			String annee;
 			for(Map<String, String> infosProjet : results) {
-				projet = new Projet(infosProjet.get(ProjetCritere.SHORT_NAME), 
-						infosProjet.get(ProjetCritere.NOM), infosProjet.get(ProjetCritere.THEME), 
-						infosProjet.get(ProjetCritere.ANNEE), infosProjet.get(ProjetCritere.OBJECTIF));
+				annee = infosProjet.get(Constantes.Projet.ANNEE.getLabel());
+				if(annee == null) {
+					annee = p_critere.get(Constantes.Projet.ANNEE.getLabel())[0];
+				}
+				projet = new Projet(infosProjet.get(Constantes.Projet.SHORT_NAME.getLabel()), 
+						infosProjet.get(Constantes.Projet.NOM.getLabel()), infosProjet.get(Constantes.Projet.THEME.getLabel()), 
+						annee, infosProjet.get(Constantes.Projet.OBJECTIF.getLabel()));
 				
 				projets.add(projet);
 			}
@@ -75,16 +81,16 @@ public class ProjetDAO extends DAO{
 		
 		ProjetCritere critere = new ProjetCritere(new String[]{p_shortName}, null, null, new String[]{p_annee}, false);
 		List<Map<String, String>> results = super.getResultatsRequete("getParticipantsProjet.xqy", 
-				critere, ProjetCritere.SHORT_NAME, ProjetCritere.ANNEE);
+				critere, Constantes.Projet.SHORT_NAME.getLabel(), Constantes.Projet.ANNEE.getLabel());
 		
 		if(results != null) {
 			participants = new LinkedList<Participant>();
 			Participant participant;
 			for(Map<String, String> infosParticipant : results) {
-				participant = new Participant(infosParticipant.get(ParticipantCritere.FISRTNAME), 
-						infosParticipant.get(ParticipantCritere.LASTNAME), infosParticipant.get(ParticipantCritere.AFFILIATION), 
-						infosParticipant.get(ParticipantCritere.CATEGORYPRO), infosParticipant.get(ParticipantCritere.RESEARCHCENTRE), 
-						infosParticipant.get(ParticipantCritere.MOREINFO), infosParticipant.get(ParticipantCritere.HDR));
+				participant = new Participant(infosParticipant.get(Constantes.Participant.FISRTNAME.getLabel()), 
+						infosParticipant.get(Constantes.Participant.LASTNAME.getLabel()), infosParticipant.get(Constantes.Participant.AFFILIATION.getLabel()), 
+						infosParticipant.get(Constantes.Participant.CATEGORYPRO.getLabel()), infosParticipant.get(Constantes.Participant.RESEARCHCENTRE.getLabel()), 
+						infosParticipant.get(Constantes.Participant.MOREINFO.getLabel()), infosParticipant.get(Constantes.Participant.HDR.getLabel()));
 				
 				participants.add(participant);
 			}

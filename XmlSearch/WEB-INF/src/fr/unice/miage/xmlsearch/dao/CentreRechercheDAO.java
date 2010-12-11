@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import fr.unice.miage.xmlsearch.critere.CentreRechercheCritere;
 import fr.unice.miage.xmlsearch.objets.CentreRecherche;
+import fr.unice.miage.xmlsearch.utils.Constantes;
 
 /**
  * @author Julien Lespagnard
@@ -34,8 +34,8 @@ public class CentreRechercheDAO extends DAO {
 			centres = new LinkedList<CentreRecherche>();
 			CentreRecherche centre;
 			for (Map<String, String> infosCentre : resultats) {
-				centre = new CentreRecherche(infosCentre.get(CentreRechercheCritere.ID), infosCentre.get(CentreRechercheCritere.LIBELLE), 
-						infosCentre.get(CentreRechercheCritere.LATITUDE), infosCentre.get(CentreRechercheCritere.LONGITUDE));
+				centre = new CentreRecherche(infosCentre.get(Constantes.CentreRecherche.ID.getLabel()), infosCentre.get(Constantes.CentreRecherche.LIBELLE.getLabel()), 
+						infosCentre.get(Constantes.CentreRecherche.LATITUDE.getLabel()), infosCentre.get(Constantes.CentreRecherche.LONGITUDE.getLabel()));
 				
 				centres.add(centre);
 			}
