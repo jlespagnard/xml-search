@@ -30,11 +30,23 @@
 	<script type="text/javascript" src="ScriptJS/scriptMap.js"></script>
 	<script type="text/javascript" src="ScriptJS/scriptGraph.js"></script>
 	<script type="text/javascript">
+	
 		google.load("visualization", "1", {packages:["corechart"]});
 		google.load("visualization", "1", {packages:["geomap"]});
 		google.load("visualization", "1", {packages:["table"]});
 		google.setOnLoadCallback(geoMap);
+
+		function callServ()
+		{
+			alert('TG');
+			initMap();
+			$.getJSON('getCentresRecherche', function(centres) {
+				  addPin(centres);
+				});
+		}
+
 		google.setOnLoadCallback(pieChart);
+
 	</script>
 	<script type="text/javascript" src="pagesjsp/index.js"></script>
 </head>
@@ -46,11 +58,12 @@
 			<li><a href="#tab1">Accueil</a></li>
 			<li><a href="#tab2">Conf&eacute;rences</a></li>
 			<li><a href="#tab3">Th&egrave;mes</a></li>
-			<li><a href="#tab4">Centres de recherche</a></li>
+			<li><a onclick="callServ();">Centres de recherche</a></li>
 			<li><a href="#tab5">Projets</a></li>
 		</ul>
 		<hr id="sep">
 	</div>
+	<div id="map_canvas"></div>
 	<div id="tab_container">
 		<div id="tab1" class="tab_content">
 			<jsp:include page="Accueil.jsp"/>
