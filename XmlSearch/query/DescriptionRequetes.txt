@@ -93,3 +93,15 @@ getParticipantProjet /!\ PLUSIEURS <person> PAR TEAM
 				</person>
 			</team>
 		</participants>
+		
+getMembresCR
+	parametres
+		idCR
+	return
+		<membres>
+			<personne>
+				<nom>
+				<prenom>
+				<dateNaissance>
+			</personne>
+		</membres>
