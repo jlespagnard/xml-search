@@ -1,17 +1,13 @@
 package fr.unice.miage.xmlsearch.critere;
 
+import fr.unice.miage.xmlsearch.utils.Constantes;
+
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
  * @version 1.0
  */
 public class ThemeCritere extends Critere{
-
-	public static final String ID = "id"; 
-	public static final String LIBELLE = "libelle"; 
-	public static final String LIEU = "lieu"; 
-	public static final String ANNEE = "annee"; 
-	
 	/**
 	 * id
 	 */
@@ -54,17 +50,16 @@ public class ThemeCritere extends Critere{
 			return null;
 		else
 		{
-			if(p_nomCritere.equals(ThemeCritere.ID))
+			if(p_nomCritere.equals(Constantes.Theme.ID.getLabel()))
 				return m_id;
-			if(p_nomCritere.equals(ThemeCritere.LIBELLE))
+			if(p_nomCritere.equals(Constantes.Theme.LIBELLE.getLabel()))
 				return m_libelle;
-			if(p_nomCritere.equals(ThemeCritere.LIEU))
+			if(p_nomCritere.equals(Constantes.Theme.LIEU.getLabel()))
 				return m_lieu;
-			if(p_nomCritere.equals(ThemeCritere.ANNEE))
+			if(p_nomCritere.equals(Constantes.Theme.ANNEE.getLabel()))
 				return m_annee;
 			else
 				return null;
 		}
 	}
-
 }

@@ -1,18 +1,13 @@
 package fr.unice.miage.xmlsearch.critere;
 
+import fr.unice.miage.xmlsearch.utils.Constantes;
+
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
  * @version 1.0
  */
 public class ProjetCritere extends Critere{
-	public static final String SHORT_NAME = "shortname";
-	public static final String NOM = "projectName"; 
-	public static final String THEME = "theme-de-recherche"; 
-	public static final String ANNEE = "annee";
-	public static final String OBJECTIF = "objectif";
-	public static final String FULL_INFOS = "fullinfos";
-	
 	/**
 	 * Identifiants du projets
 	 */
@@ -59,15 +54,15 @@ public class ProjetCritere extends Critere{
 			return null;
 		else
 		{
-			if(p_nomCritere.equals(ProjetCritere.SHORT_NAME))
+			if(p_nomCritere.equals(Constantes.Projet.SHORT_NAME.getLabel()))
 				return this.m_shortName;
-			if(p_nomCritere.equals(ProjetCritere.NOM))
+			if(p_nomCritere.equals(Constantes.Projet.NOM.getLabel()))
 				return m_nom;
-			if(p_nomCritere.equals(ProjetCritere.THEME))
+			if(p_nomCritere.equals(Constantes.Projet.THEME.getLabel()))
 				return m_theme;
-			if(p_nomCritere.equals(ProjetCritere.ANNEE))
+			if(p_nomCritere.equals(Constantes.Projet.ANNEE.getLabel()))
 				return m_annee;
-			if(p_nomCritere.equals(ProjetCritere.FULL_INFOS)) {
+			if(p_nomCritere.equals(Constantes.Projet.FULL_INFOS.getLabel())) {
 				if(this.m_fullInfos)
 					return new String[]{"yes"};
 			}

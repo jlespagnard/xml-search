@@ -5,9 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import fr.unice.miage.xmlsearch.critere.CentreRechercheCritere;
 import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
-import fr.unice.miage.xmlsearch.objets.CentreRecherche;
+import fr.unice.miage.xmlsearch.utils.Constantes;
 import fr.unice.miage.xmlsearch.objets.Conference;
 
 /**
@@ -33,7 +32,8 @@ public class ConferenceDAO extends DAO {
 		Map<String, String> retour = null;
 		
 		ConferenceCritere critere = new ConferenceCritere(null, null, null, new String[]{p_annee});
-		List<Map<String, String>> results = super.getResultatsRequete("getNbConferencesParPays.xqy", critere, ConferenceCritere.ANNEE);
+		List<Map<String, String>> results = super.getResultatsRequete("getNbConferencesParPays.xqy", 
+				critere, Constantes.Conference.ANNEE.getLabel());
 		
 		if(results != null && !results.isEmpty()) {
 			retour = new LinkedHashMap<String, String>();
@@ -55,8 +55,8 @@ public class ConferenceDAO extends DAO {
 			conferences = new LinkedList<Conference>();
 			Conference conference;
 			for (Map<String, String> infosConference : resultats) {
-				conference = new Conference(infosConference.get(ConferenceCritere.TITRE), infosConference.get(ConferenceCritere.LIEU), 
-						infosConference.get(ConferenceCritere.CODE_PAYS), infosConference.get(ConferenceCritere.ANNEE));
+				conference = new Conference(infosConference.get(Constantes.Conference.TITRE.getLabel()), infosConference.get(Constantes.Conference.LIEU.getLabel()), 
+						infosConference.get(Constantes.Conference.CODE_PAYS.getLabel()), infosConference.get(Constantes.Conference.ANNEE.getLabel()));
 				
 				conferences.add(conference);
 			}

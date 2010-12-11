@@ -1,16 +1,13 @@
 package fr.unice.miage.xmlsearch.critere;
 
+import fr.unice.miage.xmlsearch.utils.Constantes;
+
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
  * @version 1.0
  */
 public class ConferenceCritere extends Critere {
-	public static final String TITRE = "titre";
-	public static final String LIEU = "lieu";
-	public static final String CODE_PAYS = "codePays";
-	public static final String ANNEE = "annee";
-	
 	/** Les titres des conf&eacute;rences. */
 	private String[] m_titres;
 	/** Les lieux des conf&eacute;rences. */
@@ -41,13 +38,13 @@ public class ConferenceCritere extends Critere {
 		if(p_nomCritere == null || p_nomCritere.isEmpty())
 			return null;
 		
-		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.TITRE))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.Conference.TITRE.getLabel()))
 			return this.m_titres;
-		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.LIEU))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.Conference.LIEU.getLabel()))
 			return this.m_lieux;
-		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.CODE_PAYS))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.Conference.CODE_PAYS.getLabel()))
 			return this.m_codePays;
-		if(p_nomCritere.equalsIgnoreCase(ConferenceCritere.ANNEE))
+		if(p_nomCritere.equalsIgnoreCase(Constantes.Conference.ANNEE.getLabel()))
 			return this.m_annees;
 		
 		return null;

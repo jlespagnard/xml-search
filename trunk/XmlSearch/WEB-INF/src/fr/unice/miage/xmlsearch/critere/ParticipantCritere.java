@@ -1,20 +1,13 @@
 package fr.unice.miage.xmlsearch.critere;
 
+import fr.unice.miage.xmlsearch.utils.Constantes;
+
 /**
  * @author Julien Lespagnard
  * @author Elodie Mazuel
  * @version 1.0
  */
 public class ParticipantCritere extends Critere{
-
-	public static final String FISRTNAME = "firstname";
-	public static final String LASTNAME = "lastname";
-	public static final String AFFILIATION = "affiliation";
-	public static final String CATEGORYPRO = "categoryPro";
-	public static final String RESEARCHCENTRE = "researchCentre";
-	public static final String MOREINFO = "moreInfo";
-	public static final String HDR = "hdr";
-	
 	/**
 	 * prenom du participant
 	 */
@@ -79,19 +72,19 @@ public class ParticipantCritere extends Critere{
 			return null;
 		else
 		{
-			if(p_nomCritere.equals(ParticipantCritere.FISRTNAME))
+			if(p_nomCritere.equals(Constantes.Participant.FISRTNAME.getLabel()))
 				return m_firstname;
-			if(p_nomCritere.equals(ParticipantCritere.LASTNAME))
+			if(p_nomCritere.equals(Constantes.Participant.LASTNAME.getLabel()))
 				return m_lastname;
-			if(p_nomCritere.equals(ParticipantCritere.AFFILIATION))
+			if(p_nomCritere.equals(Constantes.Participant.AFFILIATION.getLabel()))
 				return m_affiliation;
-			if(p_nomCritere.equals(ParticipantCritere.CATEGORYPRO))
+			if(p_nomCritere.equals(Constantes.Participant.CATEGORYPRO.getLabel()))
 				return m_categoryPro;
-			if(p_nomCritere.equals(ParticipantCritere.RESEARCHCENTRE))
+			if(p_nomCritere.equals(Constantes.Participant.RESEARCHCENTRE.getLabel()))
 				return m_researchcentre;
-			if(p_nomCritere.equals(ParticipantCritere.MOREINFO))
+			if(p_nomCritere.equals(Constantes.Participant.MOREINFO.getLabel()))
 				return m_moreinfo;
-			if(p_nomCritere.equals(ParticipantCritere.HDR))
+			if(p_nomCritere.equals(Constantes.Participant.HDR.getLabel()))
 				return m_hdr;
 			else
 				return null;
