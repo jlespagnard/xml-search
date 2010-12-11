@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
-import fr.unice.miage.xmlsearch.critere.ThemeCritere;
-import fr.unice.miage.xmlsearch.objets.CentreRecherche;
 import fr.unice.miage.xmlsearch.utils.Constantes;
 import fr.unice.miage.xmlsearch.objets.Conference;
 
@@ -39,8 +37,21 @@ public class ConferenceDAO extends DAO {
 		
 		if(results != null && !results.isEmpty()) {
 			retour = new LinkedHashMap<String, String>();
+			String codePays = null, nbConf = null;
 			for (Map<String, String> result : results) {
-				retour.putAll(result);
+				for(String key : result.keySet()) {
+					if(codePays == null) {
+						codePays = result.get(key);
+					}
+					else if(nbConf == null) {
+						nbConf = result.get(key);
+					}
+					if(codePays != null && nbConf != null) {
+						retour.put(codePays, nbConf);
+						codePays = null;
+						nbConf = null;
+					}
+				}
 			}
 		}
 		
