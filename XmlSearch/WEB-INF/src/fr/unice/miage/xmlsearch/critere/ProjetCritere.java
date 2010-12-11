@@ -56,7 +56,7 @@ public class ProjetCritere extends Critere{
 		{
 			if(p_nomCritere.equals(Constantes.Projet.SHORT_NAME.getLabel()))
 				return this.m_shortName;
-			if(p_nomCritere.equals(Constantes.Projet.NOM.getLabel()))
+			if(p_nomCritere.equals(Constantes.Projet.PROJECT_NAME.getLabel()))
 				return m_nom;
 			if(p_nomCritere.equals(Constantes.Projet.THEME.getLabel()))
 				return m_theme;
