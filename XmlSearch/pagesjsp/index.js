@@ -7,8 +7,10 @@ function recherche(){
 	$.getJSON("rechercherProjet", { annee: annee, projectname: titre, shortname: shortname, theme: theme, fullinfos: "no"}, function(Projets){
 		var liste = "<table><tr>";
 		var j = 0;
+		var k = 0;
 	    for(var i in Projets){
 	    	if(Projets[i].titre != null){
+	    		k++;
 	    		alert("ok");
 	    		if(j > 5){
 	    			j = 0;
@@ -20,6 +22,8 @@ function recherche(){
 	    	}
 	    }
 	    liste = liste + "</tr></table>";
+	    if(k == 0)
+	    	liste = "Il n'y a pas de résultat";
 	    $("#afficheprojets").html(liste);
 		$("#result").show();
 	});
