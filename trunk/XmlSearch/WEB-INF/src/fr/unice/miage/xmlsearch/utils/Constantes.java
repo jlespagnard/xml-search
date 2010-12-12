@@ -8,7 +8,7 @@ package fr.unice.miage.xmlsearch.utils;
 public abstract class Constantes {
 
 	public static enum CentreRecherche {
-		ID("idcr"),
+		ID("idCR"),
 		LIBELLE("libelle"),
 		LATITUDE("latitude"),
 		LONGITUDE("longitude");
@@ -94,6 +94,22 @@ public abstract class Constantes {
 		private String m_label;
 		
 		private Theme(String p_label) {
+			this.m_label = p_label;
+		}
+		
+		public String getLabel() {
+			return this.m_label;
+		}
+	}
+	
+	public static enum Membre {
+		DATENAISSANCE("datenaissance"),
+		NOM("nom"),
+		PRENOM("prenom");
+		
+		private String m_label;
+		
+		private Membre(String p_label) {
 			this.m_label = p_label;
 		}
 		

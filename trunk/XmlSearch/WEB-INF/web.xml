@@ -19,6 +19,10 @@
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetConference</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>GetMembresCR</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetMembresCR</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>GetNbConferencesParPays</servlet-name>
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetNbConferencesParPays</servlet-class>
 	</servlet>
@@ -55,6 +59,10 @@
 	<servlet-mapping>
 		<servlet-name>GetConference</servlet-name>
 		<url-pattern>/getConference</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetMembresCR</servlet-name>
+		<url-pattern>/getMembresCR</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetNbConferencesParPays</servlet-name>
