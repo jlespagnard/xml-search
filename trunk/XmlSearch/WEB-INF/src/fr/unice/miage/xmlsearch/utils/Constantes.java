@@ -63,9 +63,9 @@ public abstract class Constantes {
 	
 	public static enum Projet {
 		SHORT_NAME("shortname"),
-		PROJECT_NAME("projectname"),
+		PROJECT_NAME("projectName"),
 		THEME("theme"),
-		THEME_2009("theme-de-recherche"),
+		THEME_DE_RECHERCHE("theme-de-recherche"),
 		PRESENTATION("presentation"),
 		LOGICIELS("logiciels"),
 		RESULTATS("resultats"),
