@@ -67,6 +67,7 @@ public class ProjetDAO extends DAO {
 					elemTheme = (Element)elemInformations.getElementsByTagName(Constantes.Projet.THEME.getLabel()).item(0);
 				}
 				if(p_fullInfos) {
+					this.removeParticipantsNode(elemInformations);
 					elemPresentation = (Element)elemInformations.getElementsByTagName(Constantes.Projet.PRESENTATION.getLabel()).item(0);
 					elemLogiciels = (Element)elemInformations.getElementsByTagName(Constantes.Projet.LOGICIELS.getLabel()).item(0);
 					elemResultats = (Element)elemInformations.getElementsByTagName(Constantes.Projet.RESULTATS.getLabel()).item(0);
@@ -82,6 +83,20 @@ public class ProjetDAO extends DAO {
 		}
 		
 		return projets;
+	}
+	
+	private void removeParticipantsNode(Element p_elementNode) {
+		for(int i=0;i<p_elementNode.getChildNodes().getLength();i++) {
+			Node child = p_elementNode.getChildNodes().item(i);
+			if(child.getNodeType() == Node.ELEMENT_NODE) {
+				if(child.getNodeName().equalsIgnoreCase(Constantes.Projet.PARTICIPANTS.getLabel())) {
+					p_elementNode.removeChild(child);
+				}
+				if(child.hasChildNodes()) {
+					this.removeParticipantsNode((Element)child);
+				}
+			}
+		}
 	}
 	
 	private String getTextContent(Element p_elementNode) {
@@ -102,6 +117,23 @@ public class ProjetDAO extends DAO {
 			e.printStackTrace();
 		}
 //		textContent = textContent.replace("\n", "<br />");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.SHORT_NAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.SHORT_NAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.PROJECT_NAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.PROJECT_NAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.THEME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.THEME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.THEME_DE_RECHERCHE.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.THEME_DE_RECHERCHE.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.PRESENTATION.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.PRESENTATION.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.LOGICIELS.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.LOGICIELS.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.RESULTATS.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.RESULTATS.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Projet.CONTRATS.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Projet.CONTRATS.getLabel() + ">", "");
+		
 		return textContent.trim();
 	}
 	

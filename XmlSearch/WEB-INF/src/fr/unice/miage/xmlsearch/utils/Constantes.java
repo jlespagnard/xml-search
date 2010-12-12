@@ -67,6 +67,7 @@ public abstract class Constantes {
 		THEME("theme"),
 		THEME_DE_RECHERCHE("theme-de-recherche"),
 		PRESENTATION("presentation"),
+		PARTICIPANTS("participants"),
 		LOGICIELS("logiciels"),
 		RESULTATS("resultats"),
 		CONTRATS("contrats"),
