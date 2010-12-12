@@ -1,9 +1,13 @@
 package fr.unice.miage.xmlsearch.dao;
 
+import java.util.LinkedHashMap;
 import java.io.StringWriter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -13,12 +17,11 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import fr.unice.miage.xmlsearch.critere.Critere;
+import fr.unice.miage.xmlsearch.critere.ParticipantCritere;
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.objets.Participant;
 import fr.unice.miage.xmlsearch.objets.Projet;
@@ -169,21 +172,67 @@ public class ProjetDAO extends DAO {
 	 * @return	la liste des participants au projet ayant pour identifiant <code>p_shortName</code>
 	 */
 	public List<Participant> getParticipantsProjet(String p_shortName, String p_annee) {
+		
 		List<Participant> participants = null;
 		
+		String query = this.getContexte() + "getParticipantProjet.xqy";
 		ProjetCritere critere = new ProjetCritere(new String[]{p_shortName}, null, null, new String[]{p_annee}, false);
-		List<Map<String, String>> results = super.getResultatsRequete("getParticipantsProjet.xqy", 
-				critere, Constantes.Projet.SHORT_NAME.getLabel(), Constantes.Projet.ANNEE.getLabel());
+		String params = Utils.getParams(critere, Constantes.Projet.SHORT_NAME.getLabel(), 
+				Constantes.Projet.PROJECT_NAME.getLabel(), Constantes.Projet.ANNEE.getLabel(), 
+				Constantes.Projet.THEME.getLabel(), Constantes.Projet.FULL_INFOS.getLabel());
+		if(!params.isEmpty()) {
+			query += "?" + params;
+		}
 		
-		if(results != null) {
+		Document doc = Utils.getResultatRequete(query);
+		if(doc != null) {
+			String annee = critere.get(Constantes.Projet.ANNEE.getLabel())[0];
 			participants = new LinkedList<Participant>();
 			Participant participant;
-			for(Map<String, String> infosParticipant : results) {
-				participant = new Participant(infosParticipant.get(Constantes.Participant.FISRTNAME.getLabel()), 
-						infosParticipant.get(Constantes.Participant.LASTNAME.getLabel()), infosParticipant.get(Constantes.Participant.AFFILIATION.getLabel()), 
-						infosParticipant.get(Constantes.Participant.CATEGORYPRO.getLabel()), infosParticipant.get(Constantes.Participant.RESEARCHCENTRE.getLabel()), 
-						infosParticipant.get(Constantes.Participant.MOREINFO.getLabel()), infosParticipant.get(Constantes.Participant.HDR.getLabel()));
+			NodeList nodePerson = doc.getElementsByTagName("person");			
+			Element elemPerson = null, elemfirstname = null, elemlastname = null, elemaffiliation = null, elemcategoryPro = null, elemresearchcentre = null, elemmoreinfo = null, elemhdr = null;
+			
+			for(int i=0;i<nodePerson.getLength();i++) {
+				elemPerson = (Element)nodePerson.item(i);
+				elemfirstname = (Element)elemPerson.getElementsByTagName(Constantes.Participant.FISRTNAME.getLabel()).item(0);
+				elemlastname = (Element)elemPerson.getElementsByTagName(Constantes.Participant.LASTNAME.getLabel()).item(0);
+				elemaffiliation = (Element)elemPerson.getElementsByTagName(Constantes.Participant.AFFILIATION.getLabel()).item(0);
+				elemcategoryPro = (Element)elemPerson.getElementsByTagName("categoryPro").item(0);
+				elemresearchcentre = (Element)elemPerson.getElementsByTagName(Constantes.Participant.RESEARCHCENTRE.getLabel()).item(0);
+				elemmoreinfo = (Element)elemPerson.getElementsByTagName(Constantes.Participant.MOREINFO.getLabel()).item(0);
+				elemhdr = (Element)elemPerson.getElementsByTagName(Constantes.Participant.HDR.getLabel()).item(0);
 				
+				int longueur = 0;
+				longueur = Constantes.Participant.FISRTNAME.getLabel().length() + 2;
+				String firstname = this.getTextContent(elemfirstname);
+				if(firstname.length() > 0)
+					firstname = firstname.substring(longueur, firstname.length()-longueur-1);
+				longueur = Constantes.Participant.LASTNAME.getLabel().length() + 2;
+				String lastname = this.getTextContent(elemlastname);
+				if(lastname.length() > 0)
+					lastname = lastname.substring(longueur, lastname.length()-longueur-1);
+				longueur = Constantes.Participant.AFFILIATION.getLabel().length() + 2;
+				String affiliation = this.getTextContent(elemaffiliation);
+				if(affiliation.length() > 0)
+					affiliation = affiliation.substring(longueur, affiliation.length()-longueur-1);
+				longueur = Constantes.Participant.CATEGORYPRO.getLabel().length() + 2;
+				String categoryPro = this.getTextContent(elemcategoryPro);
+				if(categoryPro.length() > 0)
+					categoryPro = categoryPro.substring(longueur, categoryPro.length()-longueur-1);
+				longueur = Constantes.Participant.RESEARCHCENTRE.getLabel().length() + 2;
+				String researchCentre = this.getTextContent(elemresearchcentre);
+				if(researchCentre.length() > 0)
+					researchCentre = researchCentre.substring(longueur, researchCentre.length()-longueur-1);
+				longueur = Constantes.Participant.MOREINFO.getLabel().length() + 2;
+				String moreInfo = this.getTextContent(elemmoreinfo);
+				if(moreInfo.length() > 0)
+					moreInfo = moreInfo.substring(longueur, moreInfo.length()-longueur-1);
+				longueur = Constantes.Participant.HDR.getLabel().length() + 2;
+				String hdr = this.getTextContent(elemhdr);	
+				if(hdr.length() > 0)
+					hdr = hdr.substring(longueur, hdr.length()-longueur-1);
+				
+				participant = new Participant(firstname, lastname, affiliation, categoryPro, researchCentre, moreInfo, hdr);
 				participants.add(participant);
 			}
 		}

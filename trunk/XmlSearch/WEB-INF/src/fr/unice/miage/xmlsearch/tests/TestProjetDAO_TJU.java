@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.dao.ProjetDAO;
+import fr.unice.miage.xmlsearch.objets.Participant;
 import fr.unice.miage.xmlsearch.objets.Projet;
 
 public class TestProjetDAO_TJU {
@@ -73,7 +74,20 @@ public class TestProjetDAO_TJU {
 
 	@Test
 	public void testGetParticipantsProjet() {
-		// TODO
+		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
+		List<Participant> liste = dao.getParticipantsProjet("abs", "2009");
+		assertNotNull(liste);
+		assertFalse(liste.isEmpty());	
+		assertTrue(liste.size() == 9);	
+
+		assertTrue(liste.get(1).getFirstname().compareTo("Caroline")==0);
+		assertTrue(liste.get(1).getLastname().compareTo("French")==0);
+		assertTrue(liste.get(1).getAffiliation().compareTo("INRIA")==0);
+		assertTrue(liste.get(1).getCategoryPro().compareTo("Assistant")==0);
+		assertTrue(liste.get(1).getResearchcentre().compareTo("Sophia")==0);
+		assertTrue(liste.get(0).getMoreinfo().compareTo("Team leader; DR2 Inria")==0);
+		assertTrue(liste.get(0).getHdr().compareTo("oui")==0);
+
 	}
 
 }

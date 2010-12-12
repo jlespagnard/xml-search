@@ -45,9 +45,9 @@ public abstract class Constantes {
 		FISRTNAME("firstname"),
 		LASTNAME("lastname"),
 		AFFILIATION("affiliation"),
-		CATEGORYPRO("categoryPro"),
-		RESEARCHCENTRE("researchCentre"),
-		MOREINFO("moreInfo"),
+		CATEGORYPRO("categorypro"),
+		RESEARCHCENTRE("research-centre"),
+		MOREINFO("moreinfo"),
 		HDR("hdr");
 		
 		private String m_label;

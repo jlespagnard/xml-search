@@ -18,7 +18,7 @@ public class TestConferenceDAO_TJU {
 		Map<String, String> liste = dao.getNbConferencesParPays("2009");
 		assertNotNull(liste);
 		assertFalse(liste.isEmpty());
-		assertTrue(liste.size() == 63);
+		assertTrue(liste.size() == 41);
 	}
 
 	@Test
