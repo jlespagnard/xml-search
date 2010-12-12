@@ -18,4 +18,12 @@ public class TestCentreRechercheDAO_TJU {
 		assertNotNull(liste);
 		assertFalse(liste.isEmpty());
 	}
+	
+	@Test
+	public void testGetMembresCR(){
+		CentreRechercheDAO dao = new CentreRechercheDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
+		List<String> liste = dao.getMembresCR("8");
+		assertNotNull(liste);
+		assertFalse(liste.isEmpty());
+	}
 }

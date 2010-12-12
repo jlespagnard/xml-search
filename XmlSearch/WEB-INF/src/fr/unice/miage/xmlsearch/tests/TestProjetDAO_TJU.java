@@ -8,7 +8,6 @@ import java.util.Map;
 import org.junit.Test;
 
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
-import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 import fr.unice.miage.xmlsearch.dao.ProjetDAO;
 import fr.unice.miage.xmlsearch.objets.Participant;
 import fr.unice.miage.xmlsearch.objets.Projet;

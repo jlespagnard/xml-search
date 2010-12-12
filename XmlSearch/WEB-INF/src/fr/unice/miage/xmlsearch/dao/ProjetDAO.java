@@ -20,7 +20,6 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
 import fr.unice.miage.xmlsearch.critere.Critere;
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.objets.Participant;
