@@ -10,6 +10,11 @@ import org.junit.Test;
 import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 import fr.unice.miage.xmlsearch.objets.Conference;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 public class TestConferenceDAO_TJU {
 
 	@Test

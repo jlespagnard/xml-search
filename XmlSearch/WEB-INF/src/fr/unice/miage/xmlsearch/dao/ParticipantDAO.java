@@ -8,8 +8,7 @@ package fr.unice.miage.xmlsearch.dao;
 public class ParticipantDAO extends DAO{
 
 	/**
-	 * Constructeur
-	 * @param p_contexte contexte
+	 * @param p_contexte application context
 	 */
 	protected ParticipantDAO(String p_contexte) {
 		super(p_contexte);

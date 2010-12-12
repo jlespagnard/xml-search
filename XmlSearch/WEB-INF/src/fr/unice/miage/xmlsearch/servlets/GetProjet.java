@@ -13,6 +13,11 @@ import fr.unice.miage.xmlsearch.dao.ProjetDAO;
 import fr.unice.miage.xmlsearch.objets.Projet;
 import fr.unice.miage.xmlsearch.utils.Constantes;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class GetProjet extends Servlet {
 	@Override

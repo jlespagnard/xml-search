@@ -15,31 +15,31 @@ import fr.unice.miage.xmlsearch.utils.Utils;
  * @version 1.0
  */
 public abstract class DAO {
-	/** Le contexte de l'application. */
+	
+	/**
+	 * application context
+	 */
 	private String m_contexte;
 	
 	/**
-	 * Constructeur
-	 * 
-	 * @param p_contexte	le contexte de l'application
+	 * @param p_contexte application context
 	 */
 	protected DAO(String p_contexte) {
 		this.m_contexte = p_contexte;
 	}
 	
 	/**
-	 * @return	le contexte d'ex&eacute;cution des Xquery
+	 * @return the execution context of XQuery
 	 */
 	protected String getContexte() {
 		return this.m_contexte;
 	}
 	
 	/**
-	 * 
-	 * @param p_nomQuery	le nom de la requ&ecirc; &agrave; ex&eacute;cuter
-	 * @param p_critere		les crit&egrave;res de recherche
-	 * @param p_nomParams	le nom des param&egrave;tres de recherche
-	 * @return	la requ&ecirc;te &agrave; ex&eacute;cuter
+	 * @param p_nomQuery	the name of the query to execute
+	 * @param p_critere		search criteria
+	 * @param p_nomParams	name of search parameters
+	 * @return	the query to execute
 	 */
 	protected List<Map<String, String>> getResultatsRequete(String p_nomQuery, Critere p_critere, String... p_nomParams) {
 		List<Map<String, String>> results = null;

@@ -12,6 +12,11 @@ import fr.unice.miage.xmlsearch.dao.ProjetDAO;
 import fr.unice.miage.xmlsearch.objets.Participant;
 import fr.unice.miage.xmlsearch.objets.Projet;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 public class TestProjetDAO_TJU {
 
 	@Test

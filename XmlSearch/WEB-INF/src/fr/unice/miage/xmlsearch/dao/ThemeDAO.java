@@ -15,13 +15,17 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
 public class ThemeDAO extends DAO{
 
 	/**
-	 * Constructeur
-	 * @param p_contexte contexte
+	 * @param p_contexte application context
 	 */
 	public ThemeDAO(String p_contexte) {
 		super(p_contexte);
 	}
 
+	/**
+	 * number of projects by theme for a year
+	 * @param p_annee year
+	 * @return list of number of projects by theme
+	 */
 	public Map<String, String> getThemeParAnnee(String p_annee) {
 		
 		Map<String, String> retour = null;

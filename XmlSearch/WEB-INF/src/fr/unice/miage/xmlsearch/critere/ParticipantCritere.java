@@ -9,48 +9,47 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
  */
 public class ParticipantCritere extends Critere{
 	/**
-	 * prenom du participant
+	 * Participant's first name
 	 */
 	private String[] m_firstname;
 	
 	/**
-	 * nom du participant
+	 * participant's last name
 	 */
 	private String[] m_lastname;
 	
 	/**
-	 * affiliation du participant
+	 * participant's affiliate
 	 */
 	private String[] m_affiliation;
 	
 	/**
-	 * categorie du participant
+	 * Participant's category
 	 */
 	private String[] m_categoryPro;
 	
 	/**
-	 * centre de recherche du participant
+	 * research center of the participant
 	 */
 	private String[] m_researchcentre;
 	
 	/**
-	 * commentaire supplementaire a propos du participant
+	 * additional comment about the participant
 	 */
 	private String[] m_moreinfo;
 	
 	/**
-	 * ?
+	 * hdr
 	 */
 	private String[] m_hdr;
 
 	/**
-	 * Constructeur
-	 * @param m_firstname prenom
-	 * @param m_lastname nom
-	 * @param m_affiliation affiliation
-	 * @param m_categoryPro categorie
-	 * @param m_researchcentre centre de recherche
-	 * @param m_moreinfo commentaire supplementaire
+	 * @param m_firstname firstname
+	 * @param m_lastname lastname
+	 * @param m_affiliation affiliate
+	 * @param m_categoryPro category
+	 * @param m_researchcentre research center
+	 * @param m_moreinfo additional comment
 	 * @param m_hdr hdr
 	 */
 	public ParticipantCritere(String[] m_firstname, String[] m_lastname,

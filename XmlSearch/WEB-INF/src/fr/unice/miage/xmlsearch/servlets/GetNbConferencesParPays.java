@@ -12,6 +12,11 @@ import org.json.JSONException;
 
 import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class GetNbConferencesParPays extends Servlet {
 	@Override

@@ -19,6 +19,11 @@ import org.xml.sax.SAXException;
 
 import fr.unice.miage.xmlsearch.utils.Utils;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 public class TestUtils_TJU {
 
 	@Test

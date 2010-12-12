@@ -8,32 +8,32 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
  * @version 1.0
  */
 public class ThemeCritere extends Critere{
+	
 	/**
 	 * id
 	 */
 	private String[] m_id;
 	
 	/**
-	 * libelle
+	 * wording
 	 */
 	private String[] m_libelle;
 	
 	/**
-	 * lieu
+	 * place
 	 */
 	private String[] m_lieu;
 	
 	/**
-	 * année
+	 * year
 	 */
 	private String[] m_annee;
 	
 	/**
-	 * Constructeur
 	 * @param m_id id
-	 * @param m_libelle libelle
-	 * @param m_lieu lieu
-	 * @param m_annee annee
+	 * @param m_libelle wording
+	 * @param m_lieu place
+	 * @param m_annee year
 	 */
 	public ThemeCritere(String[] m_id, String[] m_libelle,
 			String[] m_lieu, String[] m_annee) {

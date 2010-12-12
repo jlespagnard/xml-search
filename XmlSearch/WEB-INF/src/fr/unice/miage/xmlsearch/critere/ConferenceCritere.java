@@ -8,22 +8,20 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
  * @version 1.0
  */
 public class ConferenceCritere extends Critere {
-	/** Les titres des conf&eacute;rences. */
+	/** The titles of conferences. */
 	private String[] m_titres;
-	/** Les lieux des conf&eacute;rences. */
+	/** Conference site */
 	private String[] m_lieux;
-	/** Les codes des pays dans lesquels ont eu lieu les conf&eacute;rences. */
+	/** The codes of countries where the conferences took place */
 	private String[] m_codePays;
-	/** Les ann&eacute;s des conf&eacute;rences. */
+	/** The years of conferences */
 	private String[] m_annees;
 	
 	/**
-	 * Constructeur
-	 * 
-	 * @param p_titres	les titres des conf&eacute;rences
-	 * @param p_lieux	les lieux des conf&eacute;rences
-	 * @param p_codePays	les codes des pays dans lesquels ont eu lieu les conf&eacute;rences
-	 * @param p_annees	les ann&eacute;s des conf&eacute;rences
+	 * @param p_titres	titles
+	 * @param p_lieux	places
+	 * @param p_codePays country code
+	 * @param p_annees	years
 	 */
 	public ConferenceCritere(String[] p_titres, String[] p_lieux, 
 			String[] p_codePays, String[] p_annees) {

@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import fr.unice.miage.xmlsearch.dao.ThemeDAO;
+import fr.unice.miage.xmlsearch.utils.Constantes;
 
 /**
  * @author Julien Lespagnard
@@ -24,7 +25,7 @@ public class GetThemeParAnnee extends Servlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		String annee = req.getParameter("annee");
+		String annee = req.getParameter(Constantes.Theme.ANNEE.getLabel());
 		
 		ThemeDAO daoTheme = new ThemeDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		Map<String, String> themes = daoTheme.getThemeParAnnee(annee);
