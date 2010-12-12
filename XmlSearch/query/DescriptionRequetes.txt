@@ -118,3 +118,15 @@ getNbParticipantsParProjet
 				<nbparticipants> </nbparticipants>
 			</participants>
 		</participants_root>
+		
+getRepartitionCategories
+	parametres
+		shortname
+		annee
+	return
+		<repartition_root>
+			<repartition>
+				<categoryPro></categoryPro>
+				<nbPersonnes></nbPersonnes>
+			</repartition>
+		</repartition_root>
