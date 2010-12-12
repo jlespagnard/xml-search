@@ -15,18 +15,18 @@ import fr.unice.miage.xmlsearch.objets.Conference;
  * @version 1.0
  */
 public class ConferenceDAO extends DAO {
+	
 	/**
-	 * @param p_contexte	le contexte de l'application
+	 * @param p_contexte application context
 	 */
 	public ConferenceDAO(String p_contexte) {
 		super(p_contexte);
 	}
 	
 	/**
-	 * Structure de la liste de retour : pays -> nombre de conf&eacute;rences
-	 * 
-	 * @param p_annee	l'ann&eacute;e des conf&eacute;rences
-	 * @return	la liste du nombre de conf&eacute;rences par pays pour l'ann&eacute;e <code>p_annee</code>
+	 * Structure of the list back: country -> number of conferences
+	 * @param p_annee	year
+	 * @return	List of countries by number of conferences for the year <code>p_annee</code>
 	 */
 	public Map<String, String> getNbConferencesParPays(String p_annee) {
 		Map<String, String> retour = null;
@@ -58,6 +58,12 @@ public class ConferenceDAO extends DAO {
 		return retour;
 	}
 
+	/**
+	 * Conferences for a list of countries and one year
+	 * @param p_codePays country code
+	 * @param p_annee year
+	 * @return list of conferences
+	 */
 	public List<Conference> getConferences(String p_codePays, String p_annee) {
 		ConferenceCritere critere = new ConferenceCritere(null, null,new String[]{p_codePays}, new String[]{p_annee});
 		List<Conference> conferences = null;

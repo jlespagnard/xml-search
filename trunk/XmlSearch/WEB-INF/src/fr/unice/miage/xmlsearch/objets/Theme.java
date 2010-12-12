@@ -13,26 +13,25 @@ public class Theme {
 	private String m_id;
 	
 	/**
-	 * libelle
+	 * libel
 	 */
 	private String m_libelle;
 	
 	/**
-	 * lieu
+	 * place
 	 */
 	private String m_lieu;
 	
 	/**
-	 * année
+	 * year
 	 */
 	private String m_annee;
 
 	/**
-	 * Constructeur
 	 * @param m_id id
-	 * @param m_libelle libelle
-	 * @param m_lieu lieu
-	 * @param m_annee annee
+	 * @param m_libelle wording
+	 * @param m_lieu place
+	 * @param m_annee year
 	 */
 	public Theme(String m_id, String m_libelle, String m_lieu, String m_annee) {
 		super();
@@ -57,42 +56,42 @@ public class Theme {
 	}
 
 	/**
-	 * @return libelle
+	 * @return wording
 	 */
 	public String getLibelle() {
 		return m_libelle;
 	}
 
 	/**
-	 * @param m_libelle libelle
+	 * @param m_libelle wording
 	 */
 	public void setLibelle(String m_libelle) {
 		this.m_libelle = m_libelle;
 	}
 
 	/**
-	 * @return lieu
+	 * @return place
 	 */
 	public String getLieu() {
 		return m_lieu;
 	}
 
 	/**
-	 * @param m_lieu lieu
+	 * @param m_lieu place
 	 */
 	public void setLieu(String m_lieu) {
 		this.m_lieu = m_lieu;
 	}
 
 	/**
-	 * @return année
+	 * @return year
 	 */
 	public String getAnnee() {
 		return m_annee;
 	}
 
 	/**
-	 * @param m_annee année
+	 * @param m_annee year
 	 */
 	public void setAnnee(String m_annee) {
 		this.m_annee = m_annee;

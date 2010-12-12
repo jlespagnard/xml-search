@@ -35,18 +35,16 @@ import fr.unice.miage.xmlsearch.utils.Utils;
 public class ProjetDAO extends DAO {
 	
 	/**
-	 * Constructeur
-	 * @param p_contexte contexte
+	 * @param p_contexte application context
 	 */
 	public ProjetDAO(String p_contexte) {
 		super(p_contexte);
 	}
 	
 	/**
-	 * @param p_critere	les crit&egrave;res de recherche
-	 * @param fullInfos	<code>true</code> si la totalit&eacute; des informations d'un projet
-	 * 					doit &ecirc;tre r&eacute;cup&eacute;e, <code>false</code> sinon
-	 * @return	la liste des projets trouv&eacute;s
+	 * @param p_critere	search criteria
+	 * @param fullInfos	<code>true</code> if all the project information should be recovered else <code>false</code>
+	 * @return	the list of projects found
 	 */
 	public List<Projet> rechercherProjet(Critere p_critere, boolean p_fullInfos) {
 		List<Projet> projets = null;
@@ -87,6 +85,10 @@ public class ProjetDAO extends DAO {
 		return projets;
 	}
 	
+	/**
+	 * remove the participant node
+	 * @param p_elementNode elementnode
+	 */
 	private void removeParticipantsNode(Element p_elementNode) {
 		for(int i=0;i<p_elementNode.getChildNodes().getLength();i++) {
 			Node child = p_elementNode.getChildNodes().item(i);
@@ -101,6 +103,10 @@ public class ProjetDAO extends DAO {
 		}
 	}
 	
+	/**
+	 * @param p_elementNode elementnode
+	 * @return text of the element
+	 */
 	private String getTextContent(Element p_elementNode) {
 		String textContent = "";
 		DOMSource domSource = new DOMSource(p_elementNode);
@@ -136,9 +142,29 @@ public class ProjetDAO extends DAO {
 		textContent = textContent.replaceAll("<" + Constantes.Projet.CONTRATS.getLabel() + ">", "");
 		textContent = textContent.replaceAll("</" + Constantes.Projet.CONTRATS.getLabel() + ">", "");
 		
+		textContent = textContent.replaceAll("<" + Constantes.Participant.FISRTNAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Participant.FISRTNAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Participant.LASTNAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Participant.LASTNAME.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Participant.AFFILIATION.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Participant.AFFILIATION.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Participant.CATEGORYPRO.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Participant.CATEGORYPRO.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Participant.RESEARCHCENTRE.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Participant.RESEARCHCENTRE.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Participant.MOREINFO.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Participant.MOREINFO.getLabel() + ">", "");
+		textContent = textContent.replaceAll("<" + Constantes.Participant.HDR.getLabel() + ">", "");
+		textContent = textContent.replaceAll("</" + Constantes.Participant.HDR.getLabel() + ">", "");
+		
 		return textContent.trim();
 	}
 	
+	/**
+	 * retrieves the document from the query search project
+	 * @param p_critere criterion
+	 * @return document containing the response XML
+	 */
 	private Document executerQueryRechercheProjet(Critere p_critere) {
 		String query = this.getContexte() + "getProjet.xqy";
 		
@@ -154,9 +180,9 @@ public class ProjetDAO extends DAO {
 	}
 	
 	/**
-	 * @param p_shortName	le short name du projet &agrave; r&eacute;cup&eacute;rer
-	 * @param p_annee	l'ann&eacute;e du projet &agrave; r&eacute;cup&eacute;rer
-	 * @return	le projet dont le short name correspond &agrave; <code>p_shortName</code>
+	 * @param p_shortName the short name of the project to recover
+	 * @param p_annee year project to recover
+	 * @return	project whose short name is <code>p_shortName</code>
 	 */
 	public Projet getProjet(String p_shortName, String p_annee) {
 		ProjetCritere critere = new ProjetCritere(new String[]{p_shortName}, null, null, new String[]{p_annee}, true);
@@ -166,9 +192,9 @@ public class ProjetDAO extends DAO {
 	}
 
 	/**
-	 * @param p_shortName	l'identifiant du projet
-	 * @param p_annee		l'ann&eacute;e du projet
-	 * @return	la liste des participants au projet ayant pour identifiant <code>p_shortName</code>
+	 * @param p_shortName	Project ID
+	 * @param p_annee		the project year
+	 * @return	the list of project participants with the identifier <code>p_shortName</code>
 	 */
 	public List<Participant> getParticipantsProjet(String p_shortName, String p_annee) {
 		
@@ -200,35 +226,13 @@ public class ProjetDAO extends DAO {
 				elemmoreinfo = (Element)elemPerson.getElementsByTagName(Constantes.Participant.MOREINFO.getLabel()).item(0);
 				elemhdr = (Element)elemPerson.getElementsByTagName(Constantes.Participant.HDR.getLabel()).item(0);
 				
-				int longueur = 0;
-				longueur = Constantes.Participant.FISRTNAME.getLabel().length() + 2;
 				String firstname = this.getTextContent(elemfirstname);
-				if(firstname.length() > 0)
-					firstname = firstname.substring(longueur, firstname.length()-longueur-1);
-				longueur = Constantes.Participant.LASTNAME.getLabel().length() + 2;
 				String lastname = this.getTextContent(elemlastname);
-				if(lastname.length() > 0)
-					lastname = lastname.substring(longueur, lastname.length()-longueur-1);
-				longueur = Constantes.Participant.AFFILIATION.getLabel().length() + 2;
 				String affiliation = this.getTextContent(elemaffiliation);
-				if(affiliation.length() > 0)
-					affiliation = affiliation.substring(longueur, affiliation.length()-longueur-1);
-				longueur = Constantes.Participant.CATEGORYPRO.getLabel().length() + 2;
 				String categoryPro = this.getTextContent(elemcategoryPro);
-				if(categoryPro.length() > 0)
-					categoryPro = categoryPro.substring(longueur, categoryPro.length()-longueur-1);
-				longueur = Constantes.Participant.RESEARCHCENTRE.getLabel().length() + 2;
 				String researchCentre = this.getTextContent(elemresearchcentre);
-				if(researchCentre.length() > 0)
-					researchCentre = researchCentre.substring(longueur, researchCentre.length()-longueur-1);
-				longueur = Constantes.Participant.MOREINFO.getLabel().length() + 2;
 				String moreInfo = this.getTextContent(elemmoreinfo);
-				if(moreInfo.length() > 0)
-					moreInfo = moreInfo.substring(longueur, moreInfo.length()-longueur-1);
-				longueur = Constantes.Participant.HDR.getLabel().length() + 2;
 				String hdr = this.getTextContent(elemhdr);	
-				if(hdr.length() > 0)
-					hdr = hdr.substring(longueur, hdr.length()-longueur-1);
 				
 				participant = new Participant(firstname, lastname, affiliation, categoryPro, researchCentre, moreInfo, hdr);
 				participants.add(participant);
@@ -239,8 +243,8 @@ public class ProjetDAO extends DAO {
 	}
 
 	/**
-	 * @param shortname le shortname du projet
-	 * @return liste pour chaque annee du nombre de participants
+	 * @param shortname the project shortname
+	 * @return list for each year the number of participants
 	 */
 	public Map<String, String> getNbParticipantsParProjet(String shortname) {
 		
@@ -274,6 +278,12 @@ public class ProjetDAO extends DAO {
 		return retour;
 	}
 	
+	/**
+	 * number of people for each category for a project and one year
+	 * @param p_shortName project shortname
+	 * @param p_annee year
+	 * @return list of number of people for each category
+	 */
 	public Map<String, String> getRepartitionCategories(String p_shortName, String p_annee) {
 		Map<String, String> retour = null;
 		

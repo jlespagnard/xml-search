@@ -8,49 +8,48 @@ package fr.unice.miage.xmlsearch.objets;
 public class Participant {
 
 	/**
-	 * prenom du participant
+	 * Participant's first name
 	 */
 	private String m_firstname;
 	
 	/**
-	 * nom du participant
+	 * Participant's last name
 	 */
 	private String m_lastname;
 	
 	/**
-	 * affiliation du participant
+	 * Participant's affiliate
 	 */
 	private String m_affiliation;
 	
 	/**
-	 * categorie du participant
+	 * Participant's category
 	 */
 	private String m_categoryPro;
 	
 	/**
-	 * centre de recherche du participant
+	 * Research center of the participant
 	 */
 	private String m_researchcentre;
 	
 	/**
-	 * commentaire supplementaire a propos du participant
+	 * additional comment about the participant
 	 */
 	private String m_moreinfo;
 	
 	/**
-	 * ?
+	 * hdr
 	 */
 	private String m_hdr;
 
 	/**
-	 * Constructeur
-	 * @param m_firstname prenom
-	 * @param m_lastname nom
-	 * @param m_affiliation affiliation
-	 * @param m_categoryPro categorie
-	 * @param m_researchcentre centre de recherche
-	 * @param m_moreinfo commentaire supplementaire
-	 * @param m_hdr ?
+	 * @param m_firstname first name
+	 * @param m_lastname lastname
+	 * @param m_affiliation affiliate
+	 * @param m_categoryPro category
+	 * @param m_researchcentre research center
+	 * @param m_moreinfo additional comment
+	 * @param m_hdr hdr
 	 */
 	public Participant(String m_firstname, String m_lastname,
 			String m_affiliation, String categoryPro, String researchcentre,
@@ -66,84 +65,84 @@ public class Participant {
 	}
 
 	/**
-	 * @return prenom
+	 * @return first name
 	 */
 	public String getFirstname() {
 		return m_firstname;
 	}
 
 	/**
-	 * @param m_firstname prenom
+	 * @param m_firstname first name
 	 */
 	public void setFirstname(String m_firstname) {
 		this.m_firstname = m_firstname;
 	}
 
 	/**
-	 * @return nom
+	 * @return last name
 	 */
 	public String getLastname() {
 		return m_lastname;
 	}
 
 	/**
-	 * @param m_lastname nom
+	 * @param m_lastname last name
 	 */
 	public void setLastname(String m_lastname) {
 		this.m_lastname = m_lastname;
 	}
 
 	/**
-	 * @return affiliation
+	 * @return affiliate
 	 */
 	public String getAffiliation() {
 		return m_affiliation;
 	}
 
 	/**
-	 * @param m_affiliation affiliation
+	 * @param m_affiliation affiliate
 	 */
 	public void setAffiliation(String m_affiliation) {
 		this.m_affiliation = m_affiliation;
 	}
 
 	/**
-	 * @return categorie
+	 * @return category
 	 */
 	public String getCategoryPro() {
 		return m_categoryPro;
 	}
 
 	/**
-	 * @param categoryPro categorie
+	 * @param categoryPro category
 	 */
 	public void setCategoryPro(String categoryPro) {
 		this.m_categoryPro = categoryPro;
 	}
 
 	/**
-	 * @return centre de recherche
+	 * @return research center
 	 */
 	public String getResearchcentre() {
 		return m_researchcentre;
 	}
 
 	/**
-	 * @param researchcentre centre de recherche
+	 * @param researchcentre research center
 	 */
 	public void setResearchcentre(String researchcentre) {
 		this.m_researchcentre = researchcentre;
 	}
 
 	/**
-	 * @return commentaire supplementaire
+	 * @return additional comment
 	 */
 	public String getMoreinfo() {
 		return m_moreinfo;
 	}
 
 	/**
-	 * @param moreinfo commentaire supplementaire
+	 * @param moreinfo additional comment
 	 */
 	public void setMoreinfo(String moreinfo) {
 		this.m_moreinfo = moreinfo;

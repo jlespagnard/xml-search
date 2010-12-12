@@ -9,12 +9,12 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
  */
 public class ProjetCritere extends Critere{
 	/**
-	 * Identifiants du projets
+	 * Identifiers of projects
 	 */
 	private String[] m_shortName;
 	
 	/**
-	 * nom
+	 * name
 	 */
 	private String[] m_nom;
 	
@@ -24,20 +24,21 @@ public class ProjetCritere extends Critere{
 	private String[] m_theme;
 	
 	/**
-	 * année
+	 * year
 	 */
 	private String[] m_annee;
 	
+	/**
+	 * fullinfos
+	 */
 	private boolean m_fullInfos = false;
 	
 	/**
-	 * Constructeur
-	 * @param p_shortName	les identifiants des projets
-	 * @param m_nom nom
+	 * @param p_shortName Identifiers of projects
+	 * @param m_nom name
 	 * @param m_theme theme
-	 * @param m_annee annee
-	 * @param m_objectifs objectifs
-	 * @param m_participants participants
+	 * @param m_annee year
+	 * @param m_fullInfos fullinfos
 	 */
 	public ProjetCritere(String[] p_shortName, String[] m_nom, String[] m_theme,
 			String[] m_annee, boolean p_fullInfos) {

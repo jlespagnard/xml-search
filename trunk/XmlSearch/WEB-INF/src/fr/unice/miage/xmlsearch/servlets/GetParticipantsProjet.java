@@ -11,17 +11,23 @@ import org.json.JSONArray;
 
 import fr.unice.miage.xmlsearch.dao.ProjetDAO;
 import fr.unice.miage.xmlsearch.objets.Participant;
+import fr.unice.miage.xmlsearch.utils.Constantes;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class GetParticipantsProjet extends Servlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String annee = req.getParameter("annee");
+		String annee = req.getParameter(Constantes.Projet.ANNEE.getLabel());
 		if(annee == null || annee.isEmpty() ) {
 			return;
 		}
-		String shortName = req.getParameter("shortname");
+		String shortName = req.getParameter(Constantes.Projet.SHORT_NAME.getLabel());
 		if(shortName == null || shortName.isEmpty() ) {
 			return;
 		}

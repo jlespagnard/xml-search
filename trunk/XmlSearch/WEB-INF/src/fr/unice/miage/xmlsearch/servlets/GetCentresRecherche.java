@@ -12,6 +12,11 @@ import org.json.JSONArray;
 import fr.unice.miage.xmlsearch.dao.CentreRechercheDAO;
 import fr.unice.miage.xmlsearch.objets.CentreRecherche;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
 public class GetCentresRecherche extends Servlet {
 	@Override

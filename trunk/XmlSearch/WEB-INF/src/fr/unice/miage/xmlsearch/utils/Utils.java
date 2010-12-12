@@ -24,9 +24,10 @@ import fr.unice.miage.xmlsearch.critere.Critere;
  * @version 1.0
  */
 public abstract class Utils {
+	
 	/**
-	 * @param p_requete	la requ&ecirc;te &agrave; ex&eacute;cuter
-	 * @return	le document DOM XML contenant le r&eacute; de la requ&ecirc;te <code>p_requete</code> 
+	 * @param p_requete	the query to execute
+	 * @return	XML DOM document containing the result of the query <code>p_requete</code> 
 	 */
 	public static Document getResultatRequete(String p_requete) {
 		try {
@@ -48,9 +49,8 @@ public abstract class Utils {
 	}
 	
 	/**
-	 * @param p_node	le node &agrave; lire
-	 * @param p_infos	la liste contenant les informations lues dans le node si 
-	 * 					celui-ci contient des &eacute;l&eacute;ment texte
+	 * @param p_node	the node to read
+	 * @param p_infos	the list containing the information read from the node if it contains text element
 	 */
 	public static void lireXml(Node p_node, List<Map<String, String>> p_infos) {
 		if(p_node.getNodeType() == Node.TEXT_NODE) {
@@ -80,9 +80,9 @@ public abstract class Utils {
 	}
 	
 	/**
-	 * @param p_critere		les crit&egrave;res de recherches
-	 * @param p_nomsParams	le nom des crit&egraveres de recherche &agrave; r&eacute;cup&eacute;rer
-	 * @return	la requ&ecirc;te param&eacute;tr&eacute;e
+	 * @param p_critere		the search criteria
+	 * @param p_nomsParams	name search criteria to recover
+	 * @return	the query with parameters
 	 */
 	public static String getParams(Critere p_critere, String... p_nomsParams) {
 		StringBuilder params = new StringBuilder();

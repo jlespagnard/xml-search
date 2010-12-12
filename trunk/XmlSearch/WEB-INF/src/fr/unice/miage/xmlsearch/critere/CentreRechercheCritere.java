@@ -2,16 +2,27 @@ package fr.unice.miage.xmlsearch.critere;
 
 import fr.unice.miage.xmlsearch.utils.Constantes;
 
+/**
+ * @author Julien Lespagnard
+ * @author Elodie Mazuel
+ * @version 1.0
+ */
 public class CentreRechercheCritere extends Critere {
-	/** Les IDs des centres de recherche */
+	/** The IDs of research centers */
 	private String[] m_ids;
-	/** Les noms des centres de recherche */
+	/** The names of research centers */
 	private String[] m_libelles;
-	/** Les latitudes de la localisation des centres de recherche */
+	/** The latitude of the location of research centers */
 	private String[] m_latitudes;
-	/** Les longitudes de la localisation des centres de recherche */
+	/** Longitude of the location of research centers */
 	private String[] m_longitudes;
 	
+	/**
+	 * @param p_ids IDs
+	 * @param p_libelles wordings
+	 * @param p_latitudes latitudes
+	 * @param p_longitudes longitudes
+	 */
 	public CentreRechercheCritere(String[] p_ids, String[] p_libelles, 
 			String[] p_latitudes, String[] p_longitudes) {
 		this.m_ids = p_ids;
