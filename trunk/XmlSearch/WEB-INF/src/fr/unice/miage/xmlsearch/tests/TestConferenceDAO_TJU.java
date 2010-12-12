@@ -18,19 +18,13 @@ public class TestConferenceDAO_TJU {
 		Map<String, String> liste = dao.getNbConferencesParPays("2009");
 		assertNotNull(liste);
 		assertFalse(liste.isEmpty());
-		assertTrue(liste.size() == 41);
 	}
 
 	@Test
 	public void testGetConferences() {
 		ConferenceDAO dao = new ConferenceDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
-		List<Conference> liste = dao.getConferences("DE");
+		List<Conference> liste = dao.getConferences("DE", "2009");
 		assertNotNull(liste);
 		assertFalse(liste.isEmpty());
-		assertTrue(liste.size() == 230);		
-		assertTrue(liste.get(0).getTitre().compareTo("3DTV Conference : The True Vision Capture, Transmission and Display of 3D Video") == 0);
-		assertTrue(liste.get(0).getLieu().compareTo("Potsdam, Germany") == 0);
-		assertTrue(liste.get(0).getAnnee().compareTo("2009") == 0);
 	}
-
 }

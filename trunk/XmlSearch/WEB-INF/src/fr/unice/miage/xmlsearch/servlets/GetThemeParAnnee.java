@@ -1,7 +1,6 @@
 package fr.unice.miage.xmlsearch.servlets;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import fr.unice.miage.xmlsearch.dao.ThemeDAO;
-import fr.unice.miage.xmlsearch.objets.Theme;
 
 /**
  * @author Julien Lespagnard
