@@ -8,12 +8,14 @@
 			  mapTypeId: google.maps.MapTypeId.ROADMAP,
 			  streetViewControl: true
 			};
-			$(".map_canvas").each(function(){
-				map = new google.maps.Map(this,myOptions);
+
+			map = new google.maps.Map(document.getElementById("map_canvas"),
+			myOptions);
+			
 	
 				// set marker + set infoMarker
 					
-				var contentString = '<div id="content">'+
+			/*	var contentString = '<div id="content">'+
 				'<div id="siteNotice">'+
 				'</div>'+
 				'<h1 id="firstHeading" class="firstHeading">Site de bowdeaux</h1>'+
@@ -51,14 +53,56 @@
 				var panorama = new  google.maps.StreetViewPanorama(document.getElementById("pano"),panoramaOptions);
 				map.setStreetView(panorama);
 			});
+
+
+			var myLatlng = new google.maps.LatLng(44.807946,-0.596811);
+			var marker = new google.maps.Marker({
+				position: myLatlng,
+				map: map,
+				title:"CRI Bordeaux"
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+			  infowindow.open(map,marker);
+			});*/
+					
+
+			/*var panoramaOptions = {
+			  position: myLatlng,
+			  pov: {
+				heading: 34,
+				pitch: 10,
+				zoom: 3
+			  }
+			};
+					
+			var panorama = new  google.maps.StreetViewPanorama(document.getElementById("pano"),panoramaOptions);
+			map.setStreetView(panorama);*/
+
+
 		  
 		}
-		function addPin()
+		function addPin(lstCentre)
 		{	
-			coor = new google.maps.LatLng(45.807946,-0.596811);
+			
+			var centre;
+			for(var key in lstCentre)
+			{
+				
+				centre = lstCentre[key];
+				coor = new google.maps.LatLng(centre.latitude,centre.longitude);
+				
+				mark = new google.maps.Marker({
+					position: coor,
+					map: map,
+					title:centre.libelle
+				});
+				
+			}
+			/*coor = new google.maps.LatLng(45.807946,-0.596811);
 			mark = new google.maps.Marker({
 				position: coor,
 				map: map,
 				title:"TG"
-			});
+			});*/
 		}
