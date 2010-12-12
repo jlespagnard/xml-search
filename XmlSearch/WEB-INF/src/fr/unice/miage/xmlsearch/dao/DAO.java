@@ -28,6 +28,13 @@ public abstract class DAO {
 	}
 	
 	/**
+	 * @return	le contexte d'ex&eacute;cution des Xquery
+	 */
+	protected String getContexte() {
+		return this.m_contexte;
+	}
+	
+	/**
 	 * 
 	 * @param p_nomQuery	le nom de la requ&ecirc; &agrave; ex&eacute;cuter
 	 * @param p_critere		les crit&egrave;res de recherche

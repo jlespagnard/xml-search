@@ -28,10 +28,10 @@ public class RechercherProjet extends Servlet {
 		String[] shortNames = (shortName == null) ? null : new String[]{shortName};
 		String[] titres = (titre == null) ? null : new String[]{titre};
 		String[] themes = (theme == null) ? null : new String[]{theme};
-		ProjetCritere critere = new ProjetCritere(shortNames, titres, themes, annees, true);
+		ProjetCritere critere = new ProjetCritere(shortNames, titres, themes, annees, false);
 
 		ProjetDAO daoProjet = new ProjetDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
-		List<Projet> projets = daoProjet.rechercherProjet(critere);
+		List<Projet> projets = daoProjet.rechercherProjet(critere, false);
 		
 		resp.getWriter().print(new JSONArray(projets));
 	}
