@@ -1,5 +1,4 @@
 
-		var dataGeoMap;
         function initData() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Country');
@@ -34,7 +33,6 @@
         	 data.addColumn('string', 'City');
              data.addColumn('number', 'Conference');
              data.addRows(conferences.length);
-             alert(conferences.length);
              for(j=0;j<conferences.length;j++)
          	{
             	 lieu = conferences[j].lieu.split(",")[0];
@@ -61,38 +59,27 @@
 			dataPie.addColumn('string','Theme');
 			dataPie.addColumn('number','Nb theme');
 			dataPie.addRows(themes.length);
+			i = 0;
+			for(key in themes)
+				{
+					dataPie.setValue(i,0,key);
+					dataPie.setValue(i,1,themes[key])
+					i++;
+				}
+			return dataPie;
 		}
-		function pieChartgeo()
-		{
-			$("#resultconf").show();
-			data = initData();
-			$(".piegeo_div").each(function(){
-				var chart = new google.visualization.PieChart(this);
-				chart.draw(data,{width: 450, height: 300,title: 'Le suicide, des sensations pures'});	
-				google.visualization.events.addListener(chart, 'select', selectHandler);
-			});
 		
+		function pieChart(themes)
+		{
+			data = initPie(themes);
+			var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
+			chart.draw(data,{width: 450, height: 300,title: 'Le suicide, des sensations pures'});	
+			google.visualization.events.addListener(chart, 'select', selectHandler);
 			function selectHandler(e) 
 			{
-				geoMap();
+				alert("tg");
 			}
 		}
-		
-		function pieChart()
-		{
-			data = initData();
-			$(".pie_div").each(function(){
-				var chart = new google.visualization.PieChart(this);
-				chart.draw(data,{width: 450, height: 300,title: 'Le suicide, des sensations pures'});	
-				google.visualization.events.addListener(chart, 'select', selectHandler);
-			});
-			
-			function selectHandler(e) 
-			{
-				geoMappie();
-			}
-		}
-		
 		function barChart()
 		{
 			data = initData();
@@ -148,25 +135,12 @@
 				document.getElementById('details_div').innerHTML= 
 				'<h3> Details </h3>'+message+'<br> ------ ';
 			  }
-
 		}
 		function geoMap(conf)
 		{
-			dataGeoMap = initDataConf(conf);
-
+			var dataGeoMap = initDataConf(conf);
 			var geomap = new google.visualization.GeoMap(document.getElementById('geo_div'));
 			geomap.draw(dataGeoMap, null);
-
-//			message='';
-//			for(i=0;i<data.getNumberOfRows();i++)
-//			{
-//				message+='<b style="text-decoration:none" onclick="geoZoom(&quot;'+data.getValue(i,0)+'&quot;);pieChart()">'+data.getValue(i,0)+'</b><br>';
-//			}	
-//			message+='<b style="text-decoration:none" onclick="geoMap();cleanDiv(&quot;pie_div&quot;)">Retour carte</b> ';
-			//document.getElementById('geozoom_div').innerHTML=
-			//'<b style="text-decoration:none" onclick="geoZoom(&quot;'+argZoom+'&quot;);pieChart()">'+data.getValue(1,0)+'</b><br><b style="text-decoration:none" onclick="geoMap();cleanDiv(&quot;pie_div&quot;)">Retour carte</b> ';
-			//message;
-
 			google.visualization.events.addListener(geomap, 'select', selectHandler); 
 			function selectHandler(e) 
 			{
@@ -175,20 +149,15 @@
 				callGetConference(selectedCountry,'2008');
 			}
 		}
-
 		function geoZoom(country,conferences)
 		{
 			data = initDataConfZoom(conferences);
-			alert(data.getValue(0,0));
 			var options = {};
 			options['region'] = country;
 			options['colors'] = [0xFF8747, 0xFFB581, 0xc06000]; //orange colors
 			options['dataMode'] = 'markers';
-			
-			
 			var geozoom = new google.visualization.GeoMap(document.getElementById('geo_div'));
 			geozoom.draw(data, options);
-			
 		}
 		
 		function cleanDiv(name)
