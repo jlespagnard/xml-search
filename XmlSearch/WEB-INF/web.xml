@@ -15,8 +15,16 @@
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetCentresRecherche</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>GetConference</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetConference</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>GetNbConferencesParPays</servlet-name>
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetNbConferencesParPays</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetNbParticipantsParProjet</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetNbParticipantsParProjet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>GetParticipantsProjet</servlet-name>
@@ -27,16 +35,16 @@
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetProjet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>RechercherProjet</servlet-name>
-		<servlet-class>fr.unice.miage.xmlsearch.servlets.RechercherProjet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>GetConference</servlet-name>
-		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetConference</servlet-class>
+		<servlet-name>GetRepartitionCategories</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetRepartitionCategories</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>GetThemeParAnnee</servlet-name>
 		<servlet-class>fr.unice.miage.xmlsearch.servlets.GetThemeParAnnee</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RechercherProjet</servlet-name>
+		<servlet-class>fr.unice.miage.xmlsearch.servlets.RechercherProjet</servlet-class>
 	</servlet>
 	
 	<!-- Mapping des servlets pour le client -->
@@ -45,8 +53,16 @@
 		<url-pattern>/getCentresRecherche</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>GetConference</servlet-name>
+		<url-pattern>/getConference</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>GetNbConferencesParPays</servlet-name>
 		<url-pattern>/getNbConferencesParPays</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetNbParticipantsParProjet</servlet-name>
+		<url-pattern>/getNbParticipantsParProjet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetParticipantsProjet</servlet-name>
@@ -57,16 +73,16 @@
 		<url-pattern>/getProjet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>RechercherProjet</servlet-name>
-		<url-pattern>/rechercherProjet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>GetConference</servlet-name>
-		<url-pattern>/GetConference</url-pattern>
+		<servlet-name>GetRepartitionCategories</servlet-name>
+		<url-pattern>/getRepartitionCategories</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetThemeParAnnee</servlet-name>
-		<url-pattern>/GetThemeParAnnee</url-pattern>
+		<url-pattern>/getThemeParAnnee</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RechercherProjet</servlet-name>
+		<url-pattern>/rechercherProjet</url-pattern>
 	</servlet-mapping>
 		 
 	<welcome-file-list>
