@@ -75,5 +75,4 @@ public class TestUtils_TJU {
 	public void testGetParams() {
 		// TODO
 	}
-
 }

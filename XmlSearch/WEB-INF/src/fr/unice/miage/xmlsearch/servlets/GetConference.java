@@ -11,6 +11,7 @@ import org.json.JSONArray;
 
 import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 import fr.unice.miage.xmlsearch.objets.Conference;
+import fr.unice.miage.xmlsearch.utils.Constantes;
 
 /**
  * @author Julien Lespagnard
@@ -23,14 +24,18 @@ public class GetConference extends Servlet{
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		String pays = req.getParameter("pays");
+		String codePays = req.getParameter(Constantes.Conference.CODE_PAYS.getLabel());
+		if(codePays == null || codePays.isEmpty()) {
+			return;
+		}
+		String annee = req.getParameter(Constantes.Conference.ANNEE.getLabel());
+		if(annee == null || annee.isEmpty()) {
+			return;
+		}
 		
 		ConferenceDAO daoConference = new ConferenceDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
-		List<Conference> conferences = daoConference.getConferences(pays);
+		List<Conference> conferences = daoConference.getConferences(codePays, annee);
 		
 		resp.getWriter().print(new JSONArray(conferences));
-		
 	}
-
 }

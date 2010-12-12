@@ -1,7 +1,7 @@
 package fr.unice.miage.xmlsearch.dao;
 
-import java.util.LinkedHashMap;
 import java.io.StringWriter;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +20,8 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import fr.unice.miage.xmlsearch.critere.ConferenceCritere;
 import fr.unice.miage.xmlsearch.critere.Critere;
-import fr.unice.miage.xmlsearch.critere.ParticipantCritere;
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
 import fr.unice.miage.xmlsearch.objets.Participant;
 import fr.unice.miage.xmlsearch.objets.Projet;
@@ -186,7 +186,6 @@ public class ProjetDAO extends DAO {
 		
 		Document doc = Utils.getResultatRequete(query);
 		if(doc != null) {
-			String annee = critere.get(Constantes.Projet.ANNEE.getLabel())[0];
 			participants = new LinkedList<Participant>();
 			Participant participant;
 			NodeList nodePerson = doc.getElementsByTagName("person");			
@@ -238,5 +237,35 @@ public class ProjetDAO extends DAO {
 		}
 		
 		return participants;
+	}
+	
+	public Map<String, String> getRepartitionCategories(String p_shortName, String p_annee) {
+		Map<String, String> retour = null;
+		
+		ProjetCritere critere = new ProjetCritere(new String[]{p_shortName}, null, null, new String[]{p_annee}, false);
+		List<Map<String, String>> results = super.getResultatsRequete("getRepartitionCategories.xqy", 
+				critere, Constantes.Projet.SHORT_NAME.getLabel(), Constantes.Projet.ANNEE.getLabel());
+		
+		if(results != null && !results.isEmpty()) {
+			retour = new LinkedHashMap<String, String>();
+			String categorie = null, nbPersonnes = null;
+			for (Map<String, String> result : results) {
+				for(String key : result.keySet()) {
+					if(categorie == null) {
+						categorie = result.get(key);
+					}
+					else if(nbPersonnes == null) {
+						nbPersonnes = result.get(key);
+					}
+					if(categorie != null && nbPersonnes != null) {
+						retour.put(categorie, nbPersonnes);
+						categorie = null;
+						nbPersonnes = null;
+					}
+				}
+			}
+		}
+		
+		return retour;
 	}
 }

@@ -58,18 +58,18 @@ public class ConferenceDAO extends DAO {
 		return retour;
 	}
 
-	public List<Conference> getConferences(String pays) {
-		
-		ConferenceCritere critere = new ConferenceCritere(null, null,new String[]{pays}, null);
+	public List<Conference> getConferences(String p_codePays, String p_annee) {
+		ConferenceCritere critere = new ConferenceCritere(null, null,new String[]{p_codePays}, new String[]{p_annee});
 		List<Conference> conferences = null;
 		
-		List<Map<String, String>> resultats = super.getResultatsRequete("getConference.xqy", critere, Constantes.Conference.CODE_PAYS.getLabel());
+		List<Map<String, String>> resultats = super.getResultatsRequete("getConference.xqy", 
+				critere, Constantes.Conference.CODE_PAYS.getLabel(), Constantes.Conference.ANNEE.getLabel());
 		if(resultats != null && !resultats.isEmpty()) {
 			conferences = new LinkedList<Conference>();
 			Conference conference;
 			for (Map<String, String> infosConference : resultats) {
-				conference = new Conference(infosConference.get(Constantes.Conference.TITRE.getLabel().toLowerCase()), infosConference.get(Constantes.Conference.LIEU.getLabel()), 
-						infosConference.get(Constantes.Conference.CODE_PAYS.getLabel()), infosConference.get(Constantes.Conference.ANNEE.getLabel()));
+				conference = new Conference(infosConference.get(Constantes.Conference.TITRE.getLabel().toLowerCase()), 
+						infosConference.get(Constantes.Conference.LIEU.getLabel()), p_codePays, p_annee);
 				
 				conferences.add(conference);
 			}

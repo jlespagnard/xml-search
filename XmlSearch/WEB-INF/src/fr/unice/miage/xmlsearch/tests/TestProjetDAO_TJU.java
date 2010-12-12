@@ -3,6 +3,7 @@ package fr.unice.miage.xmlsearch.tests;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -78,16 +79,13 @@ public class TestProjetDAO_TJU {
 		List<Participant> liste = dao.getParticipantsProjet("abs", "2009");
 		assertNotNull(liste);
 		assertFalse(liste.isEmpty());	
-		assertTrue(liste.size() == 9);	
-
-		assertTrue(liste.get(1).getFirstname().compareTo("Caroline")==0);
-		assertTrue(liste.get(1).getLastname().compareTo("French")==0);
-		assertTrue(liste.get(1).getAffiliation().compareTo("INRIA")==0);
-		assertTrue(liste.get(1).getCategoryPro().compareTo("Assistant")==0);
-		assertTrue(liste.get(1).getResearchcentre().compareTo("Sophia")==0);
-		assertTrue(liste.get(0).getMoreinfo().compareTo("Team leader; DR2 Inria")==0);
-		assertTrue(liste.get(0).getHdr().compareTo("oui")==0);
-
 	}
-
+	
+	@Test
+	public void testGetRepartitionCategories() {
+		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
+		Map<String, String> liste = dao.getRepartitionCategories("aces", "2009");
+		assertNotNull(liste);
+		assertFalse(liste.isEmpty());
+	}
 }
