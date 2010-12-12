@@ -28,22 +28,24 @@ public class TestProjetDAO_TJU {
 			assertFalse(projet.getNom().isEmpty());
 			assertNotNull(projet.getTheme());
 			assertFalse(projet.getTheme().isEmpty());
-			this.afficherProjet(projet, fullInfos);
+			System.out.println(this.afficherProjet(projet, fullInfos));
 		}
 	}
 
-	private void afficherProjet(Projet projet, boolean fullInfos) {
-		System.out.println("Projet :");
-		System.out.println("\tShort Name : " + projet.getShortName());
-		System.out.println("\tProject Name : " + projet.getNom());
-		System.out.println("\tTheme : " + projet.getTheme());
+	private String afficherProjet(Projet projet, boolean fullInfos) {
+		StringBuilder retour = new StringBuilder();
+		retour.append("Projet :\n");
+		retour.append("\tShort Name : " + projet.getShortName() + "\n");
+		retour.append("\tProject Name : " + projet.getNom() + "\n");
+		retour.append("\tTheme : " + projet.getTheme() + "\n");
 		if(fullInfos) {
-			System.out.println("\tPresentation : " + projet.getPresentation());
-			System.out.println("\tLogiciels : " + projet.getLogiciels());
-			System.out.println("\tResultats : " + projet.getResultats());
-			System.out.println("\tContrats : " + projet.getContrats());
+			retour.append("\tPresentation : " + projet.getPresentation() + "\n");
+			retour.append("\tLogiciels : " + projet.getLogiciels() + "\n");
+			retour.append("\tResultats : " + projet.getResultats() + "\n");
+			retour.append("\tContrats : " + projet.getContrats() + "\n");
 		}
-		System.out.println();
+		retour.append("\n");
+		return retour.toString();
 	}
 
 	@Test
@@ -66,7 +68,7 @@ public class TestProjetDAO_TJU {
 		assertFalse(projet.getResultats().isEmpty());
 		assertNotNull(projet.getContrats());
 		assertFalse(projet.getContrats().isEmpty());
-		this.afficherProjet(projet, true);
+		System.out.println(this.afficherProjet(projet, true));
 	}
 
 	@Test
