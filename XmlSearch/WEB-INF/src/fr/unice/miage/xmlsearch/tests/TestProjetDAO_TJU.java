@@ -8,6 +8,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import fr.unice.miage.xmlsearch.critere.ProjetCritere;
+import fr.unice.miage.xmlsearch.dao.ConferenceDAO;
 import fr.unice.miage.xmlsearch.dao.ProjetDAO;
 import fr.unice.miage.xmlsearch.objets.Participant;
 import fr.unice.miage.xmlsearch.objets.Projet;
@@ -79,6 +80,15 @@ public class TestProjetDAO_TJU {
 		List<Participant> liste = dao.getParticipantsProjet("abs", "2009");
 		assertNotNull(liste);
 		assertFalse(liste.isEmpty());	
+	}
+	
+	@Test
+	public void testGetNbParticipantsParProjet(){
+		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
+		Map<String, String> liste = dao.getNbParticipantsParProjet("abs");
+		assertNotNull(liste);
+		assertFalse(liste.isEmpty());
+		assertTrue(liste.size() == 3);
 	}
 	
 	@Test

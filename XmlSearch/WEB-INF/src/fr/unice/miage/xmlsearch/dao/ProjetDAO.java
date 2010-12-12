@@ -238,6 +238,42 @@ public class ProjetDAO extends DAO {
 		
 		return participants;
 	}
+
+	/**
+	 * @param shortname le shortname du projet
+	 * @return liste pour chaque annee du nombre de participants
+	 */
+	public Map<String, String> getNbParticipantsParProjet(String shortname) {
+		
+		Map<String, String> retour = null;
+		
+		ProjetCritere critere = new ProjetCritere(new String[]{shortname}, null, null, null, false);
+		
+		List<Map<String, String>> results = super.getResultatsRequete("getNbParticipantsParProjet.xqy", 
+				critere, Constantes.Projet.SHORT_NAME.getLabel());
+		
+		if(results != null && !results.isEmpty()) {
+			retour = new LinkedHashMap<String, String>();
+			String annee = null, nbrPart = null;
+			for (Map<String, String> result : results) {
+				for(String key : result.keySet()) {
+					if(annee == null) {
+						annee = result.get(key);
+					}
+					else if(nbrPart == null) {
+						nbrPart = result.get(key);
+					}
+					if(annee != null && nbrPart != null) {
+						retour.put(annee, nbrPart);
+						annee = null;
+						nbrPart = null;
+					}
+				}
+			}
+		}
+		
+		return retour;
+	}
 	
 	public Map<String, String> getRepartitionCategories(String p_shortName, String p_annee) {
 		Map<String, String> retour = null;

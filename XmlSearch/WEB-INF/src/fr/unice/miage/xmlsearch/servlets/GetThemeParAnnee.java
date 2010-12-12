@@ -30,7 +30,7 @@ public class GetThemeParAnnee extends Servlet{
 		Map<String, String> themes = daoTheme.getThemeParAnnee(annee);
 		
 		try {
-			resp.getWriter().print(new JSONArray(themes));
+			resp.getWriter().print(new JSONArray(themes.entrySet().toArray()));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
