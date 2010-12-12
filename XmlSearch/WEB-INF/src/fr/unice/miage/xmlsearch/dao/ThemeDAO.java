@@ -1,11 +1,10 @@
 package fr.unice.miage.xmlsearch.dao;
 
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import fr.unice.miage.xmlsearch.critere.ThemeCritere;
-import fr.unice.miage.xmlsearch.objets.Theme;
 import fr.unice.miage.xmlsearch.utils.Constantes;
 
 /**
@@ -23,23 +22,32 @@ public class ThemeDAO extends DAO{
 		super(p_contexte);
 	}
 
-	public List<Theme> getThemeParAnnee(String p_annee) {
+	public Map<String, String> getThemeParAnnee(String p_annee) {
+		
+		Map<String, String> retour = null;
 		
 		ThemeCritere critere = new ThemeCritere(null, null, null, new String[]{p_annee});
 		List<Map<String, String>> results = super.getResultatsRequete("getThemesParAnnee.xqy", critere, Constantes.Theme.ANNEE.getLabel());
-		List<Theme> themes = null;
 		
 		if(results != null && !results.isEmpty()) {
-			themes = new LinkedList<Theme>();
-			Theme theme;
-			for (Map<String, String> infosTheme : results) {
-				theme = new Theme(infosTheme.get(Constantes.Theme.ID.getLabel()), infosTheme.get(Constantes.Theme.LIBELLE.getLabel()), 
-						infosTheme.get(Constantes.Theme.LIEU.getLabel()), infosTheme.get(Constantes.Theme.ANNEE.getLabel()));
-				
-				themes.add(theme);
+			retour = new LinkedHashMap<String, String>();
+			String theme = null, nbTheme = null;
+			for (Map<String, String> result : results) {
+				for(String key : result.keySet()) {
+					if(theme == null) {
+						theme = result.get(key);
+					}
+					else if(nbTheme == null) {
+						nbTheme = result.get(key);
+					}
+					if(theme != null && nbTheme != null) {
+						retour.put(theme, nbTheme);
+						theme = null;
+						nbTheme = null;
+					}
+				}
 			}
-		}
-		
-		return themes;
+		}		
+		return retour;
 	}
 }
