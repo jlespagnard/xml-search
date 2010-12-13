@@ -16,6 +16,9 @@ import fr.unice.miage.xmlsearch.objets.CentreRecherche;
  */
 public class TestCentreRechercheDAO_TJU {
 
+	/**
+	 * Test of GetCentresRecherche of CentreRechercheDAO
+	 */
 	@Test
 	public void testGetCentresRecherche() {
 		CentreRechercheDAO dao = new CentreRechercheDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
@@ -24,6 +27,9 @@ public class TestCentreRechercheDAO_TJU {
 		assertFalse(liste.isEmpty());
 	}
 	
+	/**
+	 * Test of GetMembresCR of CentreRechercheDAO
+	 */
 	@Test
 	public void testGetMembresCR(){
 		CentreRechercheDAO dao = new CentreRechercheDAO("http://localhost:8086/exist/rest/db/Raweb/query/");

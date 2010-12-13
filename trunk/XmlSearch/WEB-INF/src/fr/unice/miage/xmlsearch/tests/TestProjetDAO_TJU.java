@@ -19,11 +19,14 @@ import fr.unice.miage.xmlsearch.objets.Projet;
  */
 public class TestProjetDAO_TJU {
 
+	/**
+	 * Test of RechercheProjet of ProjetDAO
+	 */
 	@Test
 	public void testRechercherProjet() {
 		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
 		boolean fullInfos = false;
-		ProjetCritere critere = new ProjetCritere(null, null, null, new String[]{"2009"}, fullInfos);
+		ProjetCritere critere = new ProjetCritere(null, new String[]{"Algorithms,_Biology,_Structure"}, null, new String[]{"2009"}, fullInfos);
 		List<Projet> projets = dao.rechercherProjet(critere, fullInfos);
 		assertNotNull(projets);
 		assertFalse(projets.isEmpty());
@@ -39,6 +42,12 @@ public class TestProjetDAO_TJU {
 		}
 	}
 
+	/**
+	 * View information about a project
+	 * @param projet Project
+	 * @param fullInfos <code>true</code> if we want detailed information else <code>false</code>
+	 * @return Details about a project
+	 */
 	private String afficherProjet(Projet projet, boolean fullInfos) {
 		StringBuilder retour = new StringBuilder();
 		retour.append("Projet :\n");
@@ -55,6 +64,9 @@ public class TestProjetDAO_TJU {
 		return retour.toString();
 	}
 
+	/**
+	 * Test of GetProjet if ProjetDAO
+	 */
 	@Test
 	public void testGetProjet() {
 		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
@@ -78,6 +90,9 @@ public class TestProjetDAO_TJU {
 		System.out.println(this.afficherProjet(projet, true));
 	}
 
+	/**
+	 * Test of GetParticipantsProjet of ProjetDAO
+	 */
 	@Test
 	public void testGetParticipantsProjet() {
 		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
@@ -86,6 +101,9 @@ public class TestProjetDAO_TJU {
 		assertFalse(liste.isEmpty());	
 	}
 	
+	/**
+	 * Test of GetNbParticipantsParProjet of ProjetDAO
+	 */
 	@Test
 	public void testGetNbParticipantsParProjet(){
 		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
@@ -95,6 +113,9 @@ public class TestProjetDAO_TJU {
 		assertTrue(liste.size() == 3);
 	}
 	
+	/**
+	 * Test of GetRepartitionCategories of ProjetDAO
+	 */
 	@Test
 	public void testGetRepartitionCategories() {
 		ProjetDAO dao = new ProjetDAO("http://localhost:8086/exist/rest/db/Raweb/query/");

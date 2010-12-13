@@ -35,16 +35,16 @@ import fr.unice.miage.xmlsearch.utils.Utils;
 public class ProjetDAO extends DAO {
 	
 	/**
-	 * @param p_contexte application context
+	 * @param p_contexte The application context
 	 */
 	public ProjetDAO(String p_contexte) {
 		super(p_contexte);
 	}
 	
 	/**
-	 * @param p_critere	search criteria
+	 * @param p_critere	Search criteria
 	 * @param fullInfos	<code>true</code> if all the project information should be recovered else <code>false</code>
-	 * @return	the list of projects found
+	 * @return	The list of projects found
 	 */
 	public List<Projet> rechercherProjet(Critere p_critere, boolean p_fullInfos) {
 		List<Projet> projets = null;
@@ -86,8 +86,8 @@ public class ProjetDAO extends DAO {
 	}
 	
 	/**
-	 * remove the participant node
-	 * @param p_elementNode elementnode
+	 * Remove the participant node
+	 * @param p_elementNode Elementnode of a participant
 	 */
 	private void removeParticipantsNode(Element p_elementNode) {
 		for(int i=0;i<p_elementNode.getChildNodes().getLength();i++) {
@@ -104,8 +104,8 @@ public class ProjetDAO extends DAO {
 	}
 	
 	/**
-	 * @param p_elementNode elementnode
-	 * @return text of the element
+	 * @param p_elementNode Elementnode
+	 * @return The text in the element
 	 */
 	private String getTextContent(Element p_elementNode) {
 		String textContent = "";
@@ -161,9 +161,9 @@ public class ProjetDAO extends DAO {
 	}
 	
 	/**
-	 * retrieves the document from the query search project
-	 * @param p_critere criterion
-	 * @return document containing the response XML
+	 * Returns a document object containing the XML response to the query Search Project
+	 * @param p_critere Research Criterion
+	 * @return The document containing the response XML
 	 */
 	private Document executerQueryRechercheProjet(Critere p_critere) {
 		String query = this.getContexte() + "getProjet.xqy";
@@ -180,9 +180,9 @@ public class ProjetDAO extends DAO {
 	}
 	
 	/**
-	 * @param p_shortName the short name of the project to recover
-	 * @param p_annee year project to recover
-	 * @return	project whose short name is <code>p_shortName</code>
+	 * @param p_shortName 	The short name of the project to recover
+	 * @param p_annee 		The year if the project to recover
+	 * @return	The project whose short name is <code>p_shortName</code>
 	 */
 	public Projet getProjet(String p_shortName, String p_annee) {
 		ProjetCritere critere = new ProjetCritere(new String[]{p_shortName}, null, null, new String[]{p_annee}, true);
@@ -193,8 +193,8 @@ public class ProjetDAO extends DAO {
 
 	/**
 	 * @param p_shortName	Project ID
-	 * @param p_annee		the project year
-	 * @return	the list of project participants with the identifier <code>p_shortName</code>
+	 * @param p_annee		The year of project
+	 * @return	The list of project participants with the identifier <code>p_shortName</code>
 	 */
 	public List<Participant> getParticipantsProjet(String p_shortName, String p_annee) {
 		
@@ -243,8 +243,8 @@ public class ProjetDAO extends DAO {
 	}
 
 	/**
-	 * @param shortname the project shortname
-	 * @return list for each year the number of participants
+	 * @param shortname The project shortname
+	 * @return List of number of participants for each year
 	 */
 	public Map<String, String> getNbParticipantsParProjet(String shortname) {
 		
@@ -279,10 +279,10 @@ public class ProjetDAO extends DAO {
 	}
 	
 	/**
-	 * number of people for each category for a project and one year
-	 * @param p_shortName project shortname
-	 * @param p_annee year
-	 * @return list of number of people for each category
+	 * Number of people for each category for a project and a year
+	 * @param p_shortName 	Project shortname
+	 * @param p_annee 		The year of the project
+	 * @return List of number of people for each category
 	 */
 	public Map<String, String> getRepartitionCategories(String p_shortName, String p_annee) {
 		Map<String, String> retour = null;

@@ -17,6 +17,9 @@ import fr.unice.miage.xmlsearch.objets.Conference;
  */
 public class TestConferenceDAO_TJU {
 
+	/**
+	 * Test of GetNbConferencesParPays of ConferenceDAO
+	 */
 	@Test
 	public void testGetNbConferencesParPays() {
 		ConferenceDAO dao = new ConferenceDAO("http://localhost:8086/exist/rest/db/Raweb/query/");
@@ -25,6 +28,9 @@ public class TestConferenceDAO_TJU {
 		assertFalse(liste.isEmpty());
 	}
 
+	/**
+	 * Test of GetConferences of ConferenceDAO
+	 */
 	@Test
 	public void testGetConferences() {
 		ConferenceDAO dao = new ConferenceDAO("http://localhost:8086/exist/rest/db/Raweb/query/");

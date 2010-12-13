@@ -18,10 +18,10 @@ public class CentreRechercheCritere extends Critere {
 	private String[] m_longitudes;
 	
 	/**
-	 * @param p_ids IDs
-	 * @param p_libelles wordings
-	 * @param p_latitudes latitudes
-	 * @param p_longitudes longitudes
+	 * @param p_ids 		IDs
+	 * @param p_libelles 	Wordings
+	 * @param p_latitudes 	Latitudes
+	 * @param p_longitudes 	Longitudes
 	 */
 	public CentreRechercheCritere(String[] p_ids, String[] p_libelles, 
 			String[] p_latitudes, String[] p_longitudes) {

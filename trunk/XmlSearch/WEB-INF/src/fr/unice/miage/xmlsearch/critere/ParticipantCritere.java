@@ -8,49 +8,29 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
  * @version 1.0
  */
 public class ParticipantCritere extends Critere{
-	/**
-	 * Participant's first name
-	 */
-	private String[] m_firstname;
-	
-	/**
-	 * participant's last name
-	 */
-	private String[] m_lastname;
-	
-	/**
-	 * participant's affiliate
-	 */
-	private String[] m_affiliation;
-	
-	/**
-	 * Participant's category
-	 */
-	private String[] m_categoryPro;
-	
-	/**
-	 * research center of the participant
-	 */
+	/** Participant's first name */
+	private String[] m_firstname;	
+	/** Participant's last name */
+	private String[] m_lastname;	
+	/** Participant's affiliate */
+	private String[] m_affiliation;	
+	/** Participant's category */
+	private String[] m_categoryPro;	
+	/** Research center of the participant */
 	private String[] m_researchcentre;
-	
-	/**
-	 * additional comment about the participant
-	 */
+	/** Additional comment about the participant */
 	private String[] m_moreinfo;
-	
-	/**
-	 * hdr
-	 */
+	/** Hdr */
 	private String[] m_hdr;
 
 	/**
-	 * @param m_firstname firstname
-	 * @param m_lastname lastname
-	 * @param m_affiliation affiliate
-	 * @param m_categoryPro category
-	 * @param m_researchcentre research center
-	 * @param m_moreinfo additional comment
-	 * @param m_hdr hdr
+	 * @param m_firstname 		Firstname
+	 * @param m_lastname 		Lastname
+	 * @param m_affiliation 	Affiliate
+	 * @param m_categoryPro 	Category
+	 * @param m_researchcentre 	Research center
+	 * @param m_moreinfo 		Additional comment
+	 * @param m_hdr 			Hdr
 	 */
 	public ParticipantCritere(String[] m_firstname, String[] m_lastname,
 			String[] m_affiliation, String[] m_categoryPro,
@@ -88,7 +68,5 @@ public class ParticipantCritere extends Critere{
 			else
 				return null;
 		}
-	}
-	
-	
+	}	
 }

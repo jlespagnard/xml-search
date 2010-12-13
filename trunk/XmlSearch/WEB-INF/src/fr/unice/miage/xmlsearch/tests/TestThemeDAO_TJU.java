@@ -15,6 +15,9 @@ import fr.unice.miage.xmlsearch.dao.ThemeDAO;
  */
 public class TestThemeDAO_TJU {
 
+	/**
+	 * Test of GetThemeParAnnee of ThemeDAO
+	 */
 	@Test
 	public void testGetThemeParAnnee() {
 		ThemeDAO dao = new ThemeDAO("http://localhost:8086/exist/rest/db/Raweb/query/");

@@ -16,14 +16,14 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
 public class CentreRechercheDAO extends DAO {
 	
 	/**
-	 * @param p_contexte the application context
+	 * @param p_contexte The application context
 	 */
 	public CentreRechercheDAO(String p_contexte) {
 		super(p_contexte);
 	}
 	
 	/**
-	 * @return	the list of existing research centers
+	 * @return	The list of existing research centers
 	 */
 	public List<CentreRecherche> getCentresRecherche() {
 		List<CentreRecherche> centres = null;
@@ -46,8 +46,8 @@ public class CentreRechercheDAO extends DAO {
 
 	/**
 	 * List of members of a research center
-	 * @param idCR id Research Center
-	 * @return members list with full name and date of birth
+	 * @param idCR Id Research Center
+	 * @return Members list with full name and date of birth
 	 */
 	public List<String> getMembresCR(String idCR) {
 		

@@ -25,12 +25,10 @@ import fr.unice.miage.xmlsearch.utils.Utils;
  * @version 1.0
  */
 public class TestUtils_TJU {
-
-	@Test
-	public void testGetResultatRequete() {
-		// TODO
-	}
-
+	
+	/**
+	 * Test of LireXml of Utils
+	 */
 	@Test
 	public void testLireXml() {
 		File xmlTestFile = new File("WEB-INF/src/fr/unice/miage/xmlsearch/tests/XmlTestFile.xml");
@@ -74,10 +72,5 @@ public class TestUtils_TJU {
 				assertTrue(infos.get(contenuInfosTest.getKey()).equalsIgnoreCase(contenuInfosTest.getValue()));
 			}
 		}
-	}
-
-	@Test
-	public void testGetParams() {
-		// TODO
 	}
 }
