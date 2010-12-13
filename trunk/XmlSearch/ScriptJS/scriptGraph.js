@@ -59,6 +59,22 @@
          	}
              return data;
         }
+        function initDataDraw(participants)
+        {
+        	
+        	 data = new google.visualization.DataTable();
+        	 data.addColumn('string', 'Année');
+             data.addColumn('number', 'Nb participants');
+             data.addRows(participants.length);
+             for(j=0;j<participants.length;j++)
+         	{
+            	 part = participants[j].split('=');
+         		 data.setValue(j,0,part[0]);
+         		 num = parseInt(part[1]);
+         		 data.setValue(j,1,num);
+         	}
+             return data;
+        }
         function nbConfParVille(conf,ville)
         {
         	nb =0;
@@ -71,33 +87,30 @@
         		}
         	return nb;
         }
-		function initPie(cotegories)
+		function initPie(categories)
 		{
 			dataPie = new google.visualization.DataTable();
-			dataPie.addColumn('string','Cotegorie');
+			dataPie.addColumn('string','Categorie');
 			dataPie.addColumn('number','Nb');
-			dataPie.addRows(cotegories.length);
-			for(i=0;i<cotegories.length;i++)
+			dataPie.addRows(categories.length);
+			for(i=0;i<categories.length;i++)
 				{
-					laCat = cotegories[i].split("=")[0];
-					nb = cotegories[i].split("=")[1];
-					nbCat = parseInt(nb);
+					cat = categories[i].split("=");
+					laCat = cat[0];
+					nbCat = parseInt(cat[1]);
 					dataPie.setValue(i,0,laCat);
 					dataPie.setValue(i,1,nbCat);
 				}
 			return dataPie;
 		}
 		
-		function pieChart(themes)
+		function pieChart(categories)
 		{
-			data = initPie(themes);
-			var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
-			chart.draw(data,{width: 450, height: 300,title: 'Categorie'});	
-			google.visualization.events.addListener(chart, 'select', selectHandler);
-			function selectHandler(e) 
-			{
-				alert("tg");
-			}
+			data = initPie(categories);
+			$(".pie_div").each(function(){
+				var chart = new google.visualization.PieChart(this);
+				chart.draw(data,{width: 450, height: 300,title: 'Categorie'});
+			});
 		}
 		
 		function columnChart(p_data, p_name, p_annee, p_title, p_titleHAxis, p_titleVAxis)
@@ -107,28 +120,16 @@
 			chart.draw(dataChart,{height: 480, title: p_title, haxis: {title: p_titleHAxis}, vaxis: {title: p_titleVAxis}});
 		}
 		
-		function barChart()
+		function drawVisualization(participants)
 		{
-			data = initData();
-			$(".bar_div").each(function(){
-				var bar = new google.visualization.BarChart(this).draw(data,
-	            {title:"Yearly Coffee Consumption by Country",
-	            width:600, height:400,
-	            vAxis: {title: "Year"},
-	            hAxis: {title: "Cups"}}
-				);
-				google.visualization.events.addListener(bar, 'select', selectHandler);
+			data = initDataDraw(participants);
+			$(".draw_div").each(function(){
+				new google.visualization.LineChart(this).
+			      draw(data, {curveType: "function",
+			                  width: 500, height: 400,
+			                  vAxis: {maxValue: 10}}
+			          );
 			});
-		
-			function selectHandler(e) 
-			{
-				function selectHandler(e) 
-				{
-					var selection = geomap.getSelection();
-					geoZoom(data.getValue(selection[0].row,0));
-					geoMap;
-				}
-			}
 		}
 		function tableChart()
 		{

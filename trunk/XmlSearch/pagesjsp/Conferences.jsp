@@ -4,10 +4,7 @@ des th&egrave; mes abord&eacute;s dans ce pays qui s'affiche et la carte sera "z
  conf&eacute;rences dans le pays.
 L'&eacute;chelle de couleur de la carte sera le nombre de conf&eacute;rences dans le pays.
 
-<div class="geo_div"></div><div class="geozoom_div"></div>
 
-<div id="resultconf" style="display: none">
-	<br/><br/>
-	Voici le pourcentage de chaque thème de conférence dans ce pays :
-	<div class="piegeo_div"></div>
-</div>
+
+<div id="geo_div"></div>
+<div id="infoZoom_div"></div>

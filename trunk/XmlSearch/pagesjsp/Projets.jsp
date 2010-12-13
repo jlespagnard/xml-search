@@ -28,7 +28,7 @@
 	<tr>
 		<td width="200px"></td>
 		<td width="200px"></td>
-		<td width="200px"><input type="submit" value="Rechercher" onclick="recherche( '<%= Constantes.Projet.THEME.getLabel() %>', '<%= Constantes.Projet.FULL_INFOS.getLabel() %>')"></td>
+		<td width="200px"><input type="submit" value="Rechercher" onclick="recherche()"></td>
 	</tr>
 </table>
 </fieldset>

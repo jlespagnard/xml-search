@@ -27,35 +27,11 @@
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="pagesjsp/stylesheet.css" />
 	<script type="text/javascript" src="pagesjsp/jquery.js"></script>
 	<script type="text/javascript">
-
-	function callGetTheme() {
-		$.getJSON('getRepartitionCategories',{ annee:'2008', shortname:'aces' }, function(categories) {
-			pieChart(categories);
-		});
-	}
-	
-		function callGetConference(pays,annee) {
-			$.getJSON('getConference',{ pays:pays, annee:annee }, function(conf) {
-				geoZoom(selectedCountry,conf);
-			});
-		}
 		function callServ()
 		{
 			initMap();
 			$.getJSON('getCentresRecherche', function(centres) {
 				  addPin(centres);
-				});
-		}
-
-		function callGetThemeParAnnee(p_annee) {
-			$.getJSON('getThemeParAnnee', {annee : p_annee}, function(themesParAnnee) {
-				columnChart(themesParAnnee, 'Theme', p_annee, 'Répartition des projets par thème pour l\'année '+p_annee, 'Thèmes', 'Nombre de projets');
-			});
-		}
-		function callServConf()
-		{
-			$.getJSON('getNbConferencesParPays',{ annee:'2008' }, function(conf) {
-					geoMap(conf);
 				});
 		}
 	</script>
@@ -78,21 +54,19 @@
 		<br/><br/>
 		<ul class="tabs">
 			<li><a href="#tab1">Accueil</a></li>
-			<li><a onclick="callServConf();">Conf&eacute;rences</a></li>
-			<li><a href="#tab3" onclick="callGetThemeParAnnee('2009');">Th&egrave;mes</a></li>
+			<li id="conf"><a href="#tab2">Conf&eacute;rences</a></li>
+			<li id="theme"><a href="#tab3"">Th&egrave;mes</a></li>
 			<li><a onclick="callServ();">Centres de recherche</a></li>
 			<li><a href="#tab5">Projets</a></li>
 		</ul>
-		<hr id="sep">
+		<hr>
 	</div>
-	<div id="map_canvas"></div>
+	<!--<div id="map_canvas"></div>
 	<div id="pano"></div>
-	<div id="geo_div"></div>
 	<div id="pie_div"></div>
-	<div id="infoZoom_div"></div>
-	<div id="infoConf_div"></div>
-	<div id="tab_container">
+	--><div id="tab_container">
 		<div id="tab1" class="tab_content">
+			<jsp:include page="Menu.jsp"/>
 			<jsp:include page="Accueil.jsp"/>
 		</div>
 		<div id="tab2" class="tab_content">
