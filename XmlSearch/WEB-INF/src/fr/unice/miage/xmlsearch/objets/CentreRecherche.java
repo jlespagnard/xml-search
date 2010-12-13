@@ -15,6 +15,9 @@ public class CentreRecherche {
 	/** The longitude of the location of the research center */
 	private String m_longitude = "";
 	
+	/**
+	 * default constructor of research center
+	 */
 	public CentreRecherche() {}
 	
 	/**

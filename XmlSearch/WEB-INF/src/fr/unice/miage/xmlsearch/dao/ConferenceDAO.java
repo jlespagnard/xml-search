@@ -17,7 +17,7 @@ import fr.unice.miage.xmlsearch.objets.Conference;
 public class ConferenceDAO extends DAO {
 	
 	/**
-	 * @param p_contexte application context
+	 * @param p_contexte The application context
 	 */
 	public ConferenceDAO(String p_contexte) {
 		super(p_contexte);
@@ -25,8 +25,8 @@ public class ConferenceDAO extends DAO {
 	
 	/**
 	 * Structure of the list back: country -> number of conferences
-	 * @param p_annee	year
-	 * @return	List of countries by number of conferences for the year <code>p_annee</code>
+	 * @param p_annee	Year
+	 * @return	List of number of conferences by country for the year <code>p_annee</code>
 	 */
 	public Map<String, String> getNbConferencesParPays(String p_annee) {
 		Map<String, String> retour = null;
@@ -60,9 +60,9 @@ public class ConferenceDAO extends DAO {
 
 	/**
 	 * Conferences for a list of countries and one year
-	 * @param p_codePays country code
-	 * @param p_annee year
-	 * @return list of conferences
+	 * @param p_codePays 	Country code
+	 * @param p_annee 		Year
+	 * @return The list of conferences
 	 */
 	public List<Conference> getConferences(String p_codePays, String p_annee) {
 		ConferenceCritere critere = new ConferenceCritere(null, null,new String[]{p_codePays}, new String[]{p_annee});

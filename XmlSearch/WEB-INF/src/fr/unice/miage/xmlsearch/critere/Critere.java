@@ -7,10 +7,9 @@ package fr.unice.miage.xmlsearch.critere;
  */
 public abstract class Critere {
 	/**
-	 * retrieves a search criterion that matches the name passed as parameter
-	 * 
-	 * @param p_nomCritere	name
-	 * @return	the criterion of research <code>p_nomCritere</code>
+	 * Retrieves a search criterion that matches the name passed as parameter
+	 * @param p_nomCritere	Name
+	 * @return	The criterion of research <code>p_nomCritere</code>
 	 */
 	public abstract String[] get(String p_nomCritere);
 }

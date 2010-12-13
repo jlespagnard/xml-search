@@ -15,13 +15,16 @@ public class Conference {
 	/** The year of the conference */
 	private String m_annee = "";
 	
+	/**
+	 * Default constructor of conference
+	 */
 	public Conference() {}
 	
 	/**
-	 * @param p_titre	The title of the conference
-	 * @param p_lieu	The conference location
+	 * @param p_titre		The title of the conference
+	 * @param p_lieu		The conference location
 	 * @param p_codePays	The code of the country where the conference took place
-	 * @param p_annee	The year of the conference
+	 * @param p_annee		The year of the conference
 	 */
 	public Conference(String p_titre, String p_lieu, String p_codePays, String p_annee) {
 		this.m_titre = p_titre;

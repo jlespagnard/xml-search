@@ -7,31 +7,20 @@ package fr.unice.miage.xmlsearch.objets;
  */
 public class Theme {
 
-	/**
-	 * id
-	 */
-	private String m_id;
-	
-	/**
-	 * libel
-	 */
-	private String m_libelle;
-	
-	/**
-	 * place
-	 */
-	private String m_lieu;
-	
-	/**
-	 * year
-	 */
+	/** Theme id */
+	private String m_id;	
+	/** Title of the theme */
+	private String m_libelle;	
+	/** Place of the theme */
+	private String m_lieu;	
+	/** Year of the theme */
 	private String m_annee;
 
 	/**
-	 * @param m_id id
-	 * @param m_libelle wording
-	 * @param m_lieu place
-	 * @param m_annee year
+	 * @param m_id 		Id
+	 * @param m_libelle Title
+	 * @param m_lieu 	Place
+	 * @param m_annee 	Year
 	 */
 	public Theme(String m_id, String m_libelle, String m_lieu, String m_annee) {
 		super();
@@ -42,56 +31,56 @@ public class Theme {
 	}
 
 	/**
-	 * @return id
+	 * @return Id
 	 */
 	public String getId() {
 		return m_id;
 	}
 
 	/**
-	 * @param m_id id
+	 * @param m_id Id
 	 */
 	public void setId(String m_id) {
 		this.m_id = m_id;
 	}
 
 	/**
-	 * @return wording
+	 * @return Title
 	 */
 	public String getLibelle() {
 		return m_libelle;
 	}
 
 	/**
-	 * @param m_libelle wording
+	 * @param m_libelle Title
 	 */
 	public void setLibelle(String m_libelle) {
 		this.m_libelle = m_libelle;
 	}
 
 	/**
-	 * @return place
+	 * @return Place
 	 */
 	public String getLieu() {
 		return m_lieu;
 	}
 
 	/**
-	 * @param m_lieu place
+	 * @param m_lieu Place
 	 */
 	public void setLieu(String m_lieu) {
 		this.m_lieu = m_lieu;
 	}
 
 	/**
-	 * @return year
+	 * @return Year
 	 */
 	public String getAnnee() {
 		return m_annee;
 	}
 
 	/**
-	 * @param m_annee year
+	 * @param m_annee Year
 	 */
 	public void setAnnee(String m_annee) {
 		this.m_annee = m_annee;

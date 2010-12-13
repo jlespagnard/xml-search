@@ -32,8 +32,7 @@ public class GetParticipantsProjet extends Servlet {
 			return;
 		}
 		
-		String contexte = this.getInitParameter(NOM_PARAMETRE_CONTEXTE);
-		ProjetDAO dao = new ProjetDAO(contexte);
+		ProjetDAO dao = new ProjetDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		
 		List<Participant> participants = dao.getParticipantsProjet(shortName, annee);
 		if(participants == null || participants.isEmpty()) {

@@ -26,7 +26,7 @@ import fr.unice.miage.xmlsearch.critere.Critere;
 public abstract class Utils {
 	
 	/**
-	 * @param p_requete	the query to execute
+	 * @param p_requete	The query to execute
 	 * @return	XML DOM document containing the result of the query <code>p_requete</code> 
 	 */
 	public static Document getResultatRequete(String p_requete) {
@@ -49,8 +49,8 @@ public abstract class Utils {
 	}
 	
 	/**
-	 * @param p_node	the node to read
-	 * @param p_infos	the list containing the information read from the node if it contains text element
+	 * @param p_node	The node to read
+	 * @param p_infos	The list containing the information read from the node if it contains text element
 	 */
 	public static void lireXml(Node p_node, List<Map<String, String>> p_infos) {
 		if(p_node.getNodeType() == Node.TEXT_NODE) {
@@ -80,9 +80,9 @@ public abstract class Utils {
 	}
 	
 	/**
-	 * @param p_critere		the search criteria
-	 * @param p_nomsParams	name search criteria to recover
-	 * @return	the query with parameters
+	 * @param p_critere		The search criteria
+	 * @param p_nomsParams	The search criteria name to recover
+	 * @return	The query with parameters
 	 */
 	public static String getParams(Critere p_critere, String... p_nomsParams) {
 		StringBuilder params = new StringBuilder();

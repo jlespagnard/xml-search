@@ -7,6 +7,9 @@ package fr.unice.miage.xmlsearch.utils;
  */
 public abstract class Constantes {
 
+	/**
+	 * Constants of research center
+	 */
 	public static enum CentreRecherche {
 		ID("idCR"),
 		LIBELLE("libelle"),
@@ -24,6 +27,9 @@ public abstract class Constantes {
 		}
 	}
 	
+	/**
+	 * Constants of conferences
+	 */
 	public static enum Conference {
 		TITRE("TitreConference"),
 		LIEU("lieu"),
@@ -41,6 +47,9 @@ public abstract class Constantes {
 		}
 	}
 	
+	/**
+	 * Constants of Participant
+	 */
 	public static enum Participant {
 		FISRTNAME("firstname"),
 		LASTNAME("lastname"),
@@ -61,6 +70,9 @@ public abstract class Constantes {
 		}
 	}
 	
+	/**
+	 * Constants of Project
+	 */
 	public static enum Projet {
 		SHORT_NAME("shortname"),
 		PROJECT_NAME("projectName"),
@@ -85,6 +97,9 @@ public abstract class Constantes {
 		}
 	}
 	
+	/**
+	 * Constants of Theme
+	 */
 	public static enum Theme {
 		ID("id"),
 		LIBELLE("theme"),
@@ -102,6 +117,9 @@ public abstract class Constantes {
 		}
 	}
 	
+	/**
+	 * Constants of Member
+	 */
 	public static enum Membre {
 		DATENAISSANCE("datenaissance"),
 		NOM("nom"),

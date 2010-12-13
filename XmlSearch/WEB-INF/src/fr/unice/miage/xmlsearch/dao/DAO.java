@@ -16,30 +16,28 @@ import fr.unice.miage.xmlsearch.utils.Utils;
  */
 public abstract class DAO {
 	
-	/**
-	 * application context
-	 */
+	/** The application context */
 	private String m_contexte;
 	
 	/**
-	 * @param p_contexte application context
+	 * @param p_contexte The application context
 	 */
 	protected DAO(String p_contexte) {
 		this.m_contexte = p_contexte;
 	}
 	
 	/**
-	 * @return the execution context of XQuery
+	 * @return The execution context of XQuery
 	 */
 	protected String getContexte() {
 		return this.m_contexte;
 	}
 	
 	/**
-	 * @param p_nomQuery	the name of the query to execute
-	 * @param p_critere		search criteria
-	 * @param p_nomParams	name of search parameters
-	 * @return	the query to execute
+	 * @param p_nomQuery	The name of the query to execute
+	 * @param p_critere		Search criteria
+	 * @param p_nomParams	Name of search parameters
+	 * @return	List containing the names of elements found in the XML response and the content of these elements
 	 */
 	protected List<Map<String, String>> getResultatsRequete(String p_nomQuery, Critere p_critere, String... p_nomParams) {
 		List<Map<String, String>> results = null;

@@ -18,10 +18,10 @@ public class ConferenceCritere extends Critere {
 	private String[] m_annees;
 	
 	/**
-	 * @param p_titres	titles
-	 * @param p_lieux	places
-	 * @param p_codePays country code
-	 * @param p_annees	years
+	 * @param p_titres		Titles
+	 * @param p_lieux		Places
+	 * @param p_codePays 	Country code
+	 * @param p_annees		Years
 	 */
 	public ConferenceCritere(String[] p_titres, String[] p_lieux, 
 			String[] p_codePays, String[] p_annees) {

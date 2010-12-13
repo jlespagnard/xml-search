@@ -8,37 +8,23 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
  * @version 1.0
  */
 public class ProjetCritere extends Critere{
-	/**
-	 * Identifiers of projects
-	 */
-	private String[] m_shortName;
-	
-	/**
-	 * name
-	 */
+	/** Identifiers of projects */
+	private String[] m_shortName;	
+	/** Project names */
 	private String[] m_nom;
-	
-	/**
-	 * theme
-	 */
+	/** Theme */
 	private String[] m_theme;
-	
-	/**
-	 * year
-	 */
+	/** Year */
 	private String[] m_annee;
-	
-	/**
-	 * fullinfos
-	 */
+	/** Fullinfos : <code>true</code> if you want detailed information of a project <code>false</code> otherwise */
 	private boolean m_fullInfos = false;
 	
 	/**
-	 * @param p_shortName Identifiers of projects
-	 * @param m_nom name
-	 * @param m_theme theme
-	 * @param m_annee year
-	 * @param m_fullInfos fullinfos
+	 * @param p_shortName 	Identifiers of projects
+	 * @param m_nom 		Name
+	 * @param m_theme 		Theme
+	 * @param m_annee 		Year
+	 * @param m_fullInfos 	Fullinfos
 	 */
 	public ProjetCritere(String[] p_shortName, String[] m_nom, String[] m_theme,
 			String[] m_annee, boolean p_fullInfos) {
