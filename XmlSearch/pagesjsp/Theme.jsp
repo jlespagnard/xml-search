@@ -1,6 +1,4 @@
-Sur cette page il y aura un gros camembert avec tous les th&egrave;mes du monde. Quand on clique sur un th&egrave;me, il y a la m&ecirc;me carte du 
-monde que dans conf&eacute;rence mais qu'avec ce th&egrave;me l&agrave;.
-<br/><br/>
+<br/>
 <table width="50%">
 	<tr>
 		<td width="25%">

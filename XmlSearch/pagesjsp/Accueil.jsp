@@ -25,27 +25,37 @@
 <div id="b_conferences" class="accueil" style="display: none">
 	<p><h2 class="titre">Conf&eacute;rences</h2></p>
 	<p>
-	blabla conf&eacute;rences
+	L'onglet "Conf&eacute;rences" contient une carte du monde repr&eacute;sentant le nombre de conf&eacute;rences pour chaque pays. 
+	En passant la souris sur un pays, une info bulle contenant le code du pays et le nombre de conf&eacute;rences s'affiche.
+	En cliquant sur un pays s'affiche en dessous la liste (titre, lieu et année) de toutes les conf&eacute;rences.
 	</p><br/><br/>
 </div>
 
 <div id="b_themes" class="accueil" style="display: none">
 	<p><h2 class="titre">Th&egrave;mes</h2></p>
 	<p>
-	blabla th&egrave;mes
+	L'onglet "Th&egrave;mes" contient, pour chaque ann&eacute;e, un histographique de la r&eacute;partition des projets par th&egrave;me.
+	En passant la souris sur un histogramme, une info bulle contenant le libell&eacute; du th&egrave;me et le nombre de projets s'affiche.
 	</p><br/><br/>
 </div>
 
 <div id="b_cdr" class="accueil" style="display: none">
 	<p><h2 class="titre">Centres de recherche</h2></p>
 	<p>
-	blabla cdr
+	L'onglet "Centres de recherche" contient une carte du monde affichant chaque centre de recherche selon leur adresse sous forme de pin.
+	En passant la souris sur un centre de recherche, une info bulle contenant le nom du centre de recherche s'affiche.
+	Il est &eacute;galement possible d'afficher le street view en dessous de cette carte.
 	</p><br/><br/>
 </div>
 
 <div id="b_projets" class="accueil" style="display: none">
 	<p><h2 class="titre">Projets</h2></p>
 	<p>
-	blabla projets
+	L'onglet "Projets" permet de rechercher un projet par titre, acronyme, th&egrave;me et ann&eacute;e.
+	Le r&eacute;sultat de la recherche affiche tous les projets correspondant.
+	En cliquant sur un projet, toutes les informations le concernant sont affich&eacute;es.
+	Il est &eacute;galement possible d'afficher la liste d&eacute;taill&eacute;e de tous les participants de ce projet, une courbe
+	d'&eacute;volution du nombre de participants au cours du temps et un diagramme circulaire repr&eacute;sentant la r&eacute;partition
+	des cat&eacute;gories professionnelles des participants.
 	</p><br/><br/>
 </div>
