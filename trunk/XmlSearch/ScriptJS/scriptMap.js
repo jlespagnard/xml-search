@@ -8,20 +8,20 @@
 			  mapTypeId: google.maps.MapTypeId.ROADMAP,
 			  streetViewControl: true
 			};
-
-			map = new google.maps.Map(document.getElementById("map_canvas"),
-			myOptions);
-			var panoramaOptions = {
-				  //position: latlng,
-				  pov: {
-					heading: 34,
-					pitch: 10,
-					zoom: 1
-				  }
-				};
-						
-				var panorama = new  google.maps.StreetViewPanorama(document.getElementById("pano"),panoramaOptions);
-				map.setStreetView(panorama);
+			var divMap = document.getElementById('map_canvas');
+			alert(divMap);
+			map = new google.maps.Map(divMap, myOptions);
+//			var panoramaOptions = {
+//				  //position: latlng,
+//				  pov: {
+//					heading: 34,
+//					pitch: 10,
+//					zoom: 1
+//				  }
+//				};
+//						
+//				var panorama = new  google.maps.StreetViewPanorama(document.getElementById("pano"),panoramaOptions);
+//				map.setStreetView(panorama);
 		}
 		function addPin(lstCentre)
 		{	

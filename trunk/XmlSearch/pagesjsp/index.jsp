@@ -27,25 +27,65 @@
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="pagesjsp/stylesheet.css" />
 	<script type="text/javascript" src="pagesjsp/jquery.js"></script>
 	<script type="text/javascript">
+		var centresRecherche;
 		function callServ()
 		{
 			initMap();
 			$.getJSON('getCentresRecherche', function(centres) {
-				  addPin(centres);
-				});
+				centresRecherche = centres;
+				initMap();
+			});
+		}
+		function getElement(id)
+		{
+			alert(id);
+			return $("div[id="+id+"]");
 		}
 	</script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript" src="ScriptJS/scriptMap.js"></script>
-	<script type="text/javascript" src="ScriptJS/scriptGraph.js"></script>
+	<!--<script type="text/javascript" src="ScriptJS/scriptMap.js"></script>-->
 	<script type="text/javascript">
 	
 		google.load("visualization", "1", {packages:["corechart"]});
 		google.load("visualization", "1", {packages:["geomap"]});
 		google.load("visualization", "1", {packages:["table"]});
-		//google.setOnLoadCallback(geoMap);
+
+		var mymap;
+		function initMap() {
+			var divMap = $("#map_canvas");
+			alert(divMap);
+			
+			var latlng = new google.maps.LatLng(43.61619, 7.06786);
+			var myOptions = {
+			  zoom: 6,
+			  center: latlng,
+			  mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			mymap = new google.maps.Map(divMap, myOptions);
+			
+			google.maps.event.addListenerOnce(mymap, 'tilesloaded', addPin);
+		}
+		
+		function addPin()
+		{	
+			var centre;
+			for(var key in centresRecherche)
+			{
+				
+				centre = centresRecherche[key];
+				coor = new google.maps.LatLng(centre.latitude,centre.longitude);
+				
+				mark = new google.maps.Marker({
+					position: coor,
+					map: mymap,
+					title:centre.libelle
+				});
+				
+			}
+		}
 	</script>
+	<script type="text/javascript" src="ScriptJS/scriptGraph.js"></script>
 	<script type="text/javascript" src="pagesjsp/index.js"></script>
 </head>
 <body>
@@ -56,15 +96,12 @@
 			<li><a href="#tab1">Accueil</a></li>
 			<li id="conf"><a href="#tab2">Conf&eacute;rences</a></li>
 			<li id="theme"><a href="#tab3"">Th&egrave;mes</a></li>
-			<li><a onclick="callServ();">Centres de recherche</a></li>
+			<li><a href="#tab4" onclick="callServ();">Centres de recherche</a></li>
 			<li><a href="#tab5">Projets</a></li>
 		</ul>
 		<hr>
 	</div>
-	<!--<div id="map_canvas"></div>
-	<div id="pano"></div>
-	<div id="pie_div"></div>
-	--><div id="tab_container">
+	<div id="tab_container">
 		<div id="tab1" class="tab_content">
 			<jsp:include page="Menu.jsp"/>
 			<jsp:include page="Accueil.jsp"/>
