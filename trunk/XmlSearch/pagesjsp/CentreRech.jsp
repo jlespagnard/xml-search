@@ -1,1 +1,2 @@
+<br/>
 <div id="map_canvas"></div>

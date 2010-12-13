@@ -105,8 +105,9 @@ function getElement(id)
 }
 
 var mymap;
+var centresRecherche;
 function initMap() {
-	var divMap = $("#map_canvas");
+	var divMap = $('#map_canvas');
 	alert(divMap);
 	
 	var latlng = new google.maps.LatLng(43.61619, 7.06786);
@@ -186,7 +187,6 @@ $(document).ready(function() {
 
 		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
 		$(activeTab).fadeIn(); //Fade in the active ID content
-		var centresRecherche;
         if($(this).attr("id").match("conf")){
         	$.getJSON('getNbConferencesParPays',{ annee:'2008' }, function(conf) {
 				geoMap(conf);
@@ -198,7 +198,6 @@ $(document).ready(function() {
 			});
         }
         else if($(this).attr("id").match("centrederecherche")){
-        	initMap();
 			$.getJSON('getCentresRecherche', function(centres) {
 				centresRecherche = centres;
 				initMap();
