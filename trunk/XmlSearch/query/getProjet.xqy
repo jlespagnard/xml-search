@@ -5,7 +5,7 @@ let $titreParam := request:get-parameter("projectname","")
 let $fullInfos := request:get-parameter("fullinfos","no")
 let $theme := request:get-parameter("theme","")
 
-let $titre := replace($titreParam, '*', ' ')
+let $titre := fn:replace($titreParam, '_', ' ')
 
 let $infos :=
 	for $projet in collection($anneeARechercher)/raweb/identification
