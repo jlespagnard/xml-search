@@ -8,21 +8,26 @@ function recherche(){
 	var annee = $("#annee option:selected").val();
 	var theme = $("#themepr").val();
 	$.getJSON("rechercherProjet", { annee: annee, projectName: titre, shortname: shortname, theme: theme, fullinfos: "no"}, function(Projets){
-		var liste = "<table><tr>";
+		var liste = "";
 		var j = 0;
-	    for(var i in Projets){
-    		if(j > 5){
-    			j = 0;
-    			liste = liste + "</tr><tr>";
-    		}
-    		j++;
-    		var pos1 = Projets[i].shortName.indexOf(">") + 1;
-    		var pos2 = Projets[i].shortName.substring(pos1, Projets[i].shortName.length);
-    		pos1 = pos2.lastIndexOf("<");
-    		pos2 = pos2.substring(0, pos1);
-    		liste = liste + " <td><a href='#' onclick=\"get('" + pos2 + "','" + Projets[i].annee + "')\"> " + Projets[i].nom + "</a></td>";
-	    }
-	    liste = liste + "</tr></table>";
+		if(Projets == null){
+			liste = "Il n'y a pas de resultat";
+		}else{
+			liste = "<table><tr>";
+		    for(var i in Projets){
+	    		if(j > 5){
+	    			j = 0;
+	    			liste = liste + "</tr><tr>";
+	    		}
+	    		j++;
+	    		var pos1 = Projets[i].shortName.indexOf(">") + 1;
+	    		var pos2 = Projets[i].shortName.substring(pos1, Projets[i].shortName.length);
+	    		pos1 = pos2.lastIndexOf("<");
+	    		pos2 = pos2.substring(0, pos1);
+	    		liste = liste + " <td><a href='#' onclick=\"get('" + pos2 + "','" + Projets[i].annee + "')\"> " + Projets[i].nom + "</a></td>";
+		    }
+		    liste = liste + "</tr></table>";
+		}
 	    $("#afficheprojets").html(liste);
 		$("#result").show();
 	});
@@ -31,17 +36,22 @@ function recherche(){
 function get(shortname, annee){
 	var affichage = "";
 	$.getJSON("getProjet", {shortname: shortname, annee: annee}, function(Projet){
-		affichage = "<a href=\"#\" onclick=\"participants('" + shortname + "', '" + annee + "')\"> Participants </a>";
-		affichage = affichage + "<br/><a href=\"#\" onclick=\"evolution('" + shortname + "')\"> Evolution des participants </a>";
-		affichage = affichage + "<br/><a href=\"#\" onclick=\"categories('" + shortname + "', '" + annee + "')\"> Cat&eacute;gories </a><br/>";
-		affichage = affichage + Projet[0].presentation;
+		affichage = "<table width='100%' id='tabproj'><tr><td width='33%'><a href=\"#\" onclick=\"participants('" + shortname + "', '" + annee + "')\"> Participants </a></td>";
+		affichage = affichage + "<td width='33%'><a href=\"#\" onclick=\"evolution('" + shortname + "')\"> Evolution des participants </a></td>";
+		affichage = affichage + "<td width='33%'><a href=\"#\" onclick=\"categories('" + shortname + "', '" + annee + "')\"> Cat&eacute;gories </a></td></tr></table>";
+		affichage = affichage + "<br/><br/>" + Projet[0].presentation;
+		affichage = affichage.replace(/<p>/g, "<p class='text'>");
+		affichage = affichage.replace(/<simplelist>/g, "<ul>");
+		affichage = affichage.replace(/<\/simplelist>/g, "</ul>");
+		affichage = affichage.replace(/<bodytitle>.*<\/bodytitle>/i, "<p class='text'>");
 		$("#afficheprojets").html(affichage);
 	});
 }
 
 function participants(shortname, annee){
 	$.getJSON("getParticipantsProjet", {shortname: shortname, annee: annee}, function(Participants){
-		var affichage = "<table><thead><tr><td>Nom</td><td>Pr&eacute;nom</td><td>Affiliation</td><td>Centre de recherche</td></tr></thead>";
+		var affichage = "<a href=\"#\" onclick=\"get('"+shortname+"','"+annee+"')>  << Retour </a><br/><br/>";
+		affichage =	affichage + "<table><thead><tr><td>Nom</td><td>Pr&eacute;nom</td><td>Affiliation</td><td>Centre de recherche</td></tr></thead>";
 		for(var i in Participants){
 			affichage = affichage + "<tr><td>" + Participants[i].lastname + "</td><td>" + Participants[i].firstname + "</td><td>" + Participants[i].affiliation + "</td><td>" + Participants[i].researchcentre + "</tr>";
 		}
@@ -53,7 +63,7 @@ function participants(shortname, annee){
 function evolution(shortname){
 	var affichage = "";
 	$.getJSON("getNbParticipantsParProjet", {shortname: shortname}, function(Participants){
-		affichage = "<div class=\"draw_div\"></div>";
+		affichage = affichage + "<div class=\"draw_div\"></div>";
 		$("#afficheprojets").html(affichage);
 		drawVisualization(Participants);
 	});
@@ -62,7 +72,7 @@ function evolution(shortname){
 function categories(shortname, annee){
 	var affichage = "";
 	$.getJSON('getRepartitionCategories',{ annee: annee, shortname: shortname }, function(categories) {
-		affichage = "<div class=\"pie_div\"></div>";
+		affichage = affichage + "<div class=\"pie_div\"></div>";
 		$("#afficheprojets").html(affichage);
 		pieChart(categories);
 	});
@@ -86,6 +96,46 @@ function callServConf()
 	$.getJSON('getNbConferencesParPays',{ annee:'2008' }, function(conf) {
 			geoMap(conf);
 		});
+}
+
+function getElement(id)
+{
+	alert(id);
+	return $("div[id="+id+"]");
+}
+
+var mymap;
+function initMap() {
+	var divMap = $("#map_canvas");
+	alert(divMap);
+	
+	var latlng = new google.maps.LatLng(43.61619, 7.06786);
+	var myOptions = {
+	  zoom: 6,
+	  center: latlng,
+	  mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	mymap = new google.maps.Map(divMap, myOptions);
+	
+	google.maps.event.addListenerOnce(mymap, 'tilesloaded', addPin);
+}
+
+function addPin()
+{	
+	var centre;
+	for(var key in centresRecherche)
+	{
+		
+		centre = centresRecherche[key];
+		coor = new google.maps.LatLng(centre.latitude,centre.longitude);
+		
+		mark = new google.maps.Marker({
+			position: coor,
+			map: mymap,
+			title:centre.libelle
+		});
+		
+	}
 }
 
 $(document).ready(function() {
@@ -136,6 +186,7 @@ $(document).ready(function() {
 
 		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
 		$(activeTab).fadeIn(); //Fade in the active ID content
+		var centresRecherche;
         if($(this).attr("id").match("conf")){
         	$.getJSON('getNbConferencesParPays',{ annee:'2008' }, function(conf) {
 				geoMap(conf);
@@ -144,6 +195,13 @@ $(document).ready(function() {
         else if($(this).attr("id").match("theme")){
         	$.getJSON('getThemeParAnnee', {annee : "2009"}, function(themesParAnnee) {
 				columnChart(themesParAnnee, 'Theme', "2009", 'Répartition des projets par thème pour l\'année 2009', 'Thèmes', 'Nombre de projets');
+			});
+        }
+        else if($(this).attr("id").match("centrederecherche")){
+        	initMap();
+			$.getJSON('getCentresRecherche', function(centres) {
+				centresRecherche = centres;
+				initMap();
 			});
         }
 		return false;

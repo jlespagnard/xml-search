@@ -36,6 +36,15 @@ bodyTitle{
 	font-size:0.8em;
 }
 
+#tabproj{
+	text-align: center;
+}
+
+.text{
+	text-align: justify;
+	text-indent: 30px;
+}
+
 thead{
 	font-weight: bold;
 }
