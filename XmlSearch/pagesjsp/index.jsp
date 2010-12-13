@@ -26,6 +26,33 @@
 	</style>
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="pagesjsp/stylesheet.css" />
 	<script type="text/javascript" src="pagesjsp/jquery.js"></script>
+	<script type="text/javascript">
+
+	function callGetTheme() {
+		$.getJSON('getRepartitionCategories',{ annee:'2008', shortname:'aces' }, function(categories) {
+			pieChart(categories);
+		});
+	}
+	
+		function callGetConference(pays,annee) {
+			$.getJSON('getConference',{ pays:pays, annee:annee }, function(conf) {
+				geoZoom(selectedCountry,conf);
+			});
+		}
+		function callServ()
+		{
+			initMap();
+			$.getJSON('getCentresRecherche', function(centres) {
+				  addPin(centres);
+				});
+		}
+		function callServConf()
+		{
+			$.getJSON('getNbConferencesParPays',{ annee:'2008' }, function(conf) {
+					geoMap(conf);
+				});
+		}
+	</script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript" src="ScriptJS/scriptMap.js"></script>
@@ -35,19 +62,7 @@
 		google.load("visualization", "1", {packages:["corechart"]});
 		google.load("visualization", "1", {packages:["geomap"]});
 		google.load("visualization", "1", {packages:["table"]});
-		google.setOnLoadCallback(geoMap);
-
-		function callServ()
-		{
-			alert('TG');
-			initMap();
-			$.getJSON('getCentresRecherche', function(centres) {
-				  addPin(centres);
-				});
-		}
-
-		google.setOnLoadCallback(pieChart);
-
+		//google.setOnLoadCallback(geoMap);
 	</script>
 	<script type="text/javascript" src="pagesjsp/index.js"></script>
 </head>
@@ -57,14 +72,19 @@
 		<br/><br/>
 		<ul class="tabs">
 			<li><a href="#tab1">Accueil</a></li>
-			<li><a href="#tab2">Conf&eacute;rences</a></li>
-			<li><a href="#tab3">Th&egrave;mes</a></li>
+			<li><a onclick="callServConf();">Conf&eacute;rences</a></li>
+			<li><a onclick="callGetTheme();">Th&egrave;mes</a></li>
 			<li><a onclick="callServ();">Centres de recherche</a></li>
 			<li><a href="#tab5">Projets</a></li>
 		</ul>
 		<hr id="sep">
 	</div>
 	<div id="map_canvas"></div>
+	<div id="pano"></div>
+	<div id="geo_div"></div>
+	<div id="pie_div"></div>
+	<div id="infoZoom_div"></div>
+	<div id="infoConf_div"></div>
 	<div id="tab_container">
 		<div id="tab1" class="tab_content">
 			<jsp:include page="Accueil.jsp"/>

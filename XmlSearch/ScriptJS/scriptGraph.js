@@ -156,7 +156,8 @@
 			data = initDataConfZoom(conferences);
 			for(i=0;i<data.getNumberOfRows();i++)
 			{
-				content+=data.getValue(i,0)+" - "+conferences[i].titre+"<br>";
+				content+=detailsConference(conferences[i]);
+				//content+=data.getValue(i,0)+'<a onclick="detailsConference(&quot;conference[i]&quot;)">'+conferences[i].titre+'</a><br>';
 			}
 			document.getElementById("infoZoom_div").innerHTML = content;
 			var options = {};
@@ -173,7 +174,11 @@
 				alert(selectedCity);
 			}*/
 		}
-		
+		function detailsConference(conference)
+		{
+			content = "<b>Titre: </b>"+conference.titre+"<b> Lieu: </b>"+conference.lieu+"<b> Annee: </b>"+conference.annee+"<br>";
+			return content;
+		}
 		function cleanDiv(name)
 		{
 			document.getElementById(name).innerHTML='';
