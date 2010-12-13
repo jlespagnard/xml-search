@@ -1,2 +1,2 @@
 <br/>
-<div id="map_canvas"></div>
+<center><div id="map-canvas" style="width:800px; height:600px;"></div></center>

@@ -107,36 +107,30 @@ function getElement(id)
 var mymap;
 var centresRecherche;
 function initMap() {
-	var divMap = $('#map_canvas');
-	alert(divMap);
-	
 	var latlng = new google.maps.LatLng(43.61619, 7.06786);
 	var myOptions = {
 	  zoom: 6,
 	  center: latlng,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	mymap = new google.maps.Map(divMap, myOptions);
+	mymap = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 	
-	google.maps.event.addListenerOnce(mymap, 'tilesloaded', addPin);
-}
-
-function addPin()
-{	
-	var centre;
-	for(var key in centresRecherche)
-	{
+	google.maps.event.addListenerOnce(mymap, 'tilesloaded', function() {	
+		var centre;
+		for(var key in centresRecherche)
+		{
+			centre = centresRecherche[key];
+			coor = new google.maps.LatLng(centre.latitude,centre.longitude);
+			
+			mark = new google.maps.Marker({
+				position: coor,
+				map: mymap,
+				title:centre.libelle
+			});
+		}
 		
-		centre = centresRecherche[key];
-		coor = new google.maps.LatLng(centre.latitude,centre.longitude);
-		
-		mark = new google.maps.Marker({
-			position: coor,
-			map: mymap,
-			title:centre.libelle
-		});
-		
-	}
+		document.getElementById('map-canvas').visible = "true";
+	});
 }
 
 $(document).ready(function() {
