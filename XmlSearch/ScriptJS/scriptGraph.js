@@ -53,18 +53,19 @@
         		}
         	return nb;
         }
-		function initPie(themes)
+		function initPie(cotegories)
 		{
 			dataPie = new google.visualization.DataTable();
-			dataPie.addColumn('string','Theme');
-			dataPie.addColumn('number','Nb theme');
-			dataPie.addRows(themes.length);
-			i = 0;
-			for(key in themes)
+			dataPie.addColumn('string','Cotegorie');
+			dataPie.addColumn('number','Nb');
+			dataPie.addRows(cotegories.length);
+			for(i=0;i<cotegories.length;i++)
 				{
-					dataPie.setValue(i,0,key);
-					dataPie.setValue(i,1,themes[key])
-					i++;
+					laCat = cotegories[i].split("=")[0];
+					nb = cotegories[i].split("=")[1];
+					nbCat = parseInt(nb);
+					dataPie.setValue(i,0,laCat);
+					dataPie.setValue(i,1,nbCat);
 				}
 			return dataPie;
 		}
@@ -73,7 +74,7 @@
 		{
 			data = initPie(themes);
 			var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
-			chart.draw(data,{width: 450, height: 300,title: 'Le suicide, des sensations pures'});	
+			chart.draw(data,{width: 450, height: 300,title: 'Categorie'});	
 			google.visualization.events.addListener(chart, 'select', selectHandler);
 			function selectHandler(e) 
 			{
@@ -151,13 +152,26 @@
 		}
 		function geoZoom(country,conferences)
 		{
+			content="";
 			data = initDataConfZoom(conferences);
+			for(i=0;i<data.getNumberOfRows();i++)
+			{
+				content+=data.getValue(i,0)+" - "+conferences[i].titre+"<br>";
+			}
+			document.getElementById("infoZoom_div").innerHTML = content;
 			var options = {};
 			options['region'] = country;
 			options['colors'] = [0xFF8747, 0xFFB581, 0xc06000]; //orange colors
 			options['dataMode'] = 'markers';
 			var geozoom = new google.visualization.GeoMap(document.getElementById('geo_div'));
 			geozoom.draw(data, options);
+			/*google.visualization.events.addListener(geozoom, 'select', selectH); 
+			function selectH(e) 
+			{
+				rowData = geozoom.getSelection()[0].row;
+				selectedCity = data.getValue(rowData,0);
+				alert(selectedCity);
+			}*/
 		}
 		
 		function cleanDiv(name)
