@@ -20,7 +20,6 @@ import fr.unice.miage.xmlsearch.utils.Constantes;
  */
 @SuppressWarnings("serial")
 public class GetThemeParAnnee extends Servlet{
-
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -29,14 +28,14 @@ public class GetThemeParAnnee extends Servlet{
 		
 		ThemeDAO daoTheme = new ThemeDAO(this.getServletContext().getInitParameter(NOM_PARAMETRE_CONTEXTE));
 		Map<String, String> themes = daoTheme.getThemeParAnnee(annee);
+		if(themes == null || themes.isEmpty()) {
+			return;
+		}
 		
 		try {
 			resp.getWriter().print(new JSONArray(themes.entrySet().toArray()));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-
 }
