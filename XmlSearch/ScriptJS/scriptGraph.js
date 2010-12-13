@@ -1,16 +1,34 @@
 
         function initData() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Country');
-        data.addColumn('number', 'Nb conférence');
-        data.addRows(2);
-        data.setValue(0, 0, 'FR');
-        data.setValue(0, 1, 2);
-        data.setValue(1, 0, 'US');
-        data.setValue(1, 1, 1);
-		return data;	
-		
+		    var data = new google.visualization.DataTable();
+		    data.addColumn('string', 'Country');
+		    data.addColumn('number', 'Nb conférence');
+		    data.addRows(2);
+		    data.setValue(0, 0, 'FR');
+		    data.setValue(0, 1, 2);
+		    data.setValue(1, 0, 'US');
+		    data.setValue(1, 1, 1);
+			return data;	
 		}
+        
+        function initChart(p_data, p_titleHAxis, p_titleVAxis)
+		{
+			dataChart = new google.visualization.DataTable();
+			dataChart.addColumn('string',p_titleHAxis);
+			dataChart.addColumn('number',p_titleVAxis);
+			dataChart.addRows(p_data.length);
+			i = 0;
+			for(key in p_data)
+			{
+				titre = p_data[key].split('=')[0];
+				nombre = parseInt(p_data[key].split('=')[1]);
+				dataChart.setValue(i,0,titre);
+				dataChart.setValue(i,1,nombre);
+				i++;
+			}
+			return dataChart;
+		}
+        
         function initDataConf(conferences)
         {
         	
@@ -81,6 +99,14 @@
 				alert("tg");
 			}
 		}
+		
+		function columnChart(p_data, p_name, p_annee, p_title, p_titleHAxis, p_titleVAxis)
+		{
+			dataChart = initChart(p_data,p_titleHAxis,p_titleVAxis);
+			var chart = new google.visualization.ColumnChart(document.getElementById(p_name.toLowerCase()+'_chart_div'));
+			chart.draw(dataChart,{height: 480, title: p_title, haxis: {title: p_titleHAxis}, vaxis: {title: p_titleVAxis}});
+		}
+		
 		function barChart()
 		{
 			data = initData();

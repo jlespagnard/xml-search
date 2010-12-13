@@ -46,6 +46,12 @@
 				  addPin(centres);
 				});
 		}
+
+		function callGetThemeParAnnee(p_annee) {
+			$.getJSON('getThemeParAnnee', {annee : p_annee}, function(themesParAnnee) {
+				columnChart(themesParAnnee, 'Theme', p_annee, 'Répartition des projets par thème pour l\'année '+p_annee, 'Thèmes', 'Nombre de projets');
+			});
+		}
 		function callServConf()
 		{
 			$.getJSON('getNbConferencesParPays',{ annee:'2008' }, function(conf) {
@@ -73,7 +79,7 @@
 		<ul class="tabs">
 			<li><a href="#tab1">Accueil</a></li>
 			<li><a onclick="callServConf();">Conf&eacute;rences</a></li>
-			<li><a onclick="callGetTheme();">Th&egrave;mes</a></li>
+			<li><a href="#tab3" onclick="callGetThemeParAnnee('2009');">Th&egrave;mes</a></li>
 			<li><a onclick="callServ();">Centres de recherche</a></li>
 			<li><a href="#tab5">Projets</a></li>
 		</ul>
