@@ -3,10 +3,12 @@
 	text-align: justify;
 	text-indent: 30px;
 	margin-left: 15%;
+	font-size:0.8em;
 }
 
 body{
-	background-color: #8CB2FF;
+	background-color: #0a1d30;
+	font-family: "Century Gothic", "Trebuchet MS", Georgia, serif;
 }
 
 bodyTitle{
@@ -17,6 +19,7 @@ bodyTitle{
 	margin-top: 10px;
 	margin-left: 20px;
 	height: 150px;
+	font-size:0.8em;
 }
 
 .logo{
@@ -30,6 +33,7 @@ bodyTitle{
 
 .recherche{
 	padding: 10px 40px;
+	font-size:0.8em;
 }
 
 thead{
@@ -78,16 +82,19 @@ ul.tabs li {
 
 ul.tabs li a {
 	text-decoration: none;
-	color: #000;
+	color: white;
 	display: block;
-	font-size: 1.2em;
+	font-family: "Century Gothic", "Trebuchet MS", Georgia, serif;
+	font-weight: bold;
+	font-size: 1em;
 	padding: 0 20px;
 	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
 	outline: none;
+	background: #0b2351;
 }
 
 ul.tabs li a:hover {
-	background: #ccc;
+	background: #0c3073;
 }
 
 html ul.tabs li.active, html ul.tabs li.active a:hover  {
@@ -108,24 +115,26 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  {
 	margin: 22px 0px;
 	padding: 0px 20px;
 	font-size: 1.2em;
-	background-color: #FFF5D1;
+	background-color: #E7E8E9;
 }
 
 .navigation {
 	padding: 0; 
 	width: 200px; 
-	font: "Trebuchet MS", sans-serif; 
-	color: black;
-	background-color: #FFFF66;
+	font-family: "Century Gothic", "Trebuchet MS", Georgia, serif;
+	font-size: 0.8em; 
+	color: white;
+	background-color: #0b2351;
 	height: 500px;
-	margin-top: 2px;
+	margin-top: 1px;
+	margin-left: 5px;
 }
 
 .navigation a, .navigation span { 
 	display: block; 
 	padding: 4px 10px;
 	text-decoration: none;
-	color: black;
+	color: white;
 }
  
 .navigation a:hover, .navigation a:focus, .navigation a:active { 

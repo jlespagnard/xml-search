@@ -8,7 +8,7 @@
 	<title>My RAweb by XML-Search</title>
 	<style type="text/css">
 		html { height: 100% }
-		body { height: 100%; margin: 0px; padding: 0px }
+		body { height: 100%; padding: 0px }
 		#map_canvas { height: 40%;
 				width: 100%;
 			}
@@ -17,11 +17,11 @@
 				width: 100%;
 			}
 			
-		#pie_div {  margin-top:30px; }
-		#geo_div	{  margin-top:30px; }
+		#pie_div {  margin-top:30px;}
+		#geo_div	{  margin-top:30px;}
 		#geozoom_div
-		#bar_div {  margin-top:30px; }
-		#table_div {  margin-top:30px; }
+		#bar_div {  margin-top:30px;}
+		#table_div {  margin-top:30px;}
 		#details_div
 	</style>
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="pagesjsp/stylesheet.css" />
@@ -50,7 +50,7 @@
 </head>
 <body>
 	<div> 
-		<p class="titreprincipal">XML Search</p>  
+		<center><img src="img/logo2.png" alt="logo"/></center>
 		<br/><br/>
 		<ul class="tabs">
 			<li><a href="#tab1">Accueil</a></li>
