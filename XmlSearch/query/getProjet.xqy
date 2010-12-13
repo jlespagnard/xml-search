@@ -1,9 +1,11 @@
 let $annee := request:get-parameter("annee","2009")
 let $anneeARechercher := concat('/db/Raweb/RA',$annee)
 let $shortname := request:get-parameter("shortname","")
-let $titre := request:get-parameter("projectname","")
+let $titreParam := request:get-parameter("projectname","")
 let $fullInfos := request:get-parameter("fullinfos","no")
 let $theme := request:get-parameter("theme","")
+
+let $titre := replace($titre, '*', ' ')
 
 let $infos :=
 	for $projet in collection($anneeARechercher)/raweb/identification
