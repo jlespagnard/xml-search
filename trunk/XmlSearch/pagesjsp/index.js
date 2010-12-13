@@ -2,9 +2,11 @@
 function recherche(){
 	var shortname = $("#shortname").val();
 	var titre = $("#titre").val();
-	titre = titre.replace(" ", "_");
+	if(titre.length > 0){
+		titre = titre.replace(/ /g, "_");
+	}
 	var annee = $("#annee option:selected").val();
-	var theme = $("#theme").val();
+	var theme = $("#themepr").val();
 	$.getJSON("rechercherProjet", { annee: annee, projectName: titre, shortname: shortname, theme: theme, fullinfos: "no"}, function(Projets){
 		var liste = "<table><tr>";
 		var j = 0;
