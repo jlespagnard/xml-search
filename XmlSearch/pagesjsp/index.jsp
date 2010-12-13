@@ -9,7 +9,7 @@
 	<style type="text/css">
 		html { height: 100% }
 		body { height: 100%; padding: 0px }
-		#map_canvas { height: 40%;
+		#map-canvas { height: 40%;
 				width: 100%;
 			}
 			
