@@ -28,7 +28,6 @@ public class RechercherProjet extends Servlet {
 		String shortName = req.getParameter(Constantes.Projet.SHORT_NAME.getLabel());
 		String titre = req.getParameter(Constantes.Projet.PROJECT_NAME.getLabel());
 		String theme = req.getParameter(Constantes.Projet.THEME.getLabel());
-		
 		String[] annees = (annee == null) ? null : new String[]{annee};
 		String[] shortNames = (shortName == null) ? null : new String[]{shortName};
 		String[] titres = (titre == null) ? null : new String[]{titre};
