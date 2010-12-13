@@ -94,13 +94,13 @@
 			dataPie.addColumn('number','Nb');
 			dataPie.addRows(categories.length);
 			for(i=0;i<categories.length;i++)
-				{
-					cat = categories[i].split("=");
-					laCat = cat[0];
-					nbCat = parseInt(cat[1]);
-					dataPie.setValue(i,0,laCat);
-					dataPie.setValue(i,1,nbCat);
-				}
+			{
+				cat = categories[i].split("=");
+				laCat = cat[0];
+				nbCat = parseInt(cat[1]);
+				dataPie.setValue(i,0,laCat);
+				dataPie.setValue(i,1,nbCat);
+			}
 			return dataPie;
 		}
 		

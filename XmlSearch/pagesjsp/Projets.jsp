@@ -12,8 +12,8 @@
 		<td width="200px"><input type="text" name="shortname" id="shortname" /></td>
 	</tr>
 	<tr>
-		<td width="200px"><label for="theme">Th&egrave;me</label> : </td>
-		<td width="200px"><input type="text" name="theme" id="theme" /></td>
+		<td width="200px"><label for="themepr">Th&egrave;me</label> : </td>
+		<td width="200px"><input type="text" name="themepr" id="themepr" /></td>
 	</tr>
 	<tr>
 		<td width="200px">Ann&eacute;e</td>
